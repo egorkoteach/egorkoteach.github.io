@@ -1,63 +1,333 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>База заданий для подготовки к ОГЭ и ЕГЭ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #eef2f3;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        section {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #34495e;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        a {
-            color: #2980b9;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>База заданий ОГЭ по русскому языку</title>
+<meta name="description" content="Онлайн-тренажёр заданий ОГЭ по русскому языку" />
+
+<!-- Новые шрифты -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<!-- Используем Poppins и Raleway для заголовков -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet" />
+
+<!-- Скрипт для темы -->
+<script>
+  (function() {
+    try {
+      const theme = localStorage.getItem('pref-theme') || 'light';
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+    } catch (_) {}
+  })();
+</script>
+
+<style>
+  /* Цветовые переменные для светлой и тёмной темы */
+  :root {
+    --bg-color: #f0f4f8;
+    --primary: #0069d9;
+    --accent: #339af0;
+    --text-color: #222; /* тёмно-серый для лучшей читаемости */
+    --muted: #555; /* более мягкий цвет для текста */
+    --header-title-color: #0d47a1; /* насыщенный синий для заголовков */
+    --header-subtitle-color: #1565c0; /* чуть светлее для подзаголовков */
+
+    --font-title: 'Raleway', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+  }
+  .dark {
+    --bg-color: #1e1e2f;
+    --primary: #339af0;
+    --accent: #66b2ff;
+    --text-color: #eee;
+    --muted: #aaa;
+    --header-title-color: #90caf9;
+    --header-subtitle-color: #64b5f6;
+  }
+
+  /* Общие стили */
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* Хедер */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary), #005cbf);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    transition: background 0.5s;
+  }
+  @media(max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 15px;
+    font-family: var(--font-title);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+  }
+
+  /* Заголовки и подзаголовки в шапке */
+  .title-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    /* Цвет текста */
+    color: var(--header-title-color);
+  }
+  .subtitle {
+    font-size: 0.9rem;
+    margin-top: 2px;
+    /* Цвет текста */
+    color: var(--header-subtitle-color);
+  }
+
+  /* Кнопка переключения темы */
+  .theme-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid transparent;
+    padding: 10px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+  }
+  .theme-btn:hover {
+    background: rgba(255,255,255,0.3);
+    border-color: var(--muted);
+  }
+
+  /* Основной контент */
+  main {
+    flex: 1;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    max-width: 600px;
+    width: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+  }
+
+  .card h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    /* Цвет текста */
+    color: var(--text-color);
+  }
+
+  .card p {
+    font-size: 1rem;
+    /* Цвет текста */
+    color: var(--muted);
+    margin-bottom: 30px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .btn {
+    flex: 1 1 200px;
+    padding: 15px;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .btn:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+  }
+
+  /* Преимущества */
+  .advantages {
+    margin-top: 50px;
+    max-width: 900px;
+    width: 100%;
+  }
+  .advantages h2 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Цвет текста */
+    color: var(--text-color);
+  }
+  .advantages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .adv-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.05);
+    padding: 15px 20px;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .adv-item:hover {
+    background: rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .adv-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    color: var(--primary);
+  }
+  .adv-text {
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  /* Подвал */
+  footer {
+    background: linear-gradient(135deg, var(--primary), #0288d1);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  @media(max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .cards-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card {
+      max-width: 90%;
+    }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>База заданий для подготовки к ОГЭ и ЕГЭ</h1>
-    </header>
+<header>
+  <div class="logo-container">
+    <div class="logo">РЯ</div>
+    <div class="title-group">
+      <div style="color:#ffff" class="title">База заданий ОГЭ по русскому языку и литературе</div>
+    </div>
+  </div>
 
-    <section>
-        <h2>Задания по русскому языку</h2>
-        <ul>
-            <li><a href="https://example.com/ogee-russian" target="_blank">База заданий ОГЭ по русскому языку</a></li>
-            <li><a href="https://example.com/ege-russian" target="_blank">База заданий ЕГЭ по русскому языку</a></li>
-            <li><a href="https://example.com/russian-practice-tests" target="_blank">Практические тесты по русскому языку</a></li>
-        </ul>
-    </section>
+</header>
 
-    <section>
-        <h2>3
+<main>
+  <div class="cards-wrapper">
+    <div class="card">
+      <h1>Подготовься к <span style="white-space:nowrap">ОГЭ по русскому языку</span> или литературе на максимум</h1>
+      <p>Практикуй задания, развивай навыки речи и письма. Основано на реальных заданиях и рекомендациях ФИПИ.</p>
+      <div class="buttons">
+        <a href="oge/rus.html" class="btn" aria-label="Перейти к тренажёру русского языка">📝 Русский язык ОГЭ</a>
+        <a href="literature/lit.html" class="btn" aria-label="Перейти к тренажёру литературы">📖 Литература ОГЭ</a>
+      </div>
+    </div>
+  </div>
+  <section class="advantages">
+    <h2>Преимущества тренажёра</h2>
+    <div class="advantages-list">
+      <div class="adv-item">
+        <div class="adv-icon">🚀</div>
+        <div class="adv-text"><strong>Быстрый старт</strong> — Начни подготовку без регистрации.</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">⏱️</div>
+        <div class="adv-text"><strong>Практика в стиле ФИПИ</strong> — Задания на говорение, письмо и чтение.</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🔥</div>
+        <div class="adv-text"><strong>Обновлённые задания</strong> — Актуальные для подготовки к реальному экзамену.</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🎯</div>
+        <div class="adv-text"><strong>Подготовка к экзамену</strong> — Таймеры и советы для успешной сдачи.</div>
+      </div>
+    </div>
+  </section>
+</main>
 
+<footer>
+  <div>© 2025 — Проект в разработке. Демо-версия.</div>
+  <div style="margin-top:6px">Есть идея или нашли баг? Напишите нам: <a href="mailto:hello@example.com">hello@example.com</a></div>
+</footer>
 
-
-
+<script>
+  // Переключение темы
+  document.getElementById('theme-toggle').onclick = () => {
+    document.documentElement.classList.toggle('dark');
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('pref-theme', 'dark');
+    } else {
+      localStorage.setItem('pref-theme', 'light');
+    }
+  };
+</script>
+</body>
+</html>
