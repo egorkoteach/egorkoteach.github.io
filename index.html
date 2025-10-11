@@ -37,7 +37,7 @@
     padding: 0 20px;
   }
 
-  /* Видео-знакомство */
+  /* Видео-знакомство (встроенное видео) */
   .intro-section {
     background-color: #fff;
     padding: 30px;
@@ -58,7 +58,6 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    flex-wrap: wrap;
   }
   #introVideoContainer iframe {
     max-width: 100%;
@@ -66,6 +65,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   }
+
   /* Место для видео */
   .video-section {
     background-color: #fff;
@@ -185,20 +185,21 @@
 
 <div class="container">
 
-  <!-- Видео-знакомство -->
+  <!-- Видео-знакомство (встроенное видео) -->
   <section class="intro-section">
     <h2>Видео-знакомство</h2>
-    <p>Познакомьтесь со мной! Введите ссылку на видео ВК или вставьте видео ниже.</p>
-    <input type="text" id="vkIntroLink" placeholder="Введите ссылку на видео ВК" />
-    <button id="loadVkIntro">Показать видео</button>
-    <div id="introVideoContainer"></div>
+    <p>Познакомьтесь со мной! Ниже встроенное видео.</p>
+    <!-- Замените src на ссылку на ваше видео с YouTube или другого сервиса -->
+    <div id="introVideoContainer">
+      <iframe width="720" height="405" src="https://vkvideo.ru/video-233231715_456239017?list=ln-Q52zoWMs3jtN9VYSdl" title="Видео-знакомство" frameborder="0" allowfullscreen></iframe>
+    </div>
   </section>
 
   <!-- Место для видео -->
   <section class="video-section">
     <h2>Мое видео</h2>
     <p>Здесь вы можете вставить любое видео о себе или уроке.</p>
-    <input type="text" id="videoLink" placeholder="Введите ссылку на видео ВК" />
+    <input type="text" id="videoLink" placeholder="Введите ссылку на видео" />
     <button id="loadVideo">Показать видео</button>
     <div id="videoDisplay"></div>
   </section>
@@ -210,7 +211,6 @@
       <li><a href="https://example.com/oge1.pdf" target="_blank">Задание ОГЭ 2023 — Часть 1</a></li>
       <li><a href="https://example.com/oge2.pdf" target="_blank">Задание ОГЭ 2023 — Часть 2</a></li>
       <li><a href="https://example.com/oge3.pdf" target="_blank">Задание ОГЭ 2022</a></li>
-      <!-- Добавьте свои задания -->
     </ul>
   </section>
 
@@ -223,55 +223,30 @@
 </footer>
 
 <script>
-  // Обработка вставки видео в раздел "Видео-знакомство"
-  document.getElementById('loadVkIntro').addEventListener('click', () => {
-    const url = document.getElementById('vkIntroLink').value.trim();
-    const container = document.getElementById('introVideoContainer');
-    container.innerHTML = '';
-    const embedUrl = getVkEmbedUrl(url);
-    if (embedUrl) {
-      const iframe = document.createElement('iframe');
-      iframe.src = embedUrl;
-      iframe.width = "720";
-      iframe.height = "405";
-      iframe.allowFullscreen = true;
-      iframe.frameBorder = "0";
-      container.appendChild(iframe);
-    } else {
-      alert('Некорректная ссылка');
-    }
-  });
-
-  // Обработка вставки видео в раздел "Мое видео"
+  // Обработка вставки видео по ссылке
   document.getElementById('loadVideo').addEventListener('click', () => {
     const url = document.getElementById('videoLink').value.trim();
     const container = document.getElementById('videoDisplay');
     container.innerHTML = '';
-    const embedUrl = getVkEmbedUrl(url);
-    if (embedUrl) {
+
+    // Встраивание YouTube или другого сервиса
+    const youtubeMatch = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+    if (youtubeMatch) {
+      const videoId = youtubeMatch[1];
       const iframe = document.createElement('iframe');
-      iframe.src = embedUrl;
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
       iframe.width = "720";
       iframe.height = "405";
       iframe.allowFullscreen = true;
       iframe.frameBorder = "0";
       container.appendChild(iframe);
-    } else {
-      alert('Некорректная ссылка');
+      return;
     }
-  });
 
-  // Функция преобразования ссылки ВК в embed
-  function getVkEmbedUrl(url) {
-    const vkRegex = /vk\.com\/video(\d+)\/(\d+)/;
-    const match = url.match(vkRegex);
-    if (match) {
-      const ownerId = match[1];
-      const videoId = match[2];
-      return `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}&hash=abcdef`;
-    }
-    return null;
-  }
+    // Тут можно добавить поддержку других видео платформ
+
+    alert('Поддерживаются только видео с YouTube.');
+  });
 </script>
 
 </body>
