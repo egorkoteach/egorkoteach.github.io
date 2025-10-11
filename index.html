@@ -66,6 +66,31 @@
         color: #2e86de;
         margin-bottom: 15px;
     }
+    /* Новые стили для вставки видео с ВК */
+    .vk-video-section {
+        margin-top: 20px;
+    }
+    #vkVideoLink {
+        width: 100%;
+        padding: 8px;
+        font-size: 1em;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    #loadVkVideo {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2e86de;
+        color: #fff;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    #loadVkVideo:hover {
+        background-color: #1b5eab;
+    }
     input[type="file"] {
         display: block;
         margin-top: 10px;
@@ -151,7 +176,6 @@
     footer p {
         margin: 5px 0;
     }
-    /* Анимация при наведении на заголовки */
 </style>
 </head>
 <body>
@@ -161,19 +185,22 @@
 </header>
 <div class="container">
 
-    <!-- Видео-знакомство -->
-    <section class="video-section">
-        <h2>Видео-знакомство</h2>
-        <!-- Замените ссылку на ваше видео или вставьте сюда -->
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/ВАШЕ_ВИДЕОКОД" frameborder="0" allowfullscreen></iframe>
+    <!-- Блок для вставки видео с ВК -->
+    <section class="video-upload vk-video-section">
+        <h2>Добавить видео с VK</h2>
+        <input type="text" id="vkVideoLink" placeholder="Введите ссылку на видео ВК" />
+        <button id="loadVkVideo">Добавить видео</button>
+        <div id="videoContainer"></div>
     </section>
 
-    <!-- Загрузка видео с компьютера -->
+    <!-- Блок для загрузки видео с компьютера (убран или закомментирован) -->
+    <!--
     <section class="video-upload">
         <h2>Загрузить видео с компьютера</h2>
         <input type="file" id="videoFile" accept="video/*" />
         <div id="videoContainer"></div>
     </section>
+    -->
 
     <!-- Банк заданий -->
     <section class="tasks-bank">
@@ -193,21 +220,50 @@
 </footer>
 
 <script>
-    // Обработчик загрузки видео
-    document.getElementById('videoFile').addEventListener('change', function(event) {
+    // Обработчик вставки видео с ВК
+    document.getElementById('loadVkVideo').addEventListener('click', function() {
+        const urlInput = document.getElementById('vkVideoLink').value.trim();
         const container = document.getElementById('videoContainer');
-        container.innerHTML = ""; // Очистить предыдущие видео
-        const file = event.target.files[0];
-        if (file) {
-            const url = URL.createObjectURL(file);
-            const video = document.createElement('video');
-            video.src = url;
-            video.controls = true;
-            video.width = 720;
-            container.appendChild(video);
+        if (!urlInput) {
+            alert('Пожалуйста, введите ссылку на видео ВК');
+            return;
+        }
+
+        // Очистить предыдущие видео
+        container.innerHTML = '';
+
+        // Вставляем iframe с видео ВК
+        // Обычно ВК используют виджет для вставки
+        const vkEmbedUrl = getVkEmbedUrl(urlInput);
+        if (vkEmbedUrl) {
+            const iframe = document.createElement('iframe');
+            iframe.src = vkEmbedUrl;
+            iframe.width = "720";
+            iframe.height = "405";
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = "0";
+            iframe.allow = "autoplay; encrypted-media";
+            container.appendChild(iframe);
+        } else {
+            alert('Некорректная ссылка или невозможно вставить видео с этого URL');
         }
     });
+
+    // Функция для получения embed URL из ссылки ВК
+    function getVkEmbedUrl(url) {
+        // Простейшая проверка и преобразование
+        // Вставка видео с ВК обычно делается через специальный виджет или iframe
+        // Для простоты, будем искать ID видео и формировать URL
+        const vkRegex = /vk\.com\/video(\d+)\/(\d+)/;
+        const match = url.match(vkRegex);
+        if (match) {
+            const ownerId = match[1];
+            const videoId = match[2];
+            return `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}&hash=abcdef`; // пример, требует правильного hash
+        }
+        // Можно добавить другие проверки или использование API ВК
+        return null;
+    }
 </script>
 </body>
 </html>
-
