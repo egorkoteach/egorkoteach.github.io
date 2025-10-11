@@ -1,85 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Репетитор по русскому языку</title>
-<!-- Стиль для современного оформления -->
-<style>
-  body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: #eef2f3;
-    color: #333;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Репетитор по русскому языку</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .video-section, .tasks-bank {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #333;
+        }
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+        }
+        .tasks-list li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Репетитор по русскому языку</h1>
+        <p>Помощь в подготовке к ОГЭ и ФИПИ</p>
+    </header>
+    <div class="container">
+        <!-- Вставка видео-знакомства -->
+        <section class="video-section">
+            <h2>Видео-знакомство</h2>
+            <!-- Замените ссылку на ваше видео или вставьте свой YouTube-ролик -->
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/ВАШЕ_ВИДЕОКОД" frameborder="0" allowfullscreen></iframe>
+        </section>
 
-  header {
-    background-color: #2c3e50;
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-  }
+        <!-- Банк заданий -->
+        <section class="tasks-bank">
+            <h2>Банк заданий ОГЭ и ФИПИ</h2>
+            <ul class="tasks-list">
+                <li>
+                    <a href="https://example.com/task1.pdf" target="_blank">Задание 1 — ОГЭ 2023</a>
+                </li>
+                <li>
+                    <a href="https://example.com/task2.pdf" target="_blank">Задание 2 — ФИПИ 2023</a>
+                </li>
+                <li>
+                    <a href="https://example.com/task3.pdf" target="_blank">Задание 3 — ОГЭ 2022</a>
+                </li>
+                <!-- Добавьте свои задания -->
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p>© 2024 Репетитор по русскому языку. Все права защищены.</p>
+        <p>Контакт: <a href="mailto:info@rusrepetitor.ru">info@rusrepetitor.ru</a></p>
+    </footer>
+</body>
+</html>
 
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    background-color: #34495e;
-  }
-
-  nav a {
-    color: #ecf0f1;
-    padding: 14px 20px;
-    text-decoration: none;
-    transition: background 0.3s;
-  }
-
-  nav a:hover {
-    background-color: #2c3e50;
-  }
-
-  section {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  h2 {
-    color: #2980b9;
-    margin-top: 0;
-  }
-
-  /* Банк заданий */
-  .tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .task {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
-
-  .task h3 {
-    margin-top: 0;
-  }
-
-  /* Форма обратной связи */
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-
-  label {
-    margin-top
