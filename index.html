@@ -5,30 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Русский язык ОГЭ</title>
     <style>
-        /* style.css (Встроенные стили) */
-
+        /* Современный стиль */
         body {
-            font-family: sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        /* Шапка */
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: #fff;
+            color: #333;
             padding: 1em 0;
-            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky; /* Фиксированная шапка */
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
         }
 
         header h1 {
             margin: 0;
+            font-size: 2em;
+            color: #007bff; /* Акцентный цвет */
         }
 
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff; /* Акцентный цвет при наведении */
+        }
+
+        /* Основной контент */
         main {
+            max-width: 960px;
+            margin: 20px auto;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            color: #007bff;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        #about_exam p {
+            margin-bottom: 15px;
         }
 
         #sections ul {
@@ -37,14 +94,16 @@
         }
 
         #sections li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f2f2f2;
+            padding-bottom: 10px;
         }
 
         #sections a {
             display: block;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
             text-decoration: none;
             color: #333;
             transition: background-color 0.3s ease;
@@ -54,28 +113,29 @@
             background-color: #eee;
         }
 
+        /* Кнопка */
+        button {
+            background-color: #007bff; /* Акцентный цвет */
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
         #start_test {
             text-align: center;
             margin-top: 30px;
         }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: auto; /* Изменено на auto */
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-         footer {
+        /* Подвал */
+        footer {
             background-color: #333;
             color: #fff;
             text-align: center;
@@ -85,31 +145,51 @@
             width: 100%; /* Растягивается на всю ширину */
         }
 
+        /* Адаптивность */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        /* Стили для адаптивности (для мобильных устройств) */
-        @media screen and (max-width: 600px) {
-            header {
-                padding: 0.5em 0;
+            nav ul {
+                margin-top: 10px;
+                flex-direction: column;
             }
-            header h1 {
-                font-size: 1.5em;
+
+            nav li {
+                margin-left: 0;
+                margin-bottom: 10px;
             }
-            main {
-                padding: 10px;
-            }
+
             button {
-                width: 100%; /* Кнопка на всю ширину экрана */
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Русский язык ОГЭ</h1>
-        <p>Подготовьтесь к ОГЭ по русскому языку эффективно и с удовольствием!</p>
+        <div class="header-container">
+            <h1>Русский язык ОГЭ</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Тесты</a></li>
+                    <li><a href="#">Теория</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
+        <section id="about_exam">
+            <h2>Что такое ОГЭ по русскому языку?</h2>
+            <p>Основной государственный экзамен (ОГЭ) по русскому языку – это обязательный экзамен, который сдают выпускники 9-х классов российских школ.  Успешная сдача ОГЭ является одним из условий получения аттестата об основном общем образовании.</p>
+            <p>Экзамен проверяет знания и умения учащихся в области русского языка, включая грамматику, орфографию, пунктуацию, лексику и стилистику. Также оценивается умение создавать тексты различных жанров и функциональных стилей.</p>
+        </section>
+
         <section id="sections">
             <h2>Основные разделы ОГЭ</h2>
             <ul>
