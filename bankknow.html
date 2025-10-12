@@ -1,365 +1,191 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Банк заданий - Русский язык ОГЭ</title>
-<!-- Шрифт -->
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #eef2f3;
-    color: #333;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Подготовка к ОГЭ по Русскому языку — Учебный макет</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #141a2b;
+      --accent: #6ea8fe;
+      --text: #e6e9f5;
+      --muted: #aab4d4;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: radial-gradient(circle at 20% -10%, rgba(110,168,254,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(110,168,254,0.10), transparent 40%), var(--bg); color: var(--text); }
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px; background: rgba(10,14,34,0.9); border-bottom: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: saturate(1.2) blur(6px);
+    }
+    header .brand { display: flex; align-items: center; gap: 12px; }
+    header .brand .logo {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: linear-gradient(135deg, #6ea8fe 0%, #8b5cf6 100%);
+      display: inline-block;
+    }
+    nav a {
+      color: var(--text); text-decoration: none; margin: 0 12px; font-weight: 500;
+      padding: 8px 12px; border-radius: 6px;
+    }
+    nav a:hover { background: rgba(255,255,255,0.07); }
 
-  /* Шапка */
-  header {
-    background: linear-gradient(90deg, #4e54c8, #8f94fb);
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
+    main { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+    section { margin-bottom: 60px; }
+    h1, h2 { margin: 0 0 12px; font-weight: 700; }
+    h1 { font-size: 2rem; letter-spacing: .2px; }
+    h2 { font-size: 1.25rem; color: var(--white); opacity: 0.95; }
 
-  .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    margin-right: 50px;
-  }
+    .intro { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
+    .intro p { color: var(--muted); line-height: 1.6; }
+    .card {
+      background: linear-gradient(180deg, rgba(20,26,43,0.95) 0%, rgba(20,26,43,0.75) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 20px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
+    }
 
-  nav {
-    display: flex;
-    gap: 20px;
-  }
+    .task {
+      padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(20,26,43,0.8), rgba(20,26,43,0.6));
+      min-height: 110px;
+    }
+    .task h3 { font-size: 1rem; margin: 0 0 6px; }
+    .task p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(135deg, rgba(110,168,254,0.9), rgba(110,168,254,0.6)); color: white; text-decoration: none; font-weight: 600;
+    }
+    .btn.secondary { background: transparent; border-color: rgba(255,255,255,0.25); }
+    form { display: grid; gap: 12px; }
+    input, textarea { width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04); color: var(--text);
+    }
+    input::placeholder, textarea::placeholder { color: #99a6cf; }
+    textarea { min-height: 110px; resize: vertical; }
 
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 6px;
-  }
+    footer { text-align: center; color: var(--muted); padding: 20px 0 40px; }
 
-  nav a:hover {
-    background-color: rgba(255,255,255,0.3);
-  }
-
-  /* Основной контейнер */
-  .container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #4e54c8;
-  }
-
-  /* Вкладки разделов */
-  .section-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-
-  .section-tab {
-    padding: 10px 25px;
-    background-color: #4e54c8;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-
-  .section-tab:hover {
-    background-color: #6b73e1;
-  }
-
-  .section-tab.active {
-    background-color: #fff;
-    color: #4e54c8;
-    border: 2px solid #4e54c8;
-  }
-
-  /* Разделы */
-  .section {
-    display: none;
-  }
-
-  .section.active {
-    display: block;
-  }
-
-  /* Задания */
-  .task {
-    background: #f7f9fb;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-
-  .task p {
-    margin: 10px 0;
-  }
-
-  /* Ввод */
-  input[type="text"] {
-    padding: 8px;
-    width: calc(100% - 20px);
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-
-  /* Кнопки */
-  button {
-    padding: 10px 20px;
-    background-color: #4e54c8;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-
-  button:hover {
-    background-color: #6b73e1;
-  }
-
-  /* Итоговые блоки */
-  #result {
-    margin-top: 20px;
-    font-weight: 700;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  /* Пояснения и ответы */
-  #explanation-container {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: #e0e0e0;
-    border-radius: 8px;
-  }
-
-  #explanation-container.show {
-    display: block;
-  }
-
-  /* Кнопка объяснений */
-  #toggle-explanation {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #6b73e1;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-
-  #toggle-explanation:hover {
-    background-color: #8a8ae1;
-  }
-</style>
+    @media (max-width: 900px) {
+      .intro { grid-template-columns: 1fr; }
+      header { padding: 12px; }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">Банк заданий ОГЭ</div>
-  <nav>
-    <a href="#">Главная</a>
-    <a href="#" style="font-weight:bold;">Банк заданий</a>
-  </nav>
-</header>
-
-<div class="container">
-  <h1>Банк заданий по русскому языку (ОГЭ)</h1>
-
-  <!-- Вкладки разделов -->
-  <div class="section-tabs">
-    <div class="section-tab active" data-section="practice">Практика</div>
-    <div class="section-tab" data-section="exam">Экзамен</div>
-  </div>
-
-  <!-- Раздел "Практика" -->
-  <div id="practice" class="section active">
-    <h2 style="text-align:center; margin-bottom:20px;">Практические задания</h2>
-    <div id="practice-task"></div>
-    <div style="text-align:center; margin-top:10px;">
-      <button onclick="loadPracticeTask()">Следующее задание</button>
+  <header>
+    <div class="brand">
+      <span class="logo" aria-label="Логотип"></span>
+      <strong>ОГЭ по Русскому языку — учебный макет</strong>
     </div>
-    <div id="practice-feedback" style="margin-top:10px; text-align:center; font-weight:600;"></div>
-    <button id="toggle-explanation" onclick="toggleExplanation()">Показать объяснение / ответ</button>
-    <div id="explanation-container"></div>
-  </div>
+    <nav aria-label="Навигация по странице">
+      <a href="#theory">Теория</a>
+      <a href="#examples">Примеры задач</a>
+      <a href="#form">Обратная связь</a>
+    </nav>
+  </header>
 
-  <!-- Раздел "Экзамен" -->
-  <div id="exam" class="section">
-    <h2 style="text-align:center; margin-bottom:20px;">Генерация варианта экзамена</h2>
-    <div style="text-align:center;">
-      <button onclick="generateExam()">Создать новый вариант</button>
-    </div>
-    <div id="exam-questions"></div>
-    <div style="text-align:center; margin-top:20px;">
-      <button onclick="submitExam()">Отправить ответы</button>
-    </div>
-    <div id="exam-result" style="margin-top:20px; text-align:center; font-weight:600;"></div>
-  </div>
-</div>
+  <main>
+    <section class="intro card" id="welcome" aria-labelledby="title-welcome">
+      <div>
+        <h1 id="title-welcome">Подготовка к ОГЭ по Русскому языку (без копирования заданий)</h1>
+        <p>Этот учебный макет содержит теорию и безопасные примеры задач для самостоятельной подготовки к ОГЭ. Все примеры созданы мной и рассчитаны на практику навыков: орфография, грамматика, лексика и стилистика. Здесь нет копирования реальных заданий экзамена.</p>
+        <p>Цель — помочь разобраться в основных разделах языка и потренироваться в решении задач в современном дизайне.</p>
+      </div>
+      <div class="card" aria-label="Блок быстрого доступа">
+        <p><strong>Быстрые ссылки</strong></p>
+        <ul style="margin:0; padding-left:16px;">
+          <li>Теория по разделам</li>
+          <li>Безопасные примеры задач</li>
+          <li>Форма обратной связи</li>
+        </ul>
+      </div>
+    </section>
 
-<script>
-  // Вкладки
-  const tabs = document.querySelectorAll('.section-tabs .section-tab');
-  const sections = document.querySelectorAll('.section');
+    <section id="theory" aria-labelledby="title-theory">
+      <h2 id="title-theory">Теория по ОГЭ: ключевые разделы</h2>
+      <div class="grid" aria-label="Разделы теории">
+        <article class="card" style="min-height:120px;">
+          <h3>Грамматика</h3>
+          <p>Сложносочиненные и сложноподчиненные предложения, пунктуация, части речи, синтаксис. Особое внимание связям согласования и управления.</p>
+        </article>
+        <article class="card" style="min-height:120px;">
+          <h3>Лексика</h3>
+          <p>Синонимы и антонимы, омонимы, употребление разговорной лексики в контексте текста, стилистика.</p>
+        </article>
+        <article class="card" style="min-height:120px;">
+          <h3>Орфография</h3>
+          <p>Правописание сложных слов, приставок, разделительных знаков, правил ударения в словах.</p>
+        </article>
+        <article class="card" style="min-height:120px;">
+          <h3>Слова и формы</h3>
+          <p>Числительные, формы слов, склонение, спряжение, неразличение частиц и служебных слов.</p>
+        </article>
+      </div>
+    </section>
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    <section id="examples" aria-labelledby="title-examples">
+      <h2 id="title-examples">Безопасные примеры задач для тренировки</h2>
+      <div class="grid" aria-label="Примеры задач (генеративные)">
+        <article class="task">
+          <h3>Задача 1. Выбор употребления слова</h3>
+          <p>Выберите правильное употребление слова в контексте: а) реально, б) реальнo, в) реальный. Обоснуйте выбор.</p>
+          <button class="btn" onclick="alert('Пример решения: правильное слово — реально. Обоснование: контекст требует наречие, отвечающее на вопрос как?');">Показать решение</button>
+        </article>
+        <article class="task">
+          <h3>Задача 2. Согласование по родам</h3>
+          <p>Выберите верное согласование подлежащего и сказуемого: «Команда из пяти человек была/были готовы».</p>
+          <button class="btn" onclick="alert('Правильный вариант: были. Подлежащее выражено словосочетанием во множественном числе, сказуемое сохраняет форма множественного числа.');">Показать решение</button>
+        </article>
+        <article class="task">
+          <h3>Задача 3. Правописание приставок</h3>
+          <p>Как писать: «рассмотреть» или «рассматривать» в контексте предложения?</p>
+          <button class="btn" onclick="alert('Правило: рассмотреть – глагол совершенного вида; рассматривать – несовершенного.');">Показать решение</button>
+        </article>
+        <article class="task">
+          <h3>Задача 4. Слова с ударением</h3>
+          <p>Выберите правильное ударение: «модулярный» или «модулярний»?</p>
+          <button class="btn" onclick="alert('Правильно: модулярный (ударение на первом слоге).');">Показать решение</button>
+        </article>
+      </div>
+    </section>
 
-      sections.forEach(sec => {
-        sec.classList.remove('active');
-        if (sec.id === tab.dataset.section) {
-          sec.classList.add('active');
-        }
-      });
-    });
-  });
+    <section id="form" aria-labelledby="title-form">
+      <h2 id="title-form">Обратная связь</h2>
+      <div class="grid" style="grid-template-columns:1.1fr 0.9fr;">
+        <form onsubmit="event.preventDefault(); alert('Сообщение отправлено. Спасибо!');">
+          <label>
+            Ваше имя
+            <input type="text" name="name" placeholder="Иван" required />
+          </label>
+          <label>
+            Эл. почта
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Сообщение
+            <textarea name="message" placeholder="Напишите своё сообщение..." required></textarea>
+          </label>
+          <button class="btn" type="submit">Отправить</button>
+        </form>
 
-  // Массив 60 вариантов по 13 заданий
-  const tasksBank = [
-    // Вариант 1
-    [
-      {question: "Выберите правильное написание слова:", options: ["весна", "весня"], answer: "весна", explanation: "Правильное написание — 'весна'."},
-      {question: "Поставьте запятую:", options: ["и", ","], answer: "и", explanation: "Запятая не нужна. Союз 'и' соединяет однородные члены."},
-      {question: "Что такое имя существительное?", options: ["Обозначает предмет, явление или лицо", "Обозначает действие"], answer: "Обозначает предмет, явление или лицо", explanation: "Имя существительное — часть речи, обозначающая предмет, лицо, явление."},
-      {question: "Выберите сложноподчинённое предложение:", options: ["Я пошёл в школу, потому что было хорошо.", "Он читает книгу."], answer: "Я пошёл в школу, потому что было хорошо.", explanation: "Это сложноподчинённое предложение, есть главное и придаточное."},
-      {question: "Какое из слов пишется с буквой 'и'?", options: ["Мир", "Мирий"], answer: "Мир", explanation: "Правильное написание — 'Мир'."},
-      {question: "Выберите синоним слова 'быстрый':", options: ["медленный", "скорый"], answer: "скорый", explanation: "Синоним слова 'быстрый' — 'скорый'."},
-      {question: "В каком из предложений допущена ошибка?", options: ["Я читаю интересную книгу.", "Он быстро бежит."], answer: "Я читаю интересную книгу.", explanation: "Это правильное предложение, ошибок нет."},
-      {question: "Выберите правильное окончание прилагательного:", options: ["красивый", "красивий"], answer: "красивый", explanation: "Правильное окончание — 'красивый'."},
-      {question: "Что обозначает слово 'подлежащее'?", options: ["Главный член предложения, отвечающий на вопросы кто? что?", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопросы кто? что?", explanation: "Подлежащее — главный член, отвечающий на вопросы кто? что?"},
-      {question: "Выберите правильное сочетание по смыслу:", options: ["Он любит читать книги.", "Он любит читать книгу."], answer: "Он любит читать книги.", explanation: "Правильное сочетание — множественное число."},
-      {question: "Что такое синоним?", options: ["Обозначает противоположные понятия", "Обозначает слова с одинаковым или близким значением"], answer: "Обозначает слова с одинаковым или близким значением", explanation: "Синонимы — слова с похожим значением."},
-      {question: "Выберите правильный пунктуационный вариант:", options: ["Когда пришёл учитель, класс успокоился.", "Когда пришёл учитель класс успокоился."], answer: "Когда пришёл учитель, класс успокоился.", explanation: "Правильное употребление запятой."}
-    ],
-    // Вариант 2
-    [
-      {question: "Выберите правильное написание слова:", options: ["зима", "зима"], answer: "зима", explanation: "Правильное написание — 'зима'."},
-      {question: "Поставьте запятую:", options: ["или", ","], answer: "или", explanation: "Запятая не нужна. Союз 'или' соединяет однородные члены."},
-      {question: "Что обозначает слово 'глагол'?", options: ["Обозначает действие или состояние", "Обозначает предмет"], answer: "Обозначает действие или состояние", explanation: "Глагол — часть речи, обозначающая действие или состояние."},
-      {question: "Выберите сложноподчинённое предложение:", options: ["Я читал книгу, потому что было интересно.", "Он читает книгу."], answer: "Я читал книгу, потому что было интересно.", explanation: "Это сложноподчинённое предложение."},
-      {question: "Выберите слово с правильным написанием:", options: ["прекрасный", "прекрастный"], answer: "прекрасный", explanation: "Правильное написание — 'прекрасный'."},
-      {question: "Выберите антоним слова 'горячий':", options: ["холодный", "теплый"], answer: "холодный", explanation: "Антоним — 'холодный'."},
-      {question: "В каком предложении допущена ошибка?", options: ["Я люблю гулять в парке.", "Он быстро бегает."], answer: "Я люблю гулять в парке.", explanation: "Это правильное предложение."},
-      {question: "Выберите правильное окончание прилагательного:", options: ["синий", "синій"], answer: "синий", explanation: "Правильное окончание — 'синий'."},
-      {question: "Что такое сказуемое?", options: ["Главный член предложения, отвечающий на вопрос что делает или что с ним происходит", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопрос что делает или что с ним происходит", explanation: "Сказуемое — главный член, отвечающий на вопрос что делает?"},
-      {question: "Выберите правильный по смыслу вариант:", options: ["Он любит играть на улице.", "Он любит играть в компьютере."], answer: "Он любит играть на улице.", explanation: "Это более общее утверждение."},
-      {question: "Что такое антоним?", options: ["Слова с противоположным значением", "Слова с одинаковым значением"], answer: "Слова с противоположным значением", explanation: "Антонимы — слова с противоположным значением."},
-      {question: "Выберите правильную пунктуацию:", options: ["Когда пришёл учитель, все зашумели.", "Когда пришёл учитель все зашумели."], answer: "Когда пришёл учитель, все зашумели.", explanation: "Правильное употребление запятой."}
-    ],
-    // Вариант 3
-    [
-      {question: "Выберите правильное написание слова:", options: ["осень", "осень"], answer: "осень", explanation: "Правильное написание — 'осень'."},
-      {question: "Поставьте запятую:", options: ["а", ","], answer: "а", explanation: "Запятая не нужна. Союз 'а' соединяет части предложения."},
-      {question: "Что обозначает слово 'прилагательное'?", options: ["Обозначает признак предмета", "Обозначает действие"], answer: "Обозначает признак предмета", explanation: "Прилагательное — часть речи, обозначающая признак предмета."},
-      {question: "Выберите сложноподчинённое предложение:", options: ["Я знаю, что ты придёшь.", "Я знаю это."], answer: "Я знаю, что ты придёшь.", explanation: "Это сложноподчинённое предложение."},
-      {question: "Выберите слово с правильным написанием:", options: ["зеленый", "зеленй"], answer: "зеленый", explanation: "Правильное написание — 'зеленый'."},
-      {question: "Выберите синоним слова 'большой':", options: ["огромный", "маленький"], answer: "огромный", explanation: "Синоним — 'огромный'."},
-      {question: "В каком предложении допущена ошибка?", options: ["Дети играют во дворе.", "Он быстро бежит."], answer: "Он быстро бежит.", explanation: "Это правильное предложение."},
-      {question: "Выберите правильное окончание прилагательного:", options: ["красивый", "красивий"], answer: "красивый", explanation: "Правильное окончание — 'красивый'."},
-      {question: "Что такое подлежащее?", options: ["Главный член предложения, отвечающий на вопросы кто? что?", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопросы кто? что?", explanation: "Подлежащее — главный член, отвечающий на вопросы кто? что?"},
-      {question: "Выберите правильный по смыслу вариант:", options: ["Она читает интересную книгу.", "Она читает интересный журнал."], answer: "Она читает интересную книгу.", explanation: "Пример соответствует правилу."},
-      {question: "Что такое синоним?", options: ["Слова с противоположным значением", "Слова с одинаковым или близким значением"], answer: "Слова с одинаковым или близким значением", explanation: "Синонимы — слова с похожим значением."},
-      {question: "Выберите правильную пунктуацию:", options: ["Когда пришёл учитель, все зашумели.", "Когда пришёл учитель все зашумели."], answer: "Когда пришёл учитель, все зашумели.", explanation: "Правильное употребление запятой."}
-    ],
-    // Остальные варианты — для примера, их нужно заполнить аналогично
-  ];
-
-  let currentVariantIndex = null;
-  let currentQuestions = [];
-
-  // Загрузка случайного варианта экзамена
-  function generateExam() {
-    const maxIndex = tasksBank.length - 1;
-    currentVariantIndex = Math.floor(Math.random() * (maxIndex + 1));
-    currentQuestions = [...tasksBank[currentVariantIndex]]; // копия массива
-    shuffleArray(currentQuestions); // перемешать внутри варианта
-    renderQuestions();
-  }
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
-
-  function renderQuestions() {
-    const container = document.getElementById('exam-questions');
-    container.innerHTML = '';
-    currentQuestions.forEach((q, index) => {
-      let optionsHtml = q.options.map((opt, i) => `
-        <div style="margin-top:10px;">
-          <input type="radio" id="q${index}_opt${i}" name="q${index}" value="${opt}">
-          <label for="q${index}_opt${i}">${opt}</label>
+        <div class="card" aria-label="Контакты">
+          <h3>Контакты</h3>
+          <p>Электронная почта: example@education.local</p>
+          <p>Телефон: +7 (000) 000-00-00</p>
+          <p>Часы работы: пн–пт, 9:00–18:00</p>
         </div>
-      `).join('');
-      container.innerHTML += `
-        <div style="margin-bottom:20px;">
-          <p><strong>Вопрос ${index + 1}:</strong> ${q.question}</p>
-          ${optionsHtml}
-        </div>
-      `;
-    });
-  }
+      </div>
+    </section>
+  </main>
 
-  function submitExam() {
-    let correctCount = 0;
-    currentQuestions.forEach((q, index) => {
-      const options = document.getElementsByName(`q${index}`);
-      let selected = '';
-      for (const opt of options) {
-        if (opt.checked) {
-          selected = opt.value;
-          break;
-        }
-      }
-      if (selected === q.answer) {
-        correctCount++;
-      }
-    });
-    document.getElementById('exam-result').innerHTML = `Вы набрали ${correctCount} из ${currentQuestions.length} (${(correctCount / currentQuestions.length * 100).toFixed(1)}%)`;
-  }
-
-  // Вкладки
-  const tabs = document.querySelectorAll('.section-tabs .section-tab');
-  const sections = document.querySelectorAll('.section');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      sections.forEach(sec => {
-        sec.classList.remove('active');
-        if (sec.id === tab.dataset.section) {
-          sec.classList.add('active');
-        }
-      });
-    });
-  });
-</script>
+  <footer>
+    <p>Идея безопасной подготовки к ОГЭ. Все примеры созданы для практики навыков без копирования реальных заданий.</p>
+  </footer>
 </body>
 </html>
