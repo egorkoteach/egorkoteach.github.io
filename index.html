@@ -1,266 +1,72 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русский язык ОГЭ</title>
-    <style>
-        /* Улучшенный современный стиль */
-        :root {
-            --primary-color: #29abe2; /* Основной цвет */
-            --secondary-color: #673ab7; /* Вторичный цвет (пурпурный) */
-            --text-color: #444;
-            --bg-color: #f8f8f8;
-            --light-bg: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-            --font-main: 'Roboto', sans-serif;
-        }
-
-        body {
-            font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            overflow-x: hidden; /* Предотвращает горизонтальную полосу прокрутки */
-        }
-
-        /* Шапка */
-        header {
-            background-color: var(--light-bg);
-            color: var(--text-color);
-            padding: 1.2em 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: top 0.3s ease; /* Анимация для скрытия/показа шапки при прокрутке */
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.2em;
-            color: var(--primary-color);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-       nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            align-items: center; /* Вертикальное выравнивание элементов меню */
-        }
-
-        nav li {
-            margin-left: 25px; /* Увеличенный отступ */
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 8px 12px; /* Добавлен внутренний отступ */
-            border-radius: 5px; /* Скругление углов */
-        }
-
-        nav a:hover {
-            color: var(--primary-color); /* Основной цвет при наведении */
-        }
-
-        /* Основной контент */
-        main {
-            max-width: 960px;
-            margin: 30px auto; /* Увеличен верхний отступ */
-            padding: 30px;
-            background-color: var(--light-bg);
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-        }
-
-        section {
-            margin-bottom: 40px; /* Увеличен отступ */
-        }
-
-        section h2 {
-            font-size: 2em;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 8px;
-            text-transform: uppercase; /* Заголовки в верхнем регистре */
-            letter-spacing: 1px;
-        }
-
-        #about_exam p {
-            margin-bottom: 20px;
-            text-align: justify; /* Выравнивание текста по ширине */
-        }
-
-        #sections ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        #sections li {
-            margin-bottom: 18px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 12px;
-        }
-
-        #sections a {
-            display: block;
-            padding: 15px;
-            background-color: #f2f2f2;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Добавлена анимация масштабирования */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Тень для ссылок */
-        }
-
-        #sections a:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.03); /* Масштабирование при наведении */
-        }
-
-        /* Кнопка */
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 16px 30px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        button:hover {
-            background-color: #1e88e5;
-            transform: translateY(-2px); /* Небольшое смещение вверх при наведении */
-        }
-
-        #start_test {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        /* Подвал */
-        footer {
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-align: center;
-            padding: 1.2em 0;
-            position: relative; /* position изменено на relative */
-            width: 100%;
-            margin-top: 50px; /* добавление отступа сверху */
-        }
-
-        /* Адаптивность */
-        @media screen and (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                margin-top: 10px;
-                flex-direction: column;
-            }
-
-            nav li {
-                margin-left: 0;
-                margin-bottom: 10px;
-            }
-
-            button {
-                width: 100%;
-            }
-
-             header h1 {
-                font-size: 1.8em;
-            }
-        }
-
-         /* Javascript стили  */
-        .hide {
-            top: -100px; //скрыть шапку
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <header>
-        <div class="header-container">
-            <h1>Русский язык ОГЭ</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Тесты</a></li>
-                    <li><a href="#">Теория</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="about_exam">
-            <h2>Что такое ОГЭ по русскому языку?</h2>
-            <p>Основной государственный экзамен (ОГЭ) по русскому языку – это обязательный экзамен, который сдают выпускники 9-х классов российских школ. Успешная сдача ОГЭ является одним из условий получения аттестата об основном общем образовании.</p>
-            <p>Экзамен проверяет знания и умения учащихся в области русского языка, включая грамматику, орфографию, пунктуацию, лексику и стилистику. Также оценивается умение создавать тексты различных жанров и функциональных стилей.</p>
-            <p>Подготовка к ОГЭ по русскому языку требует систематического изучения теоретического материала и выполнения практических заданий. На нашем сайте вы найдете все необходимые ресурсы для успешной сдачи экзамена.</p>
-        </section>
-
-        <section id="sections">
-            <h2>Основные разделы ОГЭ</h2>
-            <ul>
-                <li><a href="#">Изложения и сочинения</a></li>
-                <li><a href="#">Орфография</a></li>
-                <li><a href="#">Пунктуация</a></li>
-                <li><a href="#">Морфология</a></li>
-                <li><a href="#">Синтаксис</a></li>
-                <li><a href="#">Лексика</a></li>
-            </ul>
-        </section>
-
-        <section id="start_test">
-            <h2>Начать подготовку</h2>
-            <button>Пройти пробный тест</button>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Русский язык ОГЭ</p>
-    </footer>
-    <script>
-        let lastScrollTop = 0;
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", function() {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop) {
-    header.classList.add('hide');
-  } else {
-    header.classList.remove('hide');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Русский язык — Современный сайт</title>
+<!-- Подключение шрифтов Google -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Общие стили */
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
   }
-  lastScrollTop = scrollTop;
-});
 
-    </script>
-</body>
-</html>
+  /* Хедер */
+  header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+  }
+
+  header h1 {
+    font-size: 3em;
+    margin: 0 0 20px;
+  }
+
+  header p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Навигация */
+  nav {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav a {
+    padding: 20px 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1em;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  nav a:hover {
+    color: #2575fc;
+    transform: translateY(-2px);
+  }
+
+  /* Основной контент */
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 50px 20px;
+  }
+
+  section {
+    background-color: #fff;
+    border-radius: 15px
