@@ -25,14 +25,18 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
-  header h1 {
-    color: #fff;
+  /* Имя в шапке */
+  .header-left {
     font-size: 24px;
-    margin: 0;
+    color: #fff;
     font-weight: 700;
   }
 
   /* Меню */
+  nav {
+    margin-left: 40px;
+  }
+
   nav ul {
     list-style: none;
     display: flex;
@@ -41,7 +45,7 @@
   }
 
   nav li {
-    margin-left: 30px;
+    margin-left: 20px;
   }
 
   nav a {
@@ -131,11 +135,13 @@
 
 <!-- Шапка -->
 <header>
-  <h1>Русский язык</h1>
+  <div class="header-left">Ваше Имя</div>
   <nav>
     <ul>
-      <li><a href="#">Главная</a></li>
-      <li><a href="#">Банк заданий</a></li>
+      <li><a href="#" onclick="showTab('main')">Главная</a></li>
+      <li><a href="#" onclick="showTab('knowledge')">Банк знаний</a></li>
+      <li><a href="#" onclick="showTab('tasks')">Банк заданий</a></li>
+      <li><a href="#" onclick="showTab('questions')">Вопросы и ответы</a></li>
     </ul>
   </nav>
 </header>
@@ -143,7 +149,9 @@
 <!-- Вкладки -->
 <div class="tabs">
   <button class="tab tab-active" onclick="showTab('main')">Главная</button>
-  <button class="tab" onclick="showTab('bank')">Банк заданий</button>
+  <button class="tab" onclick="showTab('knowledge')">Банк знаний</button>
+  <button class="tab" onclick="showTab('tasks')">Банк заданий</button>
+  <button class="tab" onclick="showTab('questions')">Вопросы и ответы</button>
 </div>
 
 <!-- Контент -->
@@ -152,9 +160,19 @@
   <p>Изучайте русский язык с помощью современных материалов и упражнений. Здесь вы найдете полезные статьи, правила и задания для практики.</p>
 </div>
 
-<div id="bank" class="tab-content" style="display:none;">
+<div id="knowledge" class="tab-content" style="display:none;">
+  <h2>Банк знаний</h2>
+  <p>Здесь собраны основные правила, теории и справочные материалы по русскому языку.</p>
+</div>
+
+<div id="tasks" class="tab-content" style="display:none;">
   <h2>Банк заданий</h2>
-  <p>Здесь размещены задания для закрепления знаний и подготовки к экзаменам. Выполняйте упражнения и проверяйте свои навыки!</p>
+  <p>Практические задания для закрепления знаний и подготовки к экзаменам.</p>
+</div>
+
+<div id="questions" class="tab-content" style="display:none;">
+  <h2>Вопросы и ответы</h2>
+  <p>Ответы на популярные вопросы и обсуждения по русскому языку.</p>
 </div>
 
 <script>
@@ -171,7 +189,10 @@
     });
 
     // Активируем выбранную вкладку
-    document.querySelector(`button[onclick="showTab('${tabName}')"]`).classList.add('tab-active');
+    const activeButton = Array.from(document.querySelectorAll('.tabs .tab')).find(btn => btn.innerText === document.querySelector(`a[onclick="showTab('${tabName}')"]`).textContent);
+    if (activeButton) {
+      activeButton.classList.add('tab-active');
+    }
 
     // Показываем выбранный контент
     const activeContent = document.getElementById(tabName);
