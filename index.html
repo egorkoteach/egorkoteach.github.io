@@ -3,168 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русский язык - интерактивное обучение</title>
+    <title>ОГЭ по русскому языку - Подготовка и материалы</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --accent: #f59e0b;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #ffffff;
-            --bg-secondary: #f8fafc;
-            --border: #e5e7eb;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
         }
-
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
-
-        /* Header */
+        
+        /* Header Styles */
         header {
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
-
-        .nav-container {
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
-
+        
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 2rem;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
             list-style: none;
         }
-
-        .nav-links a {
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            color: var(--text);
             font-weight: 500;
             transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
-
-        .nav-links a:hover {
-            color: var(--primary);
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
         }
-
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
         .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
         }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
         }
-
-        .btn-outline {
-            border: 2px solid var(--border);
-            color: var(--text);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        /* Features */
-        .features {
-            padding: 80px 0;
-            background: var(--bg);
-        }
-
+        
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
             margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
         }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Structure Section */
+        .structure {
+            background-color: var(--light);
+        }
+        
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .structure-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .structure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .structure-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .structure-card h3 span {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tip-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .tip-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Materials Section */
+        .materials {
+            background-color: var(--light);
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .material-img {
+            height: 160px;
+            overflow: hidden;
+        }
+        
+        .material-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .material-card:hover .material-img img {
+            transform: scale(1.1);
+        }
+        
+        .material-content {
+            padding: 1.5rem;
+        }
+        
+        .material-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    ОГЭ Русский язык
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">Об экзамене</a></li>
+                        <li><a href="#structure">Структура</a></li>
+                        <li><a href="#tips">Советы</a></li>
+                        <li><a href="#materials">Материалы</a></li>
+                        <li><a href="#" class="btn">Начать подготовку</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-        .features-grid {
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ОГЭ по русскому языку 2024</h1>
+                <p>Полное руководство по подготовке к основному государственному экзамену. Узнайте о структуре экзамена, получите полезные советы и доступ к учебным материалам.</p>
+                <a href="#about" class="btn">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Об экзамене ОГЭ по русскому языку</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Что такое ОГЭ по русскому языку?</h3>
+                    <p>ОГЭ (Основной государственный экзамен) по русскому языку — это обязательный экзамен для всех выпускников 9-х классов в России. Результаты экзамена влияют на итоговую оценку в аттестате и являются важным критерием при поступлении в колледжи и техникумы.</p>
+                    <p>Экзамен проверяет знания по орфографии, пунктуации, грамматике, а также умение создавать тексты разных жанров. Успешная сдача ОГЭ по русскому языку подтверждает, что ученик освоил программу основной школы и готов к продолжению образования.</p>
+                    <a href="#" class="btn">Подробнее об экзамене</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032781450?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Подготовка к экзамену">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section id="structure" class="structure">
+        <div class="container">
+            <h2 class="section-title">Структура экзамена</h2>
+            <div class="structure-grid">
+                <div class="structure-card">
+                    <h3><span>1</span> Часть 1: Изложение</h3>
+                    <p>Прослушайте текст и напишите сжатое изложение, сохранив микротемы исходного текста. Объём изложения — не менее 70 слов.</p>
+                </div>
+                <div class="structure-card">
+                    <h3><span>2</span> Часть 2: Тестовые задания</h3>
+                    <p>13 заданий с кратким ответом, проверяющих знания орфографии, пунктуации, грамматики и синтаксиса русского языка.</p>
+                </div>
+                <div class="structure-card">
+                    <h3><span>3</span> Часть 3: Сочинение</h3>
+                    <p>Напишите сочинение-рассуждение на одну из трёх предложенных тем. Объём сочинения — не менее 70 слов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">Советы по подготовке</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>Регулярность занятий</h3>
+                    <p>Занимайтесь регулярно, лучше по 30-40 минут ежедневно, чем по несколько часов раз в неделю.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Практика написания</h3>
+                    <p>Регулярно пишите изложения и сочинения, чтобы развить навык создания текстов в условиях ограниченного времени.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Работа над ошибками</h3>
+                    <p>Внимательно анализируйте свои ошибки в пробных тестах и работайте над слабыми местами.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Изучение критериев</h3>
+                    <p>Тщательно изучите критерии оценивания каждой части экзамена, чтобы понимать, на что обращают внимание проверяющие.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="materials">
+        <div class="container">
+            <h2 class="section-title">Полезные материалы</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-img">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Демоверсия ОГЭ">
+                    </div>
+                    <div class="material-content">
+                        <h3>Демоверсия ОГЭ 2024</h3>
+                        <p>Официальная демонстрационная версия экзамена с ответами и критериями оценивания.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; margin-top: 10px; display: inline-block;">Скачать</a>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-img">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тесты и задания">
+                    </div>
+                    <div class="material-content">
+                        <h3>Типовые задания</h3>
+                        <p>Сборник типовых тестовых заданий по всем разделам экзамена с решениями.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; margin-top: 10px; display: inline-block;">Скачать</a>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-img">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Теория">
+                    </div>
+                    <div class="material-content">
+                        <h3>Теоретические материалы</h3>
+                        <p>Полный справочник по орфографии, пунктуации и грамматике русского языка.</p>
+                        <a href="#" class="btn" style="padding: 8px 20px; margin-top: 10px; display: inline-block;">Скачать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ОГЭ Русский язык</h3>
+                    <p>Полный ресурс для подготовки к основному государственному экзамену по русскому языку.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Разделы</h3>
+                    <ul>
+                        <li><a href="#about">Об экзамене</a></li>
+                        <li><a href="#structure">Структура</a></li>
+                        <li><a href="#tips">Советы</a></li>
+                        <li><a href="#materials">Материалы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Полезные ссылки</h3>
+                    <ul>
+                        <li><a href="#">Официальный сайт ФИПИ</a></li>
+                        <li><a href="#">Решу ОГЭ</a></li>
+                        <li><a href="#">Яндекс Репетитор</a></li>
+                        <li><a href="#">Незнайка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>Email: info@oge-russian.ru</li>
+                        <li>Телефон: +7 (XXX) XXX-XX-XX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ОГЭ по русскому языку. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
