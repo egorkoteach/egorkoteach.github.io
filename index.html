@@ -1,142 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Банк заданий ОГЭ по русскому языку</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русский язык ОГЭ</title>
     <style>
+        /* style.css (Встроенные стили) */
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #4CAF50;
-            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
             text-align: center;
-            color: white;
         }
 
-        h1 {
+        header h1 {
             margin: 0;
         }
 
-        .search-section {
+        main {
             padding: 20px;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
         }
 
-        .search-box {
-            width: 50%;
-            max-width: 600px;
-            display: flex;
+        #sections ul {
+            list-style: none;
+            padding: 0;
         }
 
-        input[type="text"] {
-            flex: 1;
+        #sections li {
+            margin-bottom: 10px;
+        }
+
+        #sections a {
+            display: block;
             padding: 10px;
-            font-size: 16px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        #sections a:hover {
+            background-color: #eee;
+        }
+
+        #start_test {
+            text-align: center;
+            margin-top: 30px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 16px;
             background-color: #4CAF50;
             color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
             border: none;
             cursor: pointer;
+            width: auto; /* Изменено на auto */
+            border-radius: 4px;
+            font-size: 16px;
         }
 
         button:hover {
-            background-color: #45a049;
+            opacity: 0.8;
         }
 
-        .category-section {
-            padding: 20px;
-        }
-
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .category-card {
-            background-color: #ffffff;
-            padding: 20px;
-            width: 200px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-
-        .category-card:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
+         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 15px;
-            margin-top: 20px;
+            padding: 1em 0;
+            position: fixed; /* Фиксированное положение */
+            bottom: 0; /* Прилипает к низу экрана */
+            width: 100%; /* Растягивается на всю ширину */
+        }
+
+
+        /* Стили для адаптивности (для мобильных устройств) */
+        @media screen and (max-width: 600px) {
+            header {
+                padding: 0.5em 0;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            main {
+                padding: 10px;
+            }
+            button {
+                width: 100%; /* Кнопка на всю ширину экрана */
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Банк заданий ОГЭ по русскому языку</h1>
+        <h1>Русский язык ОГЭ</h1>
+        <p>Подготовьтесь к ОГЭ по русскому языку эффективно и с удовольствием!</p>
     </header>
 
-    <section class="search-section">
-        <div class="search-box">
-            <input type="text" placeholder="Поиск задания..." id="searchInput" />
-            <button onclick="searchTasks()">Поиск</button>
-        </div>
-    </section>
+    <main>
+        <section id="sections">
+            <h2>Основные разделы ОГЭ</h2>
+            <ul>
+                <li><a href="#">Изложения и сочинения</a></li>
+                <li><a href="#">Орфография</a></li>
+                <li><a href="#">Пунктуация</a></li>
+                <li><a href="#">Морфология</a></li>
+                <li><a href="#">Синтаксис</a></li>
+                <li><a href="#">Лексика</a></li>
+            </ul>
+        </section>
 
-    <section class="category-section">
-        <h2 style="text-align:center;">Категории заданий</h2>
-        <div class="categories">
-            <div class="category-card" onclick="location.href='grammar.html'">
-                <h3>Грамматика</h3>
-                <p>Задания по правилам и структуре языка</p>
-            </div>
-            <div class="category-card" onclick="location.href='reading.html'">
-                <h3>Чтение</h3>
-                <p>Задания на понимание текста</p>
-            </div>
-            <div class="category-card" onclick="location.href='writing.html'">
-                <h3>Письмо</h3>
-                <p>Задания на написание эссе и писем</p>
-            </div>
-            <div class="category-card" onclick="location.href='listening.html'">
-                <h3>Аудирование</h3>
-                <p>Задания на восприятие на слух</p>
-            </div>
-            <div class="category-card" onclick="location.href='practice.html'">
-                <h3>Практика</h3>
-                <p>Образцы заданий для тренировки</p>
-            </div>
-        </div>
-    </section>
+        <section id="start_test">
+            <h2>Начать подготовку</h2>
+            <button>Пройти пробный тест</button>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Банк заданий ОГЭ по русскому языку</p>
+        <p>© 2025 Русский язык ОГЭ</p>
     </footer>
-
-    <script>
-        function searchTasks() {
-            const query = document.getElementById('searchInput').value;
-            alert('Поиск по запросу: ' + query);
-            // Здесь можно реализовать логику поиска
-        }
-    </script>
 </body>
 </html>
