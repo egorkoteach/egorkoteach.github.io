@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Портфолио репетитора и банк заданий по русскому языку для ОГЭ</title>
+<!-- Подключение стилей -->
 <style>
   body {
     margin: 0;
@@ -76,6 +77,7 @@
     to {opacity: 1;}
   }
 
+  /* Стиль для карточек */
   .cards {
     display: flex;
     flex-wrap: wrap;
@@ -85,18 +87,26 @@
 
   .card {
     background-color: #fff;
-    padding: 20px;
+    padding: 25px;
     flex: 1 1 300px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    transition: box-shadow 0.3s;
+    border-radius: 12px;
+    transition: box-shadow 0.3s, transform 0.3s;
   }
 
   .card:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
   }
 
-  /* Стиль для формы */
+  /* Для раздела "Главная" сделаем карточки в стиле "feature" */
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Стиль формы */
   form {
     display: flex;
     flex-direction: column;
@@ -123,6 +133,14 @@
   button:hover {
     background-color: #3498db;
   }
+
+  /* Сообщение после отправки */
+  #form-message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+  }
 </style>
 </head>
 <body>
@@ -134,33 +152,26 @@
 
 <!-- Вкладки навигации -->
 <nav>
-  <button class="tab-link active" data-tab="portfolio">Портфолио</button>
+  <button class="tab-link active" data-tab="main">Главная</button>
   <button class="tab-link" data-tab="tasks">Банк заданий</button>
   <button class="tab-link" data-tab="contact">Контакты</button>
 </nav>
 
 <!-- Контент вкладок -->
-<section id="portfolio" class="tab-content active">
-  <h2>Мое портфолио</h2>
-  <div class="cards">
+<section id="main" class="tab-content active">
+  <h2>Добро пожаловать</h2>
+  <div class="feature">
     <div class="card">
-      <h3>Образование</h3>
-      <ul>
-        <li>Высшее филологическое образование, МГУ, 2012</li>
-        <li>Курсы по подготовке к ОГЭ, 2015, 2018</li>
-      </ul>
+      <h3>Индивидуальные занятия</h3>
+      <p>Я предлагаю персональные уроки по русскому языку для всех уровней, подготовку к ОГЭ и развитие языковых навыков.</p>
     </div>
     <div class="card">
-      <h3>Опыт работы</h3>
-      <ul>
-        <li>Репетитор по русскому языку — 7 лет</li>
-        <li>Преподаватель в онлайн-школе — 3 года</li>
-      </ul>
+      <h3>Банк заданий</h3>
+      <p>Практические задания, тесты, упражнения и рекомендации для успешной сдачи экзамена.</p>
     </div>
     <div class="card">
-      <h3>Отзывы учеников</h3>
-      <p>"Благодаря занятиям я сдал ОГЭ успешно!" — Анна</p>
-      <p>"Объясняет очень понятно." — Иван</p>
+      <h3>Почему выбирают меня</h3>
+      <p>Опыт, индивидуальный подход и современные методы обучения помогут вам достигнуть целей быстро и эффективно.</p>
     </div>
   </div>
 </section>
@@ -183,21 +194,23 @@
 <section id="contact" class="tab-content">
   <h2>Свяжитесь со мной</h2>
   <form id="contact-form">
-    <input type="text" placeholder="Ваше имя" required>
-    <input type="email" placeholder="Ваш email" required>
-    <textarea rows="4" placeholder="Ваш вопрос или сообщение" required></textarea>
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="email" name="email" placeholder="Ваш email" required>
+    <textarea name="message" rows="4" placeholder="Ваш вопрос или сообщение" required></textarea>
     <button type="submit">Отправить</button>
   </form>
+  <div id="form-message"></div>
 </section>
 
+<!-- Скрипты для переключения вкладок и отправки формы -->
 <script>
-  // Скрипт для переключения вкладок
-  document.querySelectorAll('.tab-link').forEach(button => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+  // Переключение вкладок
+  document.querySelectorAll('.tab-link').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      const tabId = button.dataset.tab;
+      const tabId = btn.dataset.tab;
       document.querySelectorAll('.tab-content').forEach(section => {
         section.classList.remove('active');
         if (section.id === tabId) {
@@ -206,6 +219,41 @@
       });
     });
   });
+
+  // Отправка формы через EmailJS (или другой API)
+  // Для работы потребуется зарегистрироваться на https://www.emailjs.com/
+  // и вставить свой userID, serviceID, templateID
+  // Ниже пример, как это реализовать:
+
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('form-message').textContent = '';
+
+    // Инициализация EmailJS
+    // Не забудьте подключить SDK в конце body:
+    // <script src="https://cdn.emailjs.com/sdk/latest/email.min.js"></script>
+    // И выполнить emailjs.init('YOUR_USER_ID');
+
+    // Пример с вставкой кода:
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+      .then(function() {
+        document.getElementById('form-message').textContent = 'Спасибо! Ваше сообщение отправлено.';
+        document.getElementById('contact-form').reset();
+      }, function(error) {
+        document.getElementById('form-message').textContent = 'Ошибка при отправке. Попробуйте позже.';
+        console.error('Ошибка emailjs:', error);
+      });
+  });
+
+  // Инициализация EmailJS (замените на свои данные)
+  // Вставьте этот скрипт перед закрывающим тегом body
 </script>
+<!-- Подключение EmailJS SDK -->
+<script src="https://cdn.emailjs.com/sdk/latest/email.min.js"></script>
+<script>
+  // Инициализация EmailJS
+  emailjs.init('service_7ccr6xf'); // замените на свой userID
+</script>
+
 </body>
 </html>
