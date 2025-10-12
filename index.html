@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Банк заданий по ОГЭ - Русский язык</title>
+<title>Подготовка к ОГЭ по русскому языку</title>
 <!-- Подключение шрифта -->
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  /* Общие стили */
   body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
@@ -24,282 +23,85 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
-  /* Вкладки */
-  .tabs {
+  /* Название сайта */
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 50px;
+  }
+
+  /* Меню */
+  nav {
     display: flex;
     gap: 20px;
   }
 
-  .tab {
-    padding: 14px 30px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 16px;
-    transition: background 0.3s, transform 0.2s;
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.3s;
   }
 
-  .tab:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
+  nav a:hover {
+    background-color: rgba(255,255,255,0.3);
   }
 
-  .tab.active {
-    background-color: #fff;
-    color: #4e54c8;
-  }
-
-  /* Контейнер для контента */
+  /* Основной контент */
   .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
+    text-align: center;
   }
 
-  /* Заголовки */
   h1 {
-    text-align: center;
+    margin-bottom: 20px;
     color: #4e54c8;
+  }
+
+  p {
+    font-size: 20px;
     margin-bottom: 30px;
+  }
+
+  /* Кнопки */
+  .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #4e54c8;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #6b73e1;
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="tabs">
-    <div class="tab active" id="tab-home">Главная</div>
-    <div class="tab" id="tab-bank">Банк заданий</div>
-  </div>
+  <div class="logo">Подготовка к ОГЭ</div>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="bank.html">Банк заданий</a>
+  </nav>
 </header>
 
-<div class="container" id="content-area">
-  <!-- Тут будет контент -->
-  <h1>Добро пожаловать! Выберите раздел.</h1>
+<div class="container">
+  <h1>Добро пожаловать!</h1>
+  <p>Здесь вы можете подготовиться к ОГЭ по русскому языку: тренироваться с заданиями и проходить полные варианты экзаменов.</p>
+  <a href="bank.html" class="btn">Перейти к банку заданий</a>
 </div>
-
-<script>
-  const tabs = document.querySelectorAll('.tab');
-  const contentArea = document.getElementById('content-area');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      if (tab.id === 'tab-home') {
-        contentArea.innerHTML = `
-          <h1>Добро пожаловать!</h1>
-          <p>Здесь вы можете потренироваться и подготовиться к ОГЭ по русскому языку.</p>
-        `;
-      } else if (tab.id === 'tab-bank') {
-        loadBankTasks();
-      }
-    });
-  });
-
-  function loadBankTasks() {
-    contentArea.innerHTML = `
-      <h1>Банк заданий по ОГЭ</h1>
-      <div style="margin-bottom:20px;">
-        <button onclick="showTaskSection()" style="padding:10px 20px; font-size:16px; border:none; border-radius:8px; background:#4e54c8; color:#fff; cursor:pointer;">Тренироваться по заданиям</button>
-        <button onclick="showExam()" style="margin-left:20px; padding:10px 20px; font-size:16px; border:none; border-radius:8px; background:#4e54c8; color:#fff; cursor:pointer;">Решать вариант экзамена</button>
-      </div>
-      <div id="task-section"></div>
-    `;
-  }
-
-  function showTaskSection() {
-    document.getElementById('task-section').innerHTML = `
-      <h2 style="margin-top:20px;">Выберите задание для практики</h2>
-      <select id="taskSelect" style="padding:10px; font-size:16px; border-radius:8px; border:1px solid #ccc;" onchange="loadTask()">
-        <option value="">-- Выберите задание --</option>
-        <option value="1">Задание 1 — Орфография</option>
-        <option value="2">Задание 2 — Пунктуация</option>
-        <option value="3">Задание 3 — Морфология</option>
-        <option value="4">Задание 4 — Синтаксис</option>
-      </select>
-      <div id="task-content" style="margin-top:20px;"></div>
-    `;
-  }
-
-  const tasks = {
-    "1": {
-      question: "Напишите правильно: 'весна' или 'весня'?",
-      options: ["весна", "весня"],
-      answer: "весна"
-    },
-    "2": {
-      question: "Поставьте запятую: 'Он пошёл в магазин ___ купил хлеб.'",
-      options: ["и", ","],
-      answer: "и"
-    },
-    "3": {
-      question: "Что такое имя существительное?",
-      options: ["Обозначает предмет, явление или лицо", "Обозначает действие"],
-      answer: "Обозначает предмет, явление или лицо"
-    },
-    "4": {
-      question: "Выберите сложноподчинённое предложение:",
-      options: ["Я пошёл в школу, потому что было хорошо.", "Он читает книгу."],
-      answer: "Я пошёл в школу, потому что было хорошо."
-    }
-  };
-
-  function loadTask() {
-    const select = document.getElementById('taskSelect');
-    const contentDiv = document.getElementById('task-content');
-    const val = select.value;
-
-    if (tasks[val]) {
-      const task = tasks[val];
-      contentDiv.innerHTML = `
-        <p><strong>Вопрос:</strong> ${task.question}</p>
-        ${task.options.map((opt, i) => `
-          <div style="margin-top:10px;">
-            <input type="radio" id="opt${i}" name="taskAnswer" value="${opt}">
-            <label for="opt${i}">${opt}</label>
-          </div>
-        `).join('')}
-        <button style="margin-top:20px; padding:10px 20px; border:none; border-radius:8px; background:#4e54c8; color:#fff; cursor:pointer;" onclick="checkAnswer('${val}')">Проверить</button>
-        <div id="answer-result" style="margin-top:15px; font-weight:bold;"></div>
-      `;
-    } else {
-      document.getElementById('task-content').innerHTML = '';
-    }
-  }
-
-  function checkAnswer(taskId) {
-    const answers = document.getElementsByName('taskAnswer');
-    const answerDiv = document.getElementById('answer-result');
-    let selected = '';
-    for (const ans of answers) {
-      if (ans.checked) {
-        selected = ans.value;
-        break;
-      }
-    }
-    if (!selected) {
-      answerDiv.innerHTML = '<span style="color:red;">Пожалуйста, выберите ответ.</span>';
-      return;
-    }
-    if (selected === tasks[taskId].answer) {
-      answerDiv.innerHTML = '<span style="color:green;">Правильно!</span>';
-    } else {
-      answerDiv.innerHTML = `<span style="color:red;">Неправильно. Правильный ответ: ${tasks[taskId].answer}</span>`;
-    }
-  }
-
-  function showExam() {
-    // Пример варианта экзамена
-    document.getElementById('content-area').innerHTML = `
-      <h1 style="text-align:center; margin-bottom:20px;">Экзаменационный вариант</h1>
-      <div id="exam-container"></div>
-      <button onclick="submitExam()" style="margin-top:20px; padding:12px 30px; font-size:16px; border:none; border-radius:8px; background:#4e54c8; color:#fff; cursor:pointer;">Отправить ответы</button>
-      <div id="exam-result" style="margin-top:20px; font-weight:bold; text-align:center;"></div>
-    `;
-    loadExamQuestions();
-  }
-
-  const examQuestions = [
-    {
-      question: "Напишите правильно: 'весна' или 'весня'?",
-      options: ["весна", "весня"],
-      answer: "весна"
-    },
-    {
-      question: "Поставьте запятую: 'Он пошёл в магазин ___ купил хлеб.'",
-      options: ["и", ","],
-      answer: "и"
-    },
-    {
-      question: "Что такое имя существительное?",
-      options: ["Обозначает предмет, явление или лицо", "Обозначает действие"],
-      answer: "Обозначает предмет, явление или лицо"
-    },
-    {
-      question: "Выберите сложноподчинённое предложение:",
-      options: ["Я пошёл в школу, потому что было хорошо.", "Он читает книгу."],
-      answer: "Я пошёл в школу, потому что было хорошо."
-    }
-  ];
-
-  let userAnswers = [];
-
-  function loadExamQuestions() {
-    const container = document.getElementById('exam-container');
-    container.innerHTML = '';
-    examQuestions.forEach((q, index) => {
-      const qHTML = `
-        <div style="margin-bottom:20px;">
-          <p><strong>Вопрос ${index + 1}:</strong> ${q.question}</p>
-          ${q.options.map((opt, i) => `
-            <div style="margin-top:10px;">
-              <input type="radio" id="exam${index}_opt${i}" name="exam${index}" value="${opt}">
-              <label for="exam${index}_opt${i}">${opt}</label>
-            </div>
-          `).join('')}
-        </div>
-      `;
-      container.innerHTML += qHTML;
-    });
-  }
-
-  function submitExam() {
-    userAnswers = [];
-    let score = 0;
-    examQuestions.forEach((q, index) => {
-      const options = document.getElementsByName(`exam${index}`);
-      let selected = '';
-      for (const opt of options) {
-        if (opt.checked) {
-          selected = opt.value;
-          break;
-        }
-      }
-      if (selected === q.answer) {
-        score++;
-      }
-    });
-    document.getElementById('exam-result').innerHTML = `Вы набрали ${score} из ${examQuestions.length} (${(score / examQuestions.length * 100).toFixed(1)}%)`;
-  }
-</script>
-</body>
-</html>
-
-<div id="questions" class="tab-content" style="display:none;">
-  <h2>Вопросы и ответы</h2>
-  <p>Ответы на популярные вопросы и обсуждения по русскому языку.</p>
-</div>
-
-<script>
-  function showTab(tabName) {
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
-
-    // Убираем активный стиль у всех вкладок
-    tabs.forEach(tab => tab.classList.remove('tab-active'));
-
-    // Скрываем все содержимое
-    contents.forEach(content => {
-      content.style.display = 'none';
-    });
-
-    // Активируем выбранную вкладку
-    const activeButton = Array.from(document.querySelectorAll('.tabs .tab')).find(btn => btn.innerText === document.querySelector(`a[onclick="showTab('${tabName}')"]`).textContent);
-    if (activeButton) {
-      activeButton.classList.add('tab-active');
-    }
-
-    // Показываем выбранный контент
-    const activeContent = document.getElementById(tabName);
-    activeContent.style.display = 'block';
-    activeContent.classList.add('fade-in');
-  }
-</script>
 
 </body>
 </html>
-
-
