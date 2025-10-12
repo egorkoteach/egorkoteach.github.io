@@ -1,186 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
+  <title>Банк заданий — ОГЭ по Русскому языку</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Подготовка к ОГЭ по Русскому языку — Учебный макет</title>
   <style>
-    :root{
+    :root {
       --bg: #0b1020;
       --card: #141a2b;
-      --accent: #6ea8fe;
-      --text: #e6e9f5;
-      --muted: #aab4d4;
-      --white: #fff;
+      --text: #e8eaf6;
+      --muted: #aab6d6;
+      --accent: #4facfe;
+      --green: #4bd19a;
+      --orange: #ffb020;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: radial-gradient(circle at 20% -10%, rgba(110,168,254,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(110,168,254,0.10), transparent 40%), var(--bg); color: var(--text); }
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 20px; background: rgba(10,14,34,0.9); border-bottom: 1px solid rgba(255,255,255,0.05);
-      backdrop-filter: saturate(1.2) blur(6px);
-    }
-    header .brand { display: flex; align-items: center; gap: 12px; }
-    header .brand .logo {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: linear-gradient(135deg, #6ea8fe 0%, #8b5cf6 100%);
-      display: inline-block;
-    }
-    nav a {
-      color: var(--text); text-decoration: none; margin: 0 12px; font-weight: 500;
-      padding: 8px 12px; border-radius: 6px;
-    }
-    nav a:hover { background: rgba(255,255,255,0.07); }
-
-    main { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
-    section { margin-bottom: 60px; }
-    h1, h2 { margin: 0 0 12px; font-weight: 700; }
-    h1 { font-size: 2rem; letter-spacing: .2px; }
-    h2 { font-size: 1.25rem; color: var(--white); opacity: 0.95; }
-
-    .intro { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
-    .intro p { color: var(--muted); line-height: 1.6; }
-    .card {
-      background: linear-gradient(180deg, rgba(20,26,43,0.95) 0%, rgba(20,26,43,0.75) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 20px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
-    }
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
-    }
-
-    .task {
-      padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(20,26,43,0.8), rgba(20,26,43,0.6));
-      min-height: 110px;
-    }
-    .task h3 { font-size: 1rem; margin: 0 0 6px; }
-    .task p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    .btn { display: inline-block; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
-      background: linear-gradient(135deg, rgba(110,168,254,0.9), rgba(110,168,254,0.6)); color: white; text-decoration: none; font-weight: 600;
-    }
-    .btn.secondary { background: transparent; border-color: rgba(255,255,255,0.25); }
-    form { display: grid; gap: 12px; }
-    input, textarea { width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.04); color: var(--text);
-    }
-    input::placeholder, textarea::placeholder { color: #99a6cf; }
-    textarea { min-height: 110px; resize: vertical; }
-
-    footer { text-align: center; color: var(--muted); padding: 20px 0 40px; }
-
+    html, body { margin: 0; padding: 0; background: #0a0f1a; color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI"; }
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(10,14,28,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 14px 0; display: flex; align-items: center; justify-content: space-between; }
+    .logo { color: #fff; text-decoration: none; font-weight: 700; }
+    nav a { color: #d9e3ff; text-decoration: none; padding: 10px 14px; border-radius: 8px; }
+    nav a.active { background: rgba(74, 144, 226, 0.25); color: #fff; }
+    .search { display: flex; gap: 8px; align-items: center; }
+    main { padding: 24px 0 60px; }
+    .grid { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
+    aside { background: rgba(20,26,43,0.92); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; }
+    aside h3 { margin-top: 0; }
+    .filters label { display: block; margin: 8px 0; font-size: 0.95rem; color: var(--muted); }
+    .filters input, .filters select { width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #334; background: #0e1730; color: #fff; }
+    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .card { background: rgba(20,26,43,0.92); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; }
+    .task { padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(16,20,38,0.9); }
+    .task h4 { margin: 0 0 6px; font-size: 1rem; }
+    .tags { display: inline-flex; gap: 6px; margin-top: 6px; }
+    .tag { font-size: 11px; padding: 4px 8px; border-radius: 999px; background: #2a2f60; color: #fff; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 6px; border: none; background: var(--accent); color: #001326; font-weight: 600; cursor: pointer; }
+    .pager { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
     @media (max-width: 900px) {
-      .intro { grid-template-columns: 1fr; }
-      header { padding: 12px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">
-      <span class="logo" aria-label="Логотип"></span>
-      <strong>ОГЭ по Русскому языку — учебный макет</strong>
+    <div class="container">
+      <a href="#" class="logo">Банк заданий — Русский язык</a>
+      <nav aria-label="Навигация">
+        <a href="index.html#главная" class="active">Главная</a>
+        <a href="index.html#банк-заданий">Банк заданий</a>
+        <a href="index.html#оценка-сайта">Поставить оценку</a>
+      </nav>
     </div>
-    <nav aria-label="Навигация по странице">
-      <a href="#theory">Теория</a>
-      <a href="#examples">Примеры задач</a>
-      <a href="#form">Обратная связь</a>
-    </nav>
   </header>
 
-  <main>
-    <section class="intro card" id="welcome" aria-labelledby="title-welcome">
-      <div>
-        <h1 id="title-welcome">Подготовка к ОГЭ по Русскому языку (без копирования заданий)</h1>
-        <p>Этот учебный макет содержит теорию и безопасные примеры задач для самостоятельной подготовки к ОГЭ. Все примеры созданы мной и рассчитаны на практику навыков: орфография, грамматика, лексика и стилистика. Здесь нет копирования реальных заданий экзамена.</p>
-        <p>Цель — помочь разобраться в основных разделах языка и потренироваться в решении задач в современном дизайне.</p>
-      </div>
-      <div class="card" aria-label="Блок быстрого доступа">
-        <p><strong>Быстрые ссылки</strong></p>
-        <ul style="margin:0; padding-left:16px;">
-          <li>Теория по разделам</li>
-          <li>Безопасные примеры задач</li>
-          <li>Форма обратной связи</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="theory" aria-labelledby="title-theory">
-      <h2 id="title-theory">Теория по ОГЭ: ключевые разделы</h2>
-      <div class="grid" aria-label="Разделы теории">
-        <article class="card" style="min-height:120px;">
-          <h3>Грамматика</h3>
-          <p>Сложносочиненные и сложноподчиненные предложения, пунктуация, части речи, синтаксис. Особое внимание связям согласования и управления.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Лексика</h3>
-          <p>Синонимы и антонимы, омонимы, употребление разговорной лексики в контексте текста, стилистика.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Орфография</h3>
-          <p>Правописание сложных слов, приставок, разделительных знаков, правил ударения в словах.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Слова и формы</h3>
-          <p>Числительные, формы слов, склонение, спряжение, неразличение частиц и служебных слов.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="examples" aria-labelledby="title-examples">
-      <h2 id="title-examples">Безопасные примеры задач для тренировки</h2>
-      <div class="grid" aria-label="Примеры задач (генеративные)">
-        <article class="task">
-          <h3>Задача 1. Выбор употребления слова</h3>
-          <p>Выберите правильное употребление слова в контексте: а) реально, б) реальнo, в) реальный. Обоснуйте выбор.</p>
-          <button class="btn" onclick="alert('Пример решения: правильное слово — реально. Обоснование: контекст требует наречие, отвечающее на вопрос как?');">Показать решение</button>
-        </article>
-        <article class="task">
-          <h3>Задача 2. Согласование по родам</h3>
-          <p>Выберите верное согласование подлежащего и сказуемого: «Команда из пяти человек была/были готовы».</p>
-          <button class="btn" onclick="alert('Правильный вариант: были. Подлежащее выражено словосочетанием во множественном числе, сказуемое сохраняет форма множественного числа.');">Показать решение</button>
-        </article>
-        <article class="task">
-          <h3>Задача 3. Правописание приставок</h3>
-          <p>Как писать: «рассмотреть» или «рассматривать» в контексте предложения?</p>
-          <button class="btn" onclick="alert('Правило: рассмотреть – глагол совершенного вида; рассматривать – несовершенного.');">Показать решение</button>
-        </article>
-        <article class="task">
-          <h3>Задача 4. Слова с ударением</h3>
-          <p>Выберите правильное ударение: «модулярный» или «модулярний»?</p>
-          <button class="btn" onclick="alert('Правильно: модулярный (ударение на первом слоге).');">Показать решение</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="form" aria-labelledby="title-form">
-      <h2 id="title-form">Обратная связь</h2>
-      <div class="grid" style="grid-template-columns:1.1fr 0.9fr;">
-        <form onsubmit="event.preventDefault(); alert('Сообщение отправлено. Спасибо!');">
-          <label>
-            Ваше имя
-            <input type="text" name="name" placeholder="Иван" required />
+  <main id="банк-заданий" aria-label="Страница банка заданий">
+    <section class="container" style="display:flex; justify-content:space-between; align-items:stretch; gap:20px;">
+      <aside aria-label="Фильтры и навигация по банкaм">
+        <h3>Фильтры</h3>
+        <div class="filters">
+          <label>Раздел
+            <select>
+              <option>Лексика</option>
+              <option>Орфография</option>
+              <option>Пунктуация</option>
+              <option>Типовые задачи</option>
+            </select>
           </label>
-          <label>
-            Эл. почта
-            <input type="email" name="email" placeholder="you@example.com" required />
+          <label>Уровень сложности
+            <select>
+              <option>2–5 класс</option>
+              <option>6–8 класс</option>
+              <option>9–11 класс</option>
+            </select>
           </label>
-          <label>
-            Сообщение
-            <textarea name="message" placeholder="Напишите своё сообщение..." required></textarea>
+          <label>Тип задания
+            <select>
+              <option>Выбор одного варианта</option>
+              <option>Установить пропуск</option>
+              <option>Мультитест</option>
+            </select>
           </label>
-          <button class="btn" type="submit">Отправить</button>
-        </form>
-
-        <div class="card" aria-label="Контакты">
-          <h3>Контакты</h3>
-          <p>Электронная почта: example@education.local</p>
-          <p>Телефон: +7 (000) 000-00-00</p>
-          <p>Часы работы: пн–пт, 9:00–18:00</p>
+          <button class="btn" style="width:100%; margin-top:8px;">Применить</button>
         </div>
-      </div>
+      </aside>
+
+      <section class="card" style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <div>
+            <strong>Список заданий</strong>
+            <div style="color:var(--muted); font-size:12px;">Псевдо-страница, реализующая выборку заданий</div>
+          </div>
+          <div class="tags">
+            <span class="tag">Раздел: Русский</span>
+            <span class="tag">Тип: Выбор одного варианта</span>
+          </div>
+        </div>
+
+        <div class="list" aria-label="Список заданий">
+          <!-- Пример пяти карточек заданий -->
+          <article class="task" aria-label="Задание 1">
+            <h4>Задача 1. Выберите верное предложение с правильной пунктуацией</h4>
+            <div>Текст задания здесь — кратко формулировка вопроса и вариантов ответов.</div>
+            <div class="tags" style="margin-top:8px;">
+              <span class="tag">Пунктуация</span>
+              <span class="tag">4 балла</span>
+            </div>
+          </article>
+
+          <article class="task" aria-label="Задание 2">
+            <h4>Задача 2. Выбор орфографически верного варианта</h4>
+            <div>Короткое описание задачи и вариантов.</div>
+            <div class="tags" style="margin-top:8px;">
+              <span class="tag">Орфография</span>
+              <span class="tag">3 балла</span>
+            </div>
+          </article>
+
+          <article class="task" aria-label="Задание 3">
+            <h4>Задача 3. Определение смысла синонимов</h4>
+            <div>Инструкция по выполнению задания.</div>
+            <div class="tags" style="margin-top:8px;">
+              <span class="tag">Лексика</span>
+              <span class="tag">2 балла</span>
+            </div>
+          </article>
+
+          <article class="task" aria-label="Задание 4">
+            <h4>Задача 4. Анализ текста</h4>
+            <div>Краткое описание требований.</div>
+            <div class="tags" style="margin-top:8px;">
+              <span class="tag">Текст</span>
+              <span class="tag">4 балла</span>
+            </div>
+          </article>
+
+          <article class="task" aria-label="Задание 5">
+            <h4>Задача 5. Найдите ошибку</h4>
+            <div>Текст с намеренной ошибкой для поиска.</div>
+            <div class="tags" style="margin-top:8px;">
+              <span class="tag">Пунктуация</span>
+              <span class="tag">3 балла</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="pager" aria-label="Пагинация">
+          <button class="btn" disabled>« Предыдущие</button>
+          <div style="color:var(--muted); font-size:12px;">Страницы: 1 из 1</div>
+          <button class="btn" >Следующая »</button>
+        </div>
+      </section>
     </section>
   </main>
 
