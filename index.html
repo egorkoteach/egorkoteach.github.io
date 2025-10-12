@@ -3,259 +3,182 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Портфолио репетитора и банк заданий по русскому языку для ОГЭ</title>
-<!-- Подключение стилей -->
+<title>Русский язык</title>
+<!-- Подключение шрифта Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 <style>
+  /* Общие стили */
   body {
     margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
     color: #333;
   }
 
+  /* Шапка */
   header {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 30px 20px;
-    text-align: center;
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   header h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 20px;
-  }
-
-  button {
-    background: none;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s;
-  }
-
-  button:hover {
-    border-bottom: 2px solid #2980b9;
-  }
-
-  button.active {
-    border-bottom: 2px solid #2980b9;
-    font-weight: bold;
-  }
-
-  section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
-  h2 {
-    text-align: center;
-    color: #2980b9;
-    margin-bottom: 30px;
-  }
-
-  .tab-content {
-    display: none;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
-  /* Стиль для карточек */
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .card {
-    background-color: #fff;
-    padding: 25px;
-    flex: 1 1 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    transition: box-shadow 0.3s, transform 0.3s;
-  }
-
-  .card:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transform: translateY(-5px);
-  }
-
-  /* Для раздела "Главная" сделаем карточки в стиле "feature" */
-  .feature {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  /* Стиль формы */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  input, textarea, button {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-  }
-
-  button {
-    background-color: #2980b9;
     color: #fff;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  /* Меню */
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin-left: 30px;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Вкладки */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+  }
+
+  .tab {
+    background-color: transparent;
     border: none;
+    padding: 12px 30px;
+    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
   }
 
-  button:hover {
-    background-color: #3498db;
+  .tab:hover {
+    background-color: #e0e0e0;
   }
 
-  /* Сообщение после отправки */
-  #form-message {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-    color: green;
+  .tab-active {
+    color: #4e54c8;
+  }
+
+  /* Подчеркивание активной вкладки */
+  .tab-active::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background-color: #4e54c8;
+    border-radius: 2px;
+    margin-top: 8px;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  /* Контент вкладок */
+  .tab-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  /* Заголовки */
+  h2 {
+    color: #4e54c8;
+    margin-top: 0;
+  }
+
+  /* Анимации */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
   }
 </style>
 </head>
 <body>
 
+<!-- Шапка -->
 <header>
-  <h1>Репетитор по русскому языку и ОГЭ</h1>
-  <p>Индивидуальные занятия и подготовка к экзамену</p>
+  <h1>Русский язык</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">Банк заданий</a></li>
+    </ul>
+  </nav>
 </header>
 
-<!-- Вкладки навигации -->
-<nav>
-  <button class="tab-link active" data-tab="main">Главная</button>
-  <button class="tab-link" data-tab="tasks">Банк заданий</button>
-  <button class="tab-link" data-tab="contact">Контакты</button>
-</nav>
+<!-- Вкладки -->
+<div class="tabs">
+  <button class="tab tab-active" onclick="showTab('main')">Главная</button>
+  <button class="tab" onclick="showTab('bank')">Банк заданий</button>
+</div>
 
-<!-- Контент вкладок -->
-<section id="main" class="tab-content active">
-  <h2>Добро пожаловать</h2>
-  <div class="feature">
-    <div class="card">
-      <h3>Индивидуальные занятия</h3>
-      <p>Я предлагаю персональные уроки по русскому языку для всех уровней, подготовку к ОГЭ и развитие языковых навыков.</p>
-    </div>
-    <div class="card">
-      <h3>Банк заданий</h3>
-      <p>Практические задания, тесты, упражнения и рекомендации для успешной сдачи экзамена.</p>
-    </div>
-    <div class="card">
-      <h3>Почему выбирают меня</h3>
-      <p>Опыт, индивидуальный подход и современные методы обучения помогут вам достигнуть целей быстро и эффективно.</p>
-    </div>
-  </div>
-</section>
+<!-- Контент -->
+<div id="main" class="tab-content fade-in">
+  <h2>Добро пожаловать в раздел "Русский язык"</h2>
+  <p>Изучайте русский язык с помощью современных материалов и упражнений. Здесь вы найдете полезные статьи, правила и задания для практики.</p>
+</div>
 
-<section id="tasks" class="tab-content">
-  <h2>Банк заданий по русскому языку для ОГЭ</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Практические задания</h3>
-      <ul>
-        <li>Задания по орфографии и пунктуации</li>
-        <li>Анализ текста и сочинения</li>
-        <li>Грамматические упражнения</li>
-        <li>Лексика и стилистика</li>
-      </ul>
-    </div>
-  </div>
-</section>
+<div id="bank" class="tab-content" style="display:none;">
+  <h2>Банк заданий</h2>
+  <p>Здесь размещены задания для закрепления знаний и подготовки к экзаменам. Выполняйте упражнения и проверяйте свои навыки!</p>
+</div>
 
-<section id="contact" class="tab-content">
-  <h2>Свяжитесь со мной</h2>
-  <form id="contact-form">
-    <input type="text" name="name" placeholder="Ваше имя" required>
-    <input type="email" name="email" placeholder="Ваш email" required>
-    <textarea name="message" rows="4" placeholder="Ваш вопрос или сообщение" required></textarea>
-    <button type="submit">Отправить</button>
-  </form>
-  <div id="form-message"></div>
-</section>
-
-<!-- Скрипты для переключения вкладок и отправки формы -->
 <script>
-  // Переключение вкладок
-  document.querySelectorAll('.tab-link').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function showTab(tabName) {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
 
-      const tabId = btn.dataset.tab;
-      document.querySelectorAll('.tab-content').forEach(section => {
-        section.classList.remove('active');
-        if (section.id === tabId) {
-          section.classList.add('active');
-        }
-      });
+    // Убираем активный стиль у всех вкладок
+    tabs.forEach(tab => tab.classList.remove('tab-active'));
+
+    // Скрываем все содержимое
+    contents.forEach(content => {
+      content.style.display = 'none';
     });
-  });
 
-  // Отправка формы через EmailJS (или другой API)
-  // Для работы потребуется зарегистрироваться на https://www.emailjs.com/
-  // и вставить свой userID, serviceID, templateID
-  // Ниже пример, как это реализовать:
+    // Активируем выбранную вкладку
+    document.querySelector(`button[onclick="showTab('${tabName}')"]`).classList.add('tab-active');
 
-  document.getElementById('contact-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('form-message').textContent = '';
-
-    // Инициализация EmailJS
-    // Не забудьте подключить SDK в конце body:
-    // <script src="https://cdn.emailjs.com/sdk/latest/email.min.js"></script>
-    // И выполнить emailjs.init('service_7ccr6xf');
-
-    // Пример с вставкой кода:
-    emailjs.sendForm('service_7ccr6xf', 'service_7ccr6xf', this)
-      .then(function() {
-        document.getElementById('form-message').textContent = 'Спасибо! Ваше сообщение отправлено.';
-        document.getElementById('contact-form').reset();
-      }, function(error) {
-        document.getElementById('form-message').textContent = 'Ошибка при отправке. Попробуйте позже.';
-        console.error('Ошибка emailjs:', error);
-      });
-  });
-
-  // Инициализация EmailJS (замените на свои данные)
-  // Вставьте этот скрипт перед закрывающим тегом body
-</script>
-<!-- Подключение EmailJS SDK -->
-<script src="https://cdn.emailjs.com/sdk/latest/email.min.js"></script>
-<script>
-  // Инициализация EmailJS
-  emailjs.init('service_7ccr6xf'); // замените на свой userID
+    // Показываем выбранный контент
+    const activeContent = document.getElementById(tabName);
+    activeContent.style.display = 'block';
+    activeContent.classList.add('fade-in');
+  }
 </script>
 
 </body>
 </html>
-
-
