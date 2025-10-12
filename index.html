@@ -1,150 +1,43 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Первая Веб-Страница</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #0056b3;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #007bff;
-            margin-top: 20px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .code-block {
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
-</head>
-<body>
+ <!DOCTYPE html>
+ <html lang="ru">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Банк заданий ОГЭ Русский язык</title>
+  <link rel="stylesheet" href="style.css"> <!-- Подключаем стили -->
+ </head>
+ <body>
+  <header>
+   <h1>Банк заданий ОГЭ по русскому языку</h1>
+   <nav>
+    <a href="#">Главная</a>
+    <a href="#">Задания</a>
+    <a href="#">Тесты</a>
+    <a href="#">О нас</a>
+   </nav>
+  </header>
 
-    <div class="container">
-        <h1>Добро пожаловать на мою первую веб-страницу!</h1>
+  <main>
+   <section class="search">
+    <input type="text" placeholder="Поиск задания...">
+    <button>Искать</button>
+   </section>
 
-        <p>Это простой пример HTML-документа, созданный для демонстрации основ веб-разработки.</p>
-
-        <h2>Обо мне</h2>
-        <p>Меня зовут [Ваше Имя/Псевдоним]. Я только начинаю свой путь в изучении HTML, CSS и JavaScript.</p>
-
-        <h2>Что вы найдете здесь</h2>
-        <ul>
-            <li>Информация о моих первых шагах в веб-разработке.</li>
-            <li>Примеры использования различных HTML-тегов.</li>
-            <li>Стилизация с помощью CSS.</li>
-            <li>Ссылки на полезные ресурсы.</li>
-        </ul>
-
-        <h2>Пример использования тегов</h2>
-
-        <h3>Заголовки</h3>
-        <p>Мы уже использовали <code>&lt;h1&gt;</code> и <code>&lt;h2&gt;</code>. Вот пример <code>&lt;h3&gt;</code>:</p>
-        <h3>Это заголовок третьего уровня</h3>
-
-        <h3>Параграфы</h3>
-        <p>Текст, который вы сейчас читаете, находится внутри тега <code>&lt;p&gt;</code>. Это основной способ отображения текстовой информации.</p>
-
-        <h3>Списки</h3>
-        <p>Вот пример маркированного списка (<code>&lt;ul&gt;</code> и <code>&lt;li&gt;</code>):</p>
-        <ul>
-            <li>Элемент списка 1</li>
-            <li>Элемент списка 2</li>
-            <li>Элемент списка 3</li>
-        </ul>
-
-        <p>А вот пример нумерованного списка (<code>&lt;ol&gt;</code> и <code>&lt;li&gt;</code>):</p>
-        <ol>
-            <li>Первый шаг</li>
-            <li>Второй шаг</li>
-            <li>Третий шаг</li>
-        </ol>
-
-        <h3>Ссылки</h3>
-        <p>Вы можете создавать ссылки на другие веб-страницы с помощью тега <code>&lt;a&gt;</code>. Например, вот ссылка на <a href="https://www.google.com" target="_blank">Google</a>.</p>
-
-        <h3>Изображения</h3>
-        <p>Вы можете вставлять изображения с помощью тега <code>&lt;img&gt;</code>:</p>
-        <img src="https://via.placeholder.com/400x200?text=Пример+Изображения" alt="Placeholder Image">
-        <p><em>Примечание: Замените `https://via.placeholder.com/400x200?text=Пример+Изображения` на URL вашего изображения.</em></p>
-
-        <h3>Код</h3>
-        <p>Для отображения фрагментов кода используется тег <code>&lt;pre&gt;</code> и <code>&lt;code&gt;</code>:</p>
-        <div class="code-block">
-            <code>
-&lt;!DOCTYPE html&gt;<br>
-&lt;html lang="ru"&gt;<br>
-&lt;head&gt;<br>
-    &lt;meta charset="UTF-8"&gt;<br>
-    &lt;title&gt;Пример кода&lt;/title&gt;<br>
-&lt;/head&gt;<br>
-&lt;body&gt;<br>
-    &lt;h1&gt;Это заголовок внутри кода&lt;/h1&gt;<br>
-&lt;/body&gt;<br>
-&lt;/html&gt;
-            </code>
-        </div>
-
-        <h2>Полезные ресурсы</h2>
-        <p>Вот несколько сайтов, которые помогут вам в изучении веб-разработки:</p>
-        <ul>
-            <li><a href="https://developer.mozilla.org/ru/" target="_blank">MDN Web Docs</a> - отличный ресурс с документацией и руководствами.</li>
-            <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> - интерактивные уроки и примеры.</li>
-            <li><a href="https://htmlacademy.ru/" target="_blank">HTML Academy</a> - русскоязычная платформа с курсами.</li>
-        </ul>
-
-        <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: #777;">
-            Спасибо за посещение моей страницы!
-        </p>
+   <section class="tasks">
+    <h2>Список заданий</h2>
+    <div class="task-item">
+     <h3>Задание 1. Правописание приставок</h3>
+     <p>Описание задания: ...</p>
+     <a href="#">Решить</a>
     </div>
+    <!-- Добавьте больше task-item -->
+   </section>
+  </main>
 
-</body>
-</html>
+  <footer>
+   <p>© 2025 Банк заданий ОГЭ</p>
+  </footer>
+
+  <script src="script.js"></script> <!-- Подключаем скрипты -->
+ </body>
+ </html>
