@@ -1,303 +1,136 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Тренировка по русскому языку - myenglishexam.ru</title>
-<!-- Шрифты и стили -->
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-<style>
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-}
-header {
-  background-color: #4e54c8;
-  padding: 15px 20px;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header h1 {
-  margin: 0;
-  font-size: 20px;
-}
-button {
-  padding: 10px 20px;
-  background-color: #fff;
-  color: #4e54c8;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #e0e0e0;
-}
-#controls {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-#variantSelect {
-  padding: 6px 12px;
-  font-size: 16px;
-}
-#questions {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.question {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.question p {
-  margin: 0 0 10px 0;
-  font-weight: 600;
-}
-.answers {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-#result {
-  margin-top: 20px;
-  font-size: 18px;
-  text-align: center;
-  font-weight: 600;
-}
-#score-details {
-  margin-top: 15px;
-  font-size: 14px;
-  text-align: left;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.correct {
-  background-color: #d4edda; /* светло-зеленый */
-}
-.incorrect {
-  background-color: #f8d7da; /* светло-красный */
-}
-</style>
+    <meta charset="UTF-8" />
+    <title>Подготовка к ОГЭ по русскому языку</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .task {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .task h2 {
+            margin-top: 0;
+            color: #34495e;
+        }
+        .task p {
+            font-size: 16px;
+        }
+        /* Можно добавить стили для форм, если предполагается ввод */
+        /* Например, для ответов: */
+        .answer {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Подготовка к ОГЭ по русскому языку</h1>
+        <p>13 заданий для тренировки</p>
+    </header>
 
-<header>
-  <h1>Тренировка по русскому языку</h1>
-  <button onclick="generateVariant()">Создать тренировку</button>
-</header>
+    <!-- Задание 1 -->
+    <div class="task" id="task1">
+        <h2>Задание 1</h2>
+        <p>Напишите предложение, в котором правильно употреблено слово "восклицание".</p>
+        <!-- Можно добавить поле для ответа -->
+        <!-- <input type="text" class="answer" /> -->
+    </div>
 
-<div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
-  <!-- Управление -->
-  <div id="controls">
-    <label for="variantSelect">Выберите вариант:</label>
-    <select id="variantSelect" onchange="loadSelectedVariant()">
-      <option value="">-- Выберите вариант --</option>
-    </select>
-    <button onclick="generateVariant()">Обновить вариант</button>
-  </div>
-  
-  <h2 style="text-align:center; margin-bottom:10px;">Практическая тренировка для ОГЭ</h2>
-  <div id="questionNumber" style="text-align:center; font-weight:600; margin-bottom:10px;">Вопрос: 1 / 13</div>
-  <div id="questions"></div>
-  
-  <div style="text-align:center; margin-top:20px;">
-    <button onclick="checkAnswers()">Проверить ответы</button>
-  </div>
-  <div id="result"></div>
-  <div id="score-details"></div>
-</div>
+    <!-- Задание 2 -->
+    <div class="task" id="task2">
+        <h2>Задание 2</h2>
+        <p>Разберите по членам предложения: "Весна пришла рано."</p>
+        <!-- Поле для ответа -->
+    </div>
+    
+    <!-- Аналогично для остальных заданий -->
+    <div class="task" id="task3">
+        <h2>Задание 3</h2>
+        <p>Вставьте пропущенные буквы: "Звёздное небо было очень ___."</p>
+    </div>
 
-<script>
-const variants = [
-  // Варианты заполняйте аналогично: 60 вариантов, каждый с 13 вопросами
-  // Для примера добавлю 3 варианта
-  [
-    {question: "Выберите правильное написание слова:", options: ["весна", "весня"], answer: "весна"},
-    {question: "Поставьте запятую:", options: ["и", ","], answer: "и"},
-    {question: "Что такое имя существительное?", options: ["Обозначает предмет, явление или лицо", "Обозначает действие"], answer: "Обозначает предмет, явление или лицо"},
-    {question: "Выберите сложноподчинённое предложение:", options: ["Я пошёл в школу, потому что было хорошо.", "Он читает книгу."], answer: "Я пошёл в школу, потому что было хорошо."},
-    {question: "Какое из слов пишется с буквой 'и'?", options: ["Мир", "Мирий"], answer: "Мир"},
-    {question: "Выберите синоним слова 'быстрый':", options: ["медленный", "скорый"], answer: "скорый"},
-    {question: "В каком из предложений допущена ошибка?", options: ["Я читаю интересную книгу.", "Он быстро бежит."], answer: "Я читаю интересную книгу."},
-    {question: "Выберите правильное окончание прилагательного:", options: ["красивый", "красивий"], answer: "красивый"},
-    {question: "Что обозначает слово 'подлежащее'?", options: ["Главный член предложения, отвечающий на вопросы кто? что?", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопросы кто? что?"},
-    {question: "Выберите правильное сочетание по смыслу:", options: ["Он любит читать книги.", "Он любит читать книгу."], answer: "Он любит читать книги."},
-    {question: "Что такое синоним?", options: ["Обозначает противоположные понятия", "Обозначает слова с одинаковым или близким значением"], answer: "Обозначает слова с одинаковым или близким значением"},
-    {question: "Выберите правильный пунктуационный вариант:", options: ["Когда пришёл учитель, класс успокоился.", "Когда пришёл учитель класс успокоился."], answer: "Когда пришёл учитель, класс успокоился."}
-  ],
-  [
-    {question: "Выберите правильное написание слова:", options: ["зима", "зима"], answer: "зима"},
-    {question: "Поставьте запятую:", options: ["или", ","], answer: "или"},
-    {question: "Что обозначает слово 'глагол'?", options: ["Обозначает действие или состояние", "Обозначает предмет"], answer: "Обозначает действие или состояние"},
-    {question: "Выберите сложноподчинённое предложение:", options: ["Я читал книгу, потому что было интересно.", "Он читает книгу."], answer: "Я читал книгу, потому что было интересно."},
-    {question: "Выберите слово с правильным написанием:", options: ["прекрасный", "прекрастный"], answer: "прекрасный"},
-    {question: "Выберите антоним слова 'горячий':", options: ["холодный", "теплый"], answer: "холодный"},
-    {question: "В каком предложении допущена ошибка?", options: ["Я люблю гулять в парке.", "Он быстро бегает."], answer: "Я люблю гулять в парке."},
-    {question: "Выберите правильное окончание прилагательного:", options: ["синий", "синій"], answer: "синий"},
-    {question: "Что такое сказуемое?", options: ["Главный член предложения, отвечающий на вопрос что делает или что с ним происходит", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопрос что делает или что с ним происходит"},
-    {question: "Выберите правильный по смыслу вариант:", options: ["Он любит играть на улице.", "Он любит играть в компьютере."], answer: "Он любит играть на улице."},
-    {question: "Что такое антоним?", options: ["Слова с противоположным значением", "Слова с одинаковым или близким значением"], answer: "Слова с противоположным значением"},
-    {question: "Выберите правильную пунктуацию:", options: ["Когда пришёл учитель, все зашумели.", "Когда пришёл учитель все зашумели."], answer: "Когда пришёл учитель, все зашумели."}
-  ],
-  [
-    {question: "Выберите правильное написание слова:", options: ["осень", "осень"], answer: "осень"},
-    {question: "Поставьте запятую:", options: ["а", ","], answer: "а"},
-    {question: "Что обозначает слово 'прилагательное'?", options: ["Обозначает признак предмета", "Обозначает действие"], answer: "Обозначает признак предмета"},
-    {question: "Выберите сложноподчинённое предложение:", options: ["Я знаю, что ты придёшь.", "Я знаю это."], answer: "Я знаю, что ты придёшь."},
-    {question: "Выберите слово с правильным написанием:", options: ["зеленый", "зеленй"], answer: "зеленый"},
-    {question: "Выберите синоним слова 'большой':", options: ["огромный", "маленький"], answer: "огромный"},
-    {question: "В каком предложении допущена ошибка?", options: ["Дети играют во дворе.", "Он быстро бежит."], answer: "Он быстро бежит."},
-    {question: "Выберите правильное окончание прилагательного:", options: ["красивый", "красивий"], answer: "красивый"},
-    {question: "Что такое подлежащее?", options: ["Главный член предложения, отвечающий на вопросы кто? что?", "Дополнительный член предложения"], answer: "Главный член предложения, отвечающий на вопросы кто? что?"},
-    {question: "Выберите правильный по смыслу вариант:", options: ["Она читает интересную книгу.", "Она читает интересный журнал."], answer: "Она читает интересную книгу."},
-    {question: "Что такое синоним?", options: ["Слова с противоположным значением", "Слова с одинаковым или близким значением"], answer: "Слова с одинаковым или близким значением"},
-    {question: "Выберите правильную пунктуацию:", options: ["Когда пришёл учитель, все зашумели.", "Когда пришёл учитель все зашумели."], answer: "Когда пришёл учитель, все зашумели."}
-  ]
-];
+    <div class="task" id="task4">
+        <h2>Задание 4</h2>
+        <p>Определите часть речи выделенного слова: "Она быстро бежала."</p>
+    </div>
 
-let currentQuestions = [];
-let currentVariantIndex = -1;
+    <div class="task" id="task5">
+        <h2>Задание 5</h2>
+        <p>Напишите синоним к слову "радость".</p>
+    </div>
 
-// Заполняем селектор вариантами
-function populateVariantSelector() {
-  const select = document.getElementById('variantSelect');
-  select.innerHTML = '<option value="">-- Выберите вариант --</option>';
-  for (let i = 0; i < variants.length; i++) {
-    const option = document.createElement('option');
-    option.value = i;
-    option.textContent = `Вариант ${i + 1}`;
-    select.appendChild(option);
-  }
-}
+    <div class="task" id="task6">
+        <h2>Задание 6</h2>
+        <p>Исправьте ошибку в предложении: "Мальчик читает книгу."</p>
+    </div>
 
-// Генерируем новый вариант
-function generateVariant() {
-  const maxIndex = variants.length - 1;
-  const index = Math.floor(Math.random() * (maxIndex + 1));
-  currentQuestions = variants[index];
-  currentVariantIndex = index;
-  loadQuestions();
-  document.getElementById('result').innerHTML = '';
-  document.getElementById('score-details').innerHTML = '';
-  document.getElementById('questionNumber').textContent = `Вопрос: 1 / ${currentQuestions.length}`;
-  document.getElementById('variantSelect').value = index;
-}
+    <div class="task" id="task7">
+        <h2>Задание 7</h2>
+        <p>Определите, какая часть речи выделенного слова: "Он быстро побежал."</p>
+    </div>
 
-// Загружаем выбранный вариант
-function loadSelectedVariant() {
-  const selectedIndex = parseInt(document.getElementById('variantSelect').value);
-  if (!isNaN(selectedIndex)) {
-    currentQuestions = variants[selectedIndex];
-    currentVariantIndex = selectedIndex;
-    loadQuestions();
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('score-details').innerHTML = '';
-    document.getElementById('questionNumber').textContent = `Вопрос: 1 / ${currentQuestions.length}`;
-  }
-}
+    <div class="task" id="task8">
+        <h2>Задание 8</h2>
+        <p>Напишите правильную форму слова: "Это ___ (большой) дом."</p>
+    </div>
 
-// Отрисовка вопросов
-function loadQuestions() {
-  const container = document.getElementById('questions');
-  container.innerHTML = '';
-  currentQuestions.forEach((q, idx) => {
-    const qDiv = document.createElement('div');
-    qDiv.className = 'question';
-    qDiv.dataset.index = idx;
-    qDiv.innerHTML = `
-      <p><strong>Вопрос ${idx + 1}:</strong> ${q.question}</p>
-      <div class="answers">
-        ${q.options.map(opt => `
-          <label>
-            <input type="radio" name="q${idx}" value="${opt}">
-            ${opt}
-          </label>
-        `).join('')}
-      </div>
-    `;
-    container.appendChild(qDiv);
-  });
-}
+    <div class="task" id="task9">
+        <h2>Задание 9</h2>
+        <p>Выберите правильный вариант написания: "Обоснуйте свой выбор."</p>
+    </div>
 
-// Проверка ответов
-function checkAnswers() {
-  let correctCount = 0;
-  const answerBlocks = document.querySelectorAll('.question');
-  const detailedResults = [];
+    <div class="task" id="task10">
+        <h2>Задание 10</h2>
+        <p>Преобразуйте предложение в отрицательную форму: "Он читаеt книгу."</p>
+    </div>
 
-  answerBlocks.forEach(block => {
-    const idx = parseInt(block.dataset.index);
-    const options = document.getElementsByName(`q${idx}`);
-    let selected = '';
-    for (const opt of options) {
-      if (opt.checked) {
-        selected = opt.value;
-        break;
-      }
-    }
-    const correctAnswer = currentQuestions[idx].answer;
-    if (selected === correctAnswer) {
-      correctCount++;
-      block.classList.add('correct');
-      block.classList.remove('incorrect');
-    } else {
-      block.classList.add('incorrect');
-      block.classList.remove('correct');
-    }
-    // для подробных результатов
-    detailedResults.push({
-      question: currentQuestions[idx].question,
-      yourAnswer: selected || 'нет ответа',
-      correctAnswer: correctAnswer,
-      isCorrect: selected === correctAnswer
-    });
-  });
+    <div class="task" id="task11">
+        <h2>Задание 11</h2>
+        <p>Объясните разницу между синонимами "большой" и "огромный".</p>
+    </div>
 
-  document.getElementById('result').innerHTML = `Итог: ${correctCount} правильных из ${currentQuestions.length} (${(correctCount / currentQuestions.length * 100).toFixed(1)}%)`;
+    <div class="task" id="task12">
+        <h2>Задание 12</h2>
+        <p>Напишите короткий текст, используя три новых слова, изученные на уроке.</p>
+    </div>
 
-  // Выводим детали
-  let detailsHTML = '<h3>Подробности:</h3>';
-  detailedResults.forEach((res, i) => {
-    detailsHTML += `<p><strong>Вопрос ${i+1}:</strong> ${res.question}<br>
-    Ваш ответ: ${res.yourAnswer}<br>
-    Правильный ответ: ${res.correctAnswer}<br>`;
-    if (res.isCorrect) {
-      detailsHTML += `<span style="color: green;">Правильно</span></p>`;
-    } else {
-      detailsHTML += `<span style="color: red;">Неправильно</span></p>`;
-    }
-  });
-  document.getElementById('score-details').innerHTML = detailsHTML;
-}
+    <div class="task" id="task13">
+        <h2>Задание 13</h2>
+        <p>Напишите сочинение-рассуждение на тему: "Моя любимая книга".</p>
+    </div>
 
-// Обновление номера вопроса при переключении
-document.addEventListener('click', () => {
-  updateQuestionNumber();
-});
-document.addEventListener('change', () => {
-  updateQuestionNumber();
-});
-
-function updateQuestionNumber() {
-  const answeredQuestions = document.querySelectorAll('.question input:checked').length;
-  if (currentQuestions.length > 0) {
-    document.getElementById('questionNumber').textContent = `Вопрос: ${answeredQuestions + 1} / ${currentQuestions.length}`;
-  }
-}
-
-// Инициализация интерфейса
-populateVariantSelector();
-</script>
-
+    <!-- Можно добавить кнопку для проверки или отправки -->
+    <div style="text-align:center; margin-top:30px;">
+        <button>Проверить ответы</button>
+    </div>
 </body>
 </html>
