@@ -2,331 +2,222 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>OGE Русский язык — тренировка</title>
+  <title>Rus-OGE-подобное тестирование</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #0e111a;
-      --card: #141b28;
-      --muted: #9aa4b2;
-      --accent: #3b82f6;
-      --text: #e9eefc;
-      --green: #22c55e;
-      --red: #f87171;
+      --bg: #0f111a;
+      --card: #171a23;
+      --text: #eaeffb;
+      --accent: #4e9af1;
+      --muted: #aab3c5;
+      --correct: #2e8b57;
+      --wrong: #c0392b;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; background: radial-gradient(circle at 20% -10%, rgba(59,130,246,.15), transparent 40%), var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-    header { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #2a3244; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand h1 { font-size: 20px; margin: 0; }
-    .badge { padding: 4px 8px; border-radius: 6px; background: rgba(59,130,246,.25); color: #cfe0ff; font-size: 12px; }
-    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .panel { background: rgba(20,27,40,.9); border: 1px solid #2a3244; border-radius: 10px; padding: 14px; }
-    .panel + .panel { margin-top: 12px; }
-    label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
-    select, button, input[type="text"] { font-family: inherit; }
-    select, input[type="text"] { padding: 8px 10px; border-radius: 6px; border: 1px solid #2a3244; background: #0f1624; color: var(--text); min-width: 200px; }
-    button { padding: 10px 14px; border-radius: 6px; border: 1px solid #2a3244; background: #1d2a56; color: #fff; cursor: pointer; }
-    button.primary { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); border: none; }
-    button.secondary { background: #2a3244; }
-    button.danger { background: #4b1f25; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .task { padding: 12px; border-radius: 8px; background: rgba(11,17,38,.6); border: 1px solid #2a3244; }
-    .task h3 { margin: 0 0 6px; font-size: 16px; }
-    .variant { padding: 6px 8px; border-radius: 6px; border: 1px solid #2a3244; background: rgba(255,255,255,.04); margin: 6px 0; }
-    .variant.selected { outline: 2px solid var(--accent); background: rgba(59,130,246,.15); }
-    .exam { margin-top: 8px; padding: 8px; background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.4); border-radius: 6px; font-size: 13px; }
-    .row-wrap { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    .results { margin-top: 12px; padding: 12px; border-radius: 8px; background: rgba(0,0,0,.25); }
-    footer { text-align: center; color: var(--muted); padding: 14px 0; font-size: 12px; }
-    @media (max-width: 860px) {
-      .grid { grid-template-columns: 1fr; }
-    }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: sans-serif; }
+    .container { max-width: 1024px; margin: 0 auto; padding: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2f44; }
+    .title { font-size: 20px; font-weight: 600; }
+    .progress { font-size: 14px; color: var(--muted); }
+    .card { background: #141923; border: 1px solid #2a2f44; border-radius: 8px; padding: 16px; margin: 12px 0; }
+    .question { font-size: 18px; line-height: 1.4; margin-bottom: 12px; }
+    .options { list-style: none; padding: 0; margin: 0; }
+    .option { padding: 12px; margin: 8px 0; border: 1px solid #2a2f44; border-radius: 8px; cursor: pointer; background: #1e2230; }
+    .option:hover { background: #252a3b; }
+    .option[data-state="correct"] { border-color: var(--correct); background: rgba(46,139,87,.15); }
+    .option[data-state="wrong"] { border-color: var(--wrong); background: rgba(192,57,43,.15); }
+    .controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; }
+    button { padding: 10px 14px; border-radius: 6px; border: none; cursor: pointer; }
+    .btn { background: var(--accent); color: white; }
+    .btn.secondary { background: #2f3240; color: #e8e8e8; }
+    .btn.primary { background: #1e90ff; color: white; }
+    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 14px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <div class="brand">
-        <div class="badge">OGE-Русский</div>
-        <h1>Тренировка по русскому языку — вариант</h1>
-      </div>
-      <div class="row">
-        <span class="badge" id="seedLabel">Вариант: --</span>
-      </div>
+    <header class="header">
+      <div class="title">Rus-OGE-подобное задание</div>
+      <div class="progress" id="progressText">0 / 0</div>
     </header>
 
-    <section class="panel" aria-label="Настройки тренировки">
-      <div class="row" style="gap:12px; align-items:flex-end;">
-        <div style="flex:1;">
-          <label for="modeSelect">Режим тестирования</label>
-          <select id="modeSelect" title="Выберите режим: отдельное задание или экзамен полностью">
-            <option value="single">Выбор отдельного задания</option>
-            <option value="exam">Экзамен полностью (13 заданий)</option>
-          </select>
-        </div>
+    <main id="quiz" aria-label="Тест">
+      <!-- Разметка вопросов будет вставляться здесь -->
+    </main>
 
-        <div style="min-width:180px;">
-          <label for="taskSelect" id="taskLabel" style="visibility: visible;">Задание</label>
-          <select id="taskSelect" title="Выберите задание" style="min-width:240px;">
-            <!-- заполнится JS -->
-          </select>
-        </div>
-
-        <div style="display:flex; align-items:flex-end;">
-          <button id="generateBtn" class="primary" title="Сгенерировать задание/экзамен">Сгенерировать</button>
-        </div>
-      </div>
-      <div class="row" style="margin-top:8px;">
-        <div class="row-wrap" id="statusBar">
-          <span class="badge" id="statusText">Готово</span>
-        </div>
+    <section class="card" id="summary" hidden>
+      <div class="question">Итоги теста</div>
+      <div id="summaryText"></div>
+      <div class="controls" style="margin-top:8px;">
+        <button class="btn" id="retryBtn">Попробовать снова</button>
+        <button class="btn secondary" id="exportBtn">Экспорт CSV</button>
       </div>
     </section>
 
-    <section class="panel" aria-label="Содержание задания" id="contentPanel" style="display:none;">
-      <div class="task" id="taskDetail">
-        <h3 id="taskTitle">Задание</h3>
-        <div id="taskBody"></div>
-        <div id="variantsList" style="margin-top:8px;">
-          <!-- вариации будут здесь -->
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-label="Экзамен" id="examPanel" style="display:none;">
-      <div class="exam" id="examHeader">Экзамен: 13 заданий</div>
-      <div id="examBody" class="grid" style="grid-template-columns: 1fr 1fr;">
-        <!-- 13 блоков будут заполнены здесь -->
-      </div>
-    </section>
-
-    <section class="panel" id="summaryPanel" aria-label="Итоги" style="display:none;">
-      <h3 style="margin:0 0 8px;">Итоги</h3>
-      <div id="summary" class="results">
-        Всего вопросов: <strong id="totCount">0</strong> | Правильных: <strong id="correctCount">0</strong> | Невыполнено: <strong id="pendingCount">0</strong>
-      </div>
-    </section>
-
-    <footer>
-      Пример учебного модуля. Для добавления реальных текстов замените сгенерированные варианты в dataVariants.
+    <footer class="footer" aria-label="подключение">
+      Демонстрационная версия. В реальном проекте добавьте серверную аутентификацию и сохранение результатов.
     </footer>
-  </div>
+  </main>
 
   <script>
-    // База данных: 13 задач, по 60 вариантов каждая
-    // Каждая задача имеет заголовок и массив вариантов variants[]. 
-    // Каждый вариант — текст задания/фрагмента и, при необходимости, правильный ответ.
-    const TASK_COUNT = 13;
-    const VARIANTS_PER_TASK = 60;
+    // Данные: массив заданий. Каждый элемент: вопрос, варианты, правильный индекс
+    const data = [
+      {
+        text: "Какой орган управляет уровнем сахара в крови?",
+        options: ["Печень", "Поджелудочная железа", "Селезенка", "Желудок"],
+        answer: 1
+      },
+      {
+        text: "Какой язык программирования чаще всего используется для веб-скриптов в браузере?",
+        options: ["Python", "Java", "JavaScript", "C#"],
+        answer: 2
+      },
+      {
+        text: "Сколько континентов на планете?",
+        options: ["5", "6", "7", "8"],
+        answer: 2
+      },
+      // Добавьте больше вопросов по желанию
+    ];
 
-    // Пример структуры. В реальном сценарии замените на ваши конкретные варианты.
-    // Варианты формируются как строки примера; вам может потребоваться добавить правильный ответ.
-    const data = [];
-    for (let t = 1; t <= TASK_COUNT; t++) {
-      const task = {
-        id: t,
-        title: `Задание ${t}. Текст условия задачи`,
-        body: `Содержимое задания ${t}: прочитайте текст и выполните запись. Это имитация задания для тренировок.`,
-        variants: []
-      };
-      for (let v = 1; v <= VARIANTS_PER_TASK; v++) {
-        // Пример варианта: текст вопроса и варианты ответов (для открытого типа)
-        // Здесь мы просто показываем текст варианта. В реальном тесте можно добавить варианты ответа.
-        task.variants.push({
-          id: v,
-          text: `Вариант ${v} к заданию ${t}. Текст формулировки варианта ответа.`
-        });
-      }
-      data.push(task);
-    }
+    const quizRoot = document.getElementById('quiz');
+    const progressText = document.getElementById('progressText');
+    const summarySection = document.getElementById('summary');
+    const summaryText = document.getElementById('summaryText');
+    const retryBtn = document.getElementById('retryBtn');
+    const exportBtn = document.getElementById('exportBtn');
 
-    // UI элементы
-    const modeSelect = document.getElementById('modeSelect');
-    const taskSelect = document.getElementById('taskSelect');
-    const taskLabel = document.getElementById('taskLabel');
-    const generateBtn = document.getElementById('generateBtn');
-    const statusText = document.getElementById('statusText');
-    const contentPanel = document.getElementById('contentPanel');
-    const taskDetail = document.getElementById('taskDetail');
-    const taskTitle = document.getElementById('taskTitle');
-    const taskBody = document.getElementById('taskBody');
-    const variantsList = document.getElementById('variantsList');
-    const examPanel = document.getElementById('examPanel');
-    const examBody = document.getElementById('examBody');
-    const examHeader = document.getElementById('examHeader');
-    const summaryPanel = document.getElementById('summaryPanel');
-    const summary = document.getElementById('summary');
-    const totCount = document.getElementById('totCount');
-    const correctCount = document.getElementById('correctCount');
-    const pendingCount = document.getElementById('pendingCount');
-    const seedLabel = document.getElementById('seedLabel');
+    let current = 0;
+    const userAnswers = Array(data.length).fill(null);
+    let locked = false;
 
-    // Состояние
-    let currentVariantIndex = 1; // 1..60
-    let currentTaskId = 1;
-    let examGenerated = false;
-    let lastSeed = Math.floor(Math.random() * 1e6);
+    function renderQuestion(index) {
+      quizRoot.innerHTML = '';
+      const q = data[index];
+      const card = document.createElement('section');
+      card.className = 'card';
 
-    // Инициализация селекта по заданиям
-    function populateTaskSelect() {
-      taskSelect.innerHTML = '';
-      const optAll = document.createElement('option');
-      optAll.value = 'all';
-      optAll.text = 'Все задания';
-      taskSelect.appendChild(optAll);
-      for (let t = 0; t < TASK_COUNT; t++) {
-        const opt = document.createElement('option');
-        opt.value = String(t + 1);
-        opt.text = `Задание ${t + 1}`;
-        taskSelect.appendChild(opt);
-      }
-    }
+      const qEl = document.createElement('div');
+      qEl.className = 'question';
+      qEl.textContent = `Вопрос ${index + 1}: ${q.text}`;
+      card.appendChild(qEl);
 
-    function setStatus(msg, color = '#fff') {
-      statusText.textContent = msg;
-      statusText.style.background = 'none';
-      statusText.style.color = color;
-    }
-
-    // Генерация уникального варианта (для экзамена: 13 заданий, по одному варианта каждого)
-    function generateSingleVariant(taskId, variantIndex) {
-      const task = data.find(d => d.id === taskId);
-      if (!task) return null;
-      const v = task.variants[(variantIndex - 1) % VARIANTS_PER_TASK];
-      return {
-        taskId: taskId,
-        variantIndex: variantIndex,
-        text: v ? v.text : 'Нет варианта'
-      };
-    }
-
-    // Генерация полного экзамена: 13 заданий, по одному случайному варианту из 60
-    function generateFullExam(seed) {
-      // простая псевдослучайная генерация по seed
-      function rnd() {
-        // xorshift32-like
-        seed = (seed ^ (seed << 13)) >>> 0;
-        seed = (seed ^ (seed >>> 17)) >>> 0;
-        seed = (seed ^ (seed << 5)) >>> 0;
-        return (seed >>> 0) / 4294967296;
-      }
-      const items = [];
-      for (let t = 1; t <= TASK_COUNT; t++) {
-        const vIndex = Math.floor(rnd() * VARIANTS_PER_TASK) + 1;
-        items.push({
-          taskId: t,
-          variantIndex: vIndex,
-          text: data[t - 1].variants[vIndex - 1].text
-        });
-      }
-      return items;
-    }
-
-    // Рендеринг single task view
-    function renderSingleTask(taskId, variantIndex) {
-      const task = data.find(d => d.id === taskId);
-      if (!task) return;
-      taskTitle.textContent = task.title;
-      taskBody.textContent = task.body;
-      // Варианты
-      variantsList.innerHTML = '';
-      task.variants.forEach(v => {
-        const div = document.createElement('div');
-        div.className = 'variant';
-        div.textContent = v.text;
-        variantsList.appendChild(div);
+      const ul = document.createElement('ul');
+      ul.className = 'options';
+      q.options.forEach((opt, i) => {
+        const li = document.createElement('li');
+        li.className = 'option';
+        li.textContent = opt;
+        li.dataset.index = i;
+        li.addEventListener('click', () => onChoose(index, i, li));
+        ul.appendChild(li);
       });
-      contentPanel.style.display = 'block';
-      examPanel.style.display = 'none';
-      summaryPanel.style.display = 'none';
-      // seed label
-      seedLabel.textContent = `Вариант ${variantIndex} из 60`;
-      lastSeed = Math.floor(Math.random() * 1e6);
-      setStatus('Готово', '#aaf');
-    }
+      card.appendChild(ul);
 
-    // Рендеринг экзамена
-    function renderExam(examItems) {
-      examPanel.style.display = 'block';
-      contentPanel.style.display = 'none';
-      // заголовок
-      examHeader.textContent = `Экзамен: 13 заданий (генерировано)`;
-      examBody.innerHTML = '';
-      examItems.forEach((item, idx) => {
-        const cell = document.createElement('div');
-        cell.className = 'task';
-        const h = document.createElement('h3');
-        h.textContent = `Задание ${idx + 1}`;
-        const p = document.createElement('p');
-        p.textContent = item.text;
-        cell.appendChild(h);
-        cell.appendChild(p);
-        examBody.appendChild(cell);
+      const controls = document.createElement('div');
+      controls.className = 'controls';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.textContent = 'Предыдущий';
+      prevBtn.className = 'btn secondary';
+      prevBtn.disabled = index === 0;
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      controls.appendChild(prevBtn);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.textContent = index === data.length - 1 ? 'Завершить' : 'Следующий';
+      nextBtn.className = 'btn';
+      nextBtn.disabled = userAnswers[index] === null;
+      nextBtn.addEventListener('click', () => {
+        if (index < data.length - 1) goTo(index + 1);
+        else finishQuiz();
       });
-      summaryPanel.style.display = 'block';
-      // Обновить итоги как placeholder
-      totCount.textContent = String(TASK_COUNT);
-      correctCount.textContent = String(0);
-      pendingCount.textContent = String(TASK_COUNT);
-      setStatus('Экзамен сгенерирован', '#aaf');
+      controls.appendChild(nextBtn);
+
+      card.appendChild(controls);
+
+      quizRoot.appendChild(card);
+
+      updateProgress();
     }
 
-    // Сгенерировать по выбранному режиму
-    function generate() {
-      const mode = modeSelect.value;
-      // Выбор задания
-      const chosen = taskSelect.value;
-      if (mode === 'single') {
-        // показать конкретное задание
-        let taskId = Number(chosen);
-        if (!taskId || isNaN(taskId)) taskId = 1;
-        // текущий вариант: 1..60
-        currentTaskId = taskId;
-        currentVariantIndex = 1;
-        generateSingleVariant(taskId, currentVariantIndex);
-        renderSingleTask(taskId, currentVariantIndex);
-      } else {
-        // экзамен: сгенерировать по seed
-        const seed = lastSeed || Math.floor(Math.random() * 1e6);
-        const examItems = generateFullExam(seed);
-        examGenerated = true;
-        renderExam(examItems);
-      }
+    function onChoose(qIndex, optionIndex, element) {
+      if (locked) return;
+      userAnswers[qIndex] = optionIndex;
+
+      // визуальная подсветка
+      const options = element.parentElement.querySelectorAll('.option');
+      options.forEach((el) => {
+        el.removeAttribute('data-state');
+      });
+      element.setAttribute('data-state', optionIndex === data[qIndex].answer ? 'correct' : 'wrong');
+      // Разрешаем переход к следующему
+      locked = true;
+      // Разблокируем выбор и позволяем перейти
+      setTimeout(() => {
+        locked = false;
+      }, 200);
+      // Обновить активность кнопок
+      renderQuestion(qIndex);
+    }
+
+    function goTo(index) {
+      current = index;
+      renderQuestion(current);
+    }
+
+    function updateProgress() {
+      const answered = userAnswers.filter(v => v !== null).length;
+      progressText.textContent = `Вопрос ${current + 1} из ${data.length} | Ответов: ${answered}`;
+    }
+
+    function finishQuiz() {
+      // Подсчитать результат
+      let correctCount = 0;
+      data.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) correctCount++;
+      });
+      summaryText.textContent = `Вы ответили правильно на ${correctCount} из ${data.length} вопросов.`;
+      summarySection.hidden = false;
+      quizRoot.innerHTML = '';
+    }
+
+    function exportCSV() {
+      // экспорт простого CSV
+      const header = 'question,selected,correct\n';
+      const rows = data.map((q, i) => {
+        const sel = userAnswers[i] != null ? q.options[userAnswers[i]] : '';
+        const correct = q.options[q.answer];
+        // простейшая экранификация запятых
+        const qtext = JSON.stringify(q.text).slice(1, -1);
+        return `"${qtext}","${sel}","${correct}"`;
+      });
+      const csv = header + rows.join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'results.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
 
     // Инициализация
-    populateTaskSelect();
-    // Установить начальные значения
-    taskSelect.value = '1';
-    setStatus('Готов к тренировке', '#9ff');
-
-    // Обработчики
-    modeSelect.addEventListener('change', () => {
-      // При смене режима переключить видимость
-      if (modeSelect.value === 'single') {
-        contentPanel.style.display = 'block';
-        examPanel.style.display = 'none';
-        summaryPanel.style.display = 'none';
-      } else {
-        contentPanel.style.display = 'none';
-        examPanel.style.display = 'block';
-        summaryPanel.style.display = 'block';
-      }
+    retryBtn.addEventListener('click', () => {
+      // Сбрасываем состояние
+      current = 0;
+      userAnswers.fill(null);
+      summarySection.hidden = true;
+      renderQuestion(current);
     });
 
-    generateBtn.addEventListener('click', () => {
-      generate();
-    });
+    exportBtn.addEventListener('click', exportCSV);
 
-    // При загрузке показываем первое задание по умолчанию
-    window.addEventListener('load', () => {
-      // По умолчанию: режим single, выбран первый элемент
-      taskSelect.value = '1';
-      generate();
-    });
-
+    // Первичный рендер
+    renderQuestion(current);
   </script>
 </body>
 </html>
