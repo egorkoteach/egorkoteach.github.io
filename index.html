@@ -3,238 +3,132 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Репетитор по русскому языку</title>
-<!-- Шрифт Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<title>Портфолио репетитора и банк заданий по русскому языку для ОГЭ</title>
 <style>
   body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    padding: 0;
+    background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
   }
   header {
-    background-color: #4a90e2;
+    background-color: #4A90E2;
     color: #fff;
-    padding: 40px 20px;
+    padding: 30px 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
   }
-  header h1 {
+  h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2em;
   }
-  header p {
-    margin-top: 10px;
-    font-size: 1.2em;
-  }
-  .container {
+  section {
+    padding: 40px 20px;
     max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+    margin: 0 auto;
   }
-
-  /* Видео-знакомство (встроенное видео) */
-  .intro-section {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-  }
-  .intro-section h2 {
-    margin-top: 0;
-    font-size: 2em;
-    color: #4a90e2;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #4a90e2;
-    display: inline-block;
-    padding-bottom: 8px;
-  }
-  #introVideoContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  #introVideoContainer iframe {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-
-  /* Место для видео */
-  .video-section {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-  }
-  .video-section h2 {
-    margin-top: 0;
-    font-size: 2em;
-    color: #4a90e2;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #4a90e2;
-    display: inline-block;
-    padding-bottom: 8px;
-  }
-  #videoDisplay {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  #videoDisplay iframe {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-
-  /* Банкет заданий */
-  .tasks-section {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-  .tasks-section h2 {
-    margin-top: 0;
-    font-size: 2em;
-    color: #4a90e2;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #4a90e2;
-    display: inline-block;
-    padding-bottom: 8px;
-  }
-  .tasks-list {
-    list-style: none;
-    padding: 0;
-  }
-  .tasks-list li {
-    padding: 15px;
-    margin-bottom: 10px;
-    background-color: #f0f9ff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.2s, transform 0.2s;
-  }
-  .tasks-list li:hover {
-    background-color: #e0f0f8;
-    transform: translateY(-2px);
-  }
-  .tasks-list li a {
-    text-decoration: none;
-    color: #4a90e2;
-    font-weight: 600;
-    font-size: 1.2em;
-  }
-  .tasks-list li a:hover {
-    text-decoration: underline;
-  }
-
-  /* Футер */
-  footer {
-    background-color: #4a90e2;
-    color: #fff;
-    padding: 20px;
+  h2 {
     text-align: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    color: #4A90E2;
   }
-  footer p {
-    margin: 5px 0;
+  .portfolio, .tasks, .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
   }
-
-  /* Общие стили для форм и кнопок */
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    flex: 1 1 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  input, textarea, button {
+    padding: 10px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+    border-radius: 4px;
   }
   button {
-    background-color: #4a90e2;
+    background-color: #4A90E2;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.2s;
   }
   button:hover {
-    background-color: #357ab8;
+    background-color: #357ABD;
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Репетитор по русскому языку</h1>
+  <h1>Репетитор по русскому языку и ОГЭ</h1>
+  <p>Индивидуальные занятия, банк заданий и подготовка к экзамену</p>
 </header>
 
-<div class="container">
-
-  <!-- Видео-знакомство (встроенное видео) -->
-  <section class="intro-section">
-    <h2>Дополнительный урок №1</h2>
-    <p>Разбор диктанта</p>
-    <!-- Замените src на ссылку на ваше видео с YouTube или другого сервиса -->
-    <div id="introVideoContainer">
-      <iframe width="720" height="405" src="https://vkvideo.ru/video-233231715_456239017?list=ln-Q52zoWMs3jtN9VYSdl" title="Видео-знакомство" frameborder="0" allowfullscreen></iframe>
+<!-- Портфолио -->
+<section>
+  <h2>Мое портфолио</h2>
+  <div class="portfolio">
+    <div class="card">
+      <h3>Образование</h3>
+      <ul>
+        <li>Высшее образование в области филологии, МГУ, 2012</li>
+        <li>Курсы по подготовке к ОГЭ, 2015, 2018</li>
+      </ul>
     </div>
-  </section>
+    <div class="card">
+      <h3>Опыт работы</h3>
+      <ul>
+        <li>Репетитор по русскому языку — 7 лет</li>
+        <li>Преподаватель в онлайн-школе "Язык и успех" — 3 года</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Отзывы учеников</h3>
+      <p>"Благодаря занятиям я успешно сдал ОГЭ!" — Анна</p>
+      <p>"Объясняет понятно и интересно." — Иван</p>
+    </div>
+  </div>
+</section>
 
-  
+<!-- Банк заданий -->
+<section style="background-color:#e0e0e0;">
+  <h2>Банк заданий по русскому языку для ОГЭ</h2>
+  <div class="tasks">
+    <div class="card">
+      <h3>Практические задания</h3>
+      <ul>
+        <li>Задания по орфографии и пунктуации</li>
+        <li>Анализ текста и сочинения</li>
+        <li>Грамматические упражнения</li>
+        <li>Лексика и стилистика</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  
-
-</div>
-
-<!-- Футер -->
-<footer>
-  <p>© 2025 Репетитор по русскому языку. Все права защищены.</p>
-  <p>Контакт: <a href="mailto:info@rusrepetitor.ru" style="color:#fff; text-decoration:underline;">info@rusrepetitor.ru</a></p>
-</footer>
-
-<script>
-  // Обработка вставки видео по ссылке
-  document.getElementById('loadVideo').addEventListener('click', () => {
-    const url = document.getElementById('videoLink').value.trim();
-    const container = document.getElementById('videoDisplay');
-    container.innerHTML = '';
-
-    // Встраивание YouTube или другого сервиса
-    const youtubeMatch = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
-    if (youtubeMatch) {
-      const videoId = youtubeMatch[1];
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${videoId}`;
-      iframe.width = "720";
-      iframe.height = "405";
-      iframe.allowFullscreen = true;
-      iframe.frameBorder = "0";
-      container.appendChild(iframe);
-      return;
-    }
-
-    // Тут можно добавить поддержку других видео платформ
-
-    alert('Поддерживаются только видео с YouTube.');
-  });
-</script>
+<!-- Контактная форма -->
+<section>
+  <h2>Свяжитесь со мной</h2>
+  <form class="contacts" id="contact-form">
+    <input type="text" placeholder="Ваше имя" required>
+    <input type="email" placeholder="Ваш email" required>
+    <textarea rows="4" placeholder="Ваш вопрос или сообщение" required></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
 
 </body>
 </html>
-
-
-
