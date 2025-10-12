@@ -1,136 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>Подготовка к ОГЭ по русскому языку</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f8ff;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .task {
-            margin-bottom: 25px;
-            padding: 15px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .task h2 {
-            margin-top: 0;
-            color: #34495e;
-        }
-        .task p {
-            font-size: 16px;
-        }
-        /* Можно добавить стили для форм, если предполагается ввод */
-        /* Например, для ответов: */
-        .answer {
-            width: 100%;
-            padding: 8px;
-            margin-top: 10px;
-            box-sizing: border-box;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #2980b9;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #3498db;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мой Английский Экзамен</title>
+  <style>
+    /* Общие стили */
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f5f6f8;
+      color: #333;
+    }
+
+    /* Шапка сайта */
+    header {
+      background-color: #4A90E2;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    /* Основной контейнер */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* Карточки тестов */
+    .test-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .test-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* Заголовки внутри карточки */
+    .test-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-size: 1em;
+      color: #fff;
+      background-color: #4A90E2;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #357ABD;
+    }
+
+    /* Футер */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Адаптивность */
+    @media(max-width: 768px){
+      header h1 {
+        font-size: 1.5em;
+      }
+      .test-title {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Подготовка к ОГЭ по русскому языку</h1>
-        <p>13 заданий для тренировки</p>
-    </header>
 
-    <!-- Задание 1 -->
-    <div class="task" id="task1">
-        <h2>Задание 1</h2>
-        <p>Напишите предложение, в котором правильно употреблено слово "восклицание".</p>
-        <!-- Можно добавить поле для ответа -->
-        <!-- <input type="text" class="answer" /> -->
-    </div>
+<header>
+  <h1>Мой Английский Экзамен</h1>
+</header>
 
-    <!-- Задание 2 -->
-    <div class="task" id="task2">
-        <h2>Задание 2</h2>
-        <p>Разберите по членам предложения: "Весна пришла рано."</p>
-        <!-- Поле для ответа -->
-    </div>
-    
-    <!-- Аналогично для остальных заданий -->
-    <div class="task" id="task3">
-        <h2>Задание 3</h2>
-        <p>Вставьте пропущенные буквы: "Звёздное небо было очень ___."</p>
-    </div>
+<div class="container">
 
-    <div class="task" id="task4">
-        <h2>Задание 4</h2>
-        <p>Определите часть речи выделенного слова: "Она быстро бежала."</p>
-    </div>
+  <!-- Пример теста -->
+  <div class="test-card">
+    <div class="test-title">Тест на грамматику</div>
+    <p>Проверьте свои знания английской грамматики, ответив на вопросы.</p>
+    <button class="btn" onclick="startTest('grammar')">Начать тест</button>
+  </div>
 
-    <div class="task" id="task5">
-        <h2>Задание 5</h2>
-        <p>Напишите синоним к слову "радость".</p>
-    </div>
+  <div class="test-card">
+    <div class="test-title">Тест на словарный запас</div>
+    <p>Улучшайте свой словарный запас с помощью наших упражнений.</p>
+    <button class="btn" onclick="startTest('vocabulary')">Начать тест</button>
+  </div>
 
-    <div class="task" id="task6">
-        <h2>Задание 6</h2>
-        <p>Исправьте ошибку в предложении: "Мальчик читает книгу."</p>
-    </div>
+  <div class="test-card">
+    <div class="test-title">Тест на аудирование</div>
+    <p>Практикуйте навыки аудирования с реальными аудио</p>
+    <button class="btn" onclick="startTest('listening')">Начать тест</button>
+  </div>
 
-    <div class="task" id="task7">
-        <h2>Задание 7</h2>
-        <p>Определите, какая часть речи выделенного слова: "Он быстро побежал."</p>
-    </div>
+</div>
 
-    <div class="task" id="task8">
-        <h2>Задание 8</h2>
-        <p>Напишите правильную форму слова: "Это ___ (большой) дом."</p>
-    </div>
+<footer>
+  <p>&copy; 2024 Мой Английский Экзамен. Все права защищены.</p>
+</footer>
 
-    <div class="task" id="task9">
-        <h2>Задание 9</h2>
-        <p>Выберите правильный вариант написания: "Обоснуйте свой выбор."</p>
-    </div>
+<script>
+  function startTest(type) {
+    alert('Запуск теста: ' + type);
+    // Здесь можно реализовать переход к тесту или открытие модального окна
+  }
+</script>
 
-    <div class="task" id="task10">
-        <h2>Задание 10</h2>
-        <p>Преобразуйте предложение в отрицательную форму: "Он читаеt книгу."</p>
-    </div>
-
-    <div class="task" id="task11">
-        <h2>Задание 11</h2>
-        <p>Объясните разницу между синонимами "большой" и "огромный".</p>
-    </div>
-
-    <div class="task" id="task12">
-        <h2>Задание 12</h2>
-        <p>Напишите короткий текст, используя три новых слова, изученные на уроке.</p>
-    </div>
-
-    <div class="task" id="task13">
-        <h2>Задание 13</h2>
-        <p>Напишите сочинение-рассуждение на тему: "Моя любимая книга".</p>
-    </div>
-
-    <!-- Можно добавить кнопку для проверки или отправки -->
-    <div style="text-align:center; margin-top:30px;">
-        <button>Проверить ответы</button>
-    </div>
 </body>
 </html>
