@@ -1,170 +1,142 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Подготовка к ОГЭ по Русскому языку</title>
-  <style>
-    :root{
-      --bg: #0b1020;
-      --card: #141a2b;
-      --accent: #6ea8fe;
-      --text: #e6e9f5;
-      --muted: #aab4d4;
-      --white: #fff;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: radial-gradient(circle at 20% -10%, rgba(110,168,254,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(110,168,254,0.10), transparent 40%), var(--bg); color: var(--text); }
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 20px; background: rgba(10,14,34,0.9); border-bottom: 1px solid rgba(255,255,255,0.05);
-      backdrop-filter: saturate(1.2) blur(6px);
-    }
-    header .brand { display: flex; align-items: center; gap: 12px; }
-    header .brand .logo {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: linear-gradient(135deg, #6ea8fe 0%, #8b5cf6 100%);
-      display: inline-block;
-    }
-    nav a {
-      color: var(--text); text-decoration: none; margin: 0 12px; font-weight: 500;
-      padding: 8px 12px; border-radius: 6px;
-    }
-    nav a:hover { background: rgba(255,255,255,0.07); }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Банк заданий ОГЭ по русскому языку</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    main { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
-    section { margin-bottom: 60px; }
-    h1, h2 { margin: 0 0 12px; font-weight: 700; }
-    h1 { font-size: 2rem; letter-spacing: .2px; }
-    h2 { font-size: 1.25rem; color: var(--white); opacity: 0.95; }
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
 
-    .intro { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
-    .intro p { color: var(--muted); line-height: 1.6; }
-    .card {
-      background: linear-gradient(180deg, rgba(20,26,43,0.95) 0%, rgba(20,26,43,0.75) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 20px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
-    }
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
-    }
+        h1 {
+            margin: 0;
+        }
 
-    .task {
-      padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(20,26,43,0.8), rgba(20,26,43,0.6));
-      min-height: 110px;
-    }
-    .task h3 { font-size: 1rem; margin: 0 0 6px; }
-    .task p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    .btn { display: inline-block; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
-      background: linear-gradient(135deg, rgba(110,168,254,0.9), rgba(110,168,254,0.6)); color: white; text-decoration: none; font-weight: 600;
-    }
-    .btn.secondary { background: transparent; border-color: rgba(255,255,255,0.25); }
-    form { display: grid; gap: 12px; }
-    input, textarea { width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.04); color: var(--text);
-    }
-    input::placeholder, textarea::placeholder { color: #99a6cf; }
-    textarea { min-height: 110px; resize: vertical; }
+        .search-section {
+            padding: 20px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+        }
 
-    footer { text-align: center; color: var(--muted); padding: 20px 0 40px; }
+        .search-box {
+            width: 50%;
+            max-width: 600px;
+            display: flex;
+        }
 
-    @media (max-width: 900px) {
-      .intro { grid-template-columns: 1fr; }
-      header { padding: 12px; }
-    }
-  </style>
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .category-section {
+            padding: 20px;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category-card {
+            background-color: #ffffff;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <span class="logo" aria-label="Р"></span>
-      <strong>ОГЭ по Русскому языку</strong>
-    </div>
-    <nav aria-label="Навигация по странице">
-      <a href="index.html">Главная</a>
-      <a href="bankknow.html">Банк заданий</a>
-      <a href="#form">Обратная связь</a>
-    </nav>
-  </header>
+    <header>
+        <h1>Банк заданий ОГЭ по русскому языку</h1>
+    </header>
 
-  <main>
-    <section class="intro card" id="welcome" aria-labelledby="title-welcome">
-      <div>
-        <h1 id="title-welcome">Подготовка к ОГЭ по русскому языку</h1>
-        <p>Этот сайт содержит теорию и банк заданий для самостоятельной подготовки к ОГЭ. Все примеры созданы мной и рассчитаны на практику навыков: орфография, грамматика, лексика и стилистика. Здесь нет копирования реальных заданий экзамена.</p>
-        <p>Цель — помочь разобраться в основных разделах языка и потренироваться в решении задач в современном дизайне.</p>
-      </div>
-      <div class="card" aria-label="Блок быстрого доступа">
-        <p><strong>Быстрые ссылки</strong></p>
-        <ul style="margin:0; padding-left:16px;">
-          <li>Главная</li>
-          <li>Банк заданий</li>
-          <li>Форма обратной связи</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="theory" aria-labelledby="title-theory">
-      <h2 id="title-theory">Теория по ОГЭ: ключевые разделы</h2>
-      <div class="grid" aria-label="Разделы теории">
-        <article class="card" style="min-height:120px;">
-          <h3>Грамматика</h3>
-          <p>Сложносочиненные и сложноподчиненные предложения, пунктуация, части речи, синтаксис. Особое внимание связям согласования и управления.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Развернутая часть</h3>
-          <p>Навыки написания сочинения и изложения.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Орфография</h3>
-          <p>Правописание сложных слов, приставок, разделительных знаков, правил ударения в словах.</p>
-        </article>
-        <article class="card" style="min-height:120px;">
-          <h3>Слова и формы</h3>
-          <p>Числительные, формы слов, склонение, спряжение, неразличение частиц и служебных слов.</p>
-        </article>
-      </div>
-    </section>
-
-   
-
-    <section id="form" aria-labelledby="title-form">
-      <h2 id="title-form">Обратная связь</h2>
-      <div class="grid" style="grid-template-columns:1.1fr 0.9fr;">
-        <form onsubmit="event.preventDefault(); alert('Сообщение отправлено. Спасибо!');">
-          <label>
-            Ваше имя
-            <input type="text" name="name" placeholder="Иван" required />
-          </label>
-          <label>
-            Эл. почта
-            <input type="email" name="email" placeholder="you@example.com" required />
-          </label>
-          <label>
-            Сообщение
-            <textarea name="message" placeholder="Напишите своё сообщение..." required></textarea>
-          </label>
-          <button class="btn" type="submit">Отправить</button>
-        </form>
-
-        <div class="card" aria-label="Контакты">
-          <h3>Контакты</h3>
-          <p>Электронная почта: example@education.local</p>
-          <p>Телефон: +7 (000) 000-00-00</p>
-          <p>Часы работы: пн–пт, 9:00–18:00</p>
+    <section class="search-section">
+        <div class="search-box">
+            <input type="text" placeholder="Поиск задания..." id="searchInput" />
+            <button onclick="searchTasks()">Поиск</button>
         </div>
-      </div>
     </section>
-  </main>
 
-  <footer>
-    <p>Идея безопасной подготовки к ОГЭ. Все примеры созданы для практики навыков без копирования реальных заданий.</p>
-  </footer>
+    <section class="category-section">
+        <h2 style="text-align:center;">Категории заданий</h2>
+        <div class="categories">
+            <div class="category-card" onclick="location.href='grammar.html'">
+                <h3>Грамматика</h3>
+                <p>Задания по правилам и структуре языка</p>
+            </div>
+            <div class="category-card" onclick="location.href='reading.html'">
+                <h3>Чтение</h3>
+                <p>Задания на понимание текста</p>
+            </div>
+            <div class="category-card" onclick="location.href='writing.html'">
+                <h3>Письмо</h3>
+                <p>Задания на написание эссе и писем</p>
+            </div>
+            <div class="category-card" onclick="location.href='listening.html'">
+                <h3>Аудирование</h3>
+                <p>Задания на восприятие на слух</p>
+            </div>
+            <div class="category-card" onclick="location.href='practice.html'">
+                <h3>Практика</h3>
+                <p>Образцы заданий для тренировки</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Банк заданий ОГЭ по русскому языку</p>
+    </footer>
+
+    <script>
+        function searchTasks() {
+            const query = document.getElementById('searchInput').value;
+            alert('Поиск по запросу: ' + query);
+            // Здесь можно реализовать логику поиска
+        }
+    </script>
 </body>
 </html>
-
-
-
