@@ -1,160 +1,213 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>Банк заданий — ОГЭ по Русскому языку</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Банк заданий</title>
   <style>
     :root {
       --bg: #0b1020;
-      --card: #141a2b;
-      --text: #e8eaf6;
-      --muted: #aab6d6;
-      --accent: #4facfe;
-      --green: #4bd19a;
-      --orange: #ffb020;
+      --card: #11152a;
+      --muted: #8a92a6;
+      --primary: #4a8cff;
+      --accent: #7be0d6;
+      --white: #ffffff;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: #0a0f1a; color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI"; }
-    header { position: sticky; top: 0; z-index: 1000; background: rgba(10,14,28,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 14px 0; display: flex; align-items: center; justify-content: space-between; }
-    .logo { color: #fff; text-decoration: none; font-weight: 700; }
-    nav a { color: #d9e3ff; text-decoration: none; padding: 10px 14px; border-radius: 8px; }
-    nav a.active { background: rgba(74, 144, 226, 0.25); color: #fff; }
-    .search { display: flex; gap: 8px; align-items: center; }
-    main { padding: 24px 0 60px; }
-    .grid { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
-    aside { background: rgba(20,26,43,0.92); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; }
-    aside h3 { margin-top: 0; }
-    .filters label { display: block; margin: 8px 0; font-size: 0.95rem; color: var(--muted); }
-    .filters input, .filters select { width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #334; background: #0e1730; color: #fff; }
-    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-    .card { background: rgba(20,26,43,0.92); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; }
-    .task { padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(16,20,38,0.9); }
-    .task h4 { margin: 0 0 6px; font-size: 1rem; }
-    .tags { display: inline-flex; gap: 6px; margin-top: 6px; }
-    .tag { font-size: 11px; padding: 4px 8px; border-radius: 999px; background: #2a2f60; color: #fff; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 6px; border: none; background: var(--accent); color: #001326; font-weight: 600; cursor: pointer; }
-    .pager { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--white); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #222a55; }
+    h1 { font-size: 20px; margin: 0; }
+    .filters { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .input, .select, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #2a2f56; background: #141a38; color: var(--white); }
+    .input { min-width: 180px; }
+    .button { background: linear-gradient(135deg, #4a8cff 0%, #3a6bd8 100%); color: white; border: none; cursor: pointer; }
+    .button.secondary { background: #1e254f; border: 1px solid #2a2f56; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .card { background: linear-gradient(180deg, rgba(20,26,62,0.92), rgba(14,18,42,0.92)); border: 1px solid #2e3464; border-radius: 12px; padding: 14px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 6px 0; color: var(--muted); font-size: 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { background: #1a214d; color: #d8e0ff; padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; padding: 14px 0; }
+    .page { padding: 6px 10px; border-radius: 6px; border: 1px solid #2a2f56; background: #141a38; cursor: pointer; }
+    .page.active { background: #4a8cff; border-color: #4a8cff; }
+    .empty { text-align: center; padding: 40px; color: var(--muted); }
     @media (max-width: 900px) {
       .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="#" class="logo">Банк заданий — Русский язык</a>
-      <nav aria-label="Навигация">
-        <a href="index.html#главная" class="active">Главная</a>
-        <a href="index.html#банк-заданий">Банк заданий</a>
-        <a href="index.html#оценка-сайта">Поставить оценку</a>
-      </nav>
+  <div class="container">
+    <header>
+      <h1>Банк заданий</h1>
+      <div class="filters" aria-label="Фильтры и поиск">
+        <input id="search" class="input" placeholder="Поиск по названию" />
+        <select id="tagFilter" class="select" aria-label="Фильтр по тегу">
+          <option value="">Все теги</option>
+        </select>
+        <button id="resetBtn" class="button secondary" type="button">Сброс</button>
+      </div>
+    </header>
+
+    <main id="content" class="grid" aria-label="Список заданий">
+      <!-- карточки будут вставляться здесь -->
+    </main>
+
+    <div class="pagination" aria-label="Пагинация">
+      <button id="prevBtn" class="page" type="button">«</button>
+      <span id="pageInfo" style="margin:0 6px; color:var(--muted); font-size:13px;"></span>
+      <button id="nextBtn" class="page" type="button">»</button>
     </div>
-  </header>
 
-  <main id="банк-заданий" aria-label="Страница банка заданий">
-    <section class="container" style="display:flex; justify-content:space-between; align-items:stretch; gap:20px;">
-      <aside aria-label="Фильтры и навигация по банкaм">
-        <h3>Фильтры</h3>
-        <div class="filters">
-          <label>Раздел
-            <select>
-              <option>Лексика</option>
-              <option>Орфография</option>
-              <option>Пунктуация</option>
-              <option>Типовые задачи</option>
-            </select>
-          </label>
-          <label>Уровень сложности
-            <select>
-              <option>2–5 класс</option>
-              <option>6–8 класс</option>
-              <option>9–11 класс</option>
-            </select>
-          </label>
-          <label>Тип задания
-            <select>
-              <option>Выбор одного варианта</option>
-              <option>Установить пропуск</option>
-              <option>Мультитест</option>
-            </select>
-          </label>
-          <button class="btn" style="width:100%; margin-top:8px;">Применить</button>
-        </div>
-      </aside>
+    <div id="empty" class="empty" style="display:none;">
+      Нет заданий, соответствующих фильтрам.
+    </div>
+  </div>
 
-      <section class="card" style="flex:1;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <div>
-            <strong>Список заданий</strong>
-            <div style="color:var(--muted); font-size:12px;">Псевдо-страница, реализующая выборку заданий</div>
-          </div>
-          <div class="tags">
-            <span class="tag">Раздел: Русский</span>
-            <span class="tag">Тип: Выбор одного варианта</span>
-          </div>
-        </div>
+  <script>
+    // Базовые данные задач (пример)
+    const tasks = [
+      { id: 1, title: "Сумма чисел в массиве", description: "Дано массив чисел. Найти сумму элементов.", tags: ["алгоритмы", "математика"], difficulty: "легко" },
+      { id: 2, title: "Поиск элемента в отсортированном массиве", description: "Использовать двоичный поиск.", tags: ["алгоритмы", "поиск"], difficulty: "средне" },
+      { id: 3, title: "Факториал числа n", description: "Вычислить n! рекурсивно.", tags: ["математика"], difficulty: "легко" },
+      { id: 4, title: "Обход дерева в глубину", description: "Реализовать DFS для дерева.", tags: ["структуры данных", "алгоритмы"], difficulty: "сложно" },
+      { id: 5, title: "Сортировка пузырьком", description: "Научиться сортировке пузырьком.", tags: ["алгоритмы"], difficulty: "легко" },
+      { id: 6, title: "Среднее арифметическое", description: "Найти среднее элементов массива.", tags: ["математика"], difficulty: "легко" },
+      { id: 7, title: "Поиск кратчайшего пути (Dijkstra)", description: "Найти кратчайший путь в графе без отрицательных ребер.", tags: ["графы", "алгоритмы"], difficulty: "сложно" },
+      { id: 8, title: "Работа с строками", description: "Найти подстроку в строке, используя KMP.", tags: ["строки", "алгоритмы"], difficulty: "средне" },
+      { id: 9, title: "Динамическое программирование. Разложение числа на слагаемые", description: "Количество способов разложения.", tags: ["динамика", "математика"], difficulty: "средне" },
+      { id: 10, title: "Свертка матриц", description: "Умножение двух матриц размерности n x n.", tags: ["математика", "линейная алгебра"], difficulty: "сложно" }
+    ];
 
-        <div class="list" aria-label="Список заданий">
-          <!-- Пример пяти карточек заданий -->
-          <article class="task" aria-label="Задание 1">
-            <h4>Задача 1. Выберите верное предложение с правильной пунктуацией</h4>
-            <div>Текст задания здесь — кратко формулировка вопроса и вариантов ответов.</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag">Пунктуация</span>
-              <span class="tag">4 балла</span>
-            </div>
-          </article>
+    // Состояние пагинации
+    const PAGE_SIZE = 4;
+    let currentPage = 1;
+    let currentQuery = "";
+    let currentTag = "";
 
-          <article class="task" aria-label="Задание 2">
-            <h4>Задача 2. Выбор орфографически верного варианта</h4>
-            <div>Короткое описание задачи и вариантов.</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag">Орфография</span>
-              <span class="tag">3 балла</span>
-            </div>
-          </article>
+    // Элементы
+    const contentEl = document.getElementById("content");
+    const searchEl = document.getElementById("search");
+    const tagFilterEl = document.getElementById("tagFilter");
+    const resetBtn = document.getElementById("resetBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const pageInfoEl = document.getElementById("pageInfo");
+    const emptyEl = document.getElementById("empty");
 
-          <article class="task" aria-label="Задание 3">
-            <h4>Задача 3. Определение смысла синонимов</h4>
-            <div>Инструкция по выполнению задания.</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag">Лексика</span>
-              <span class="tag">2 балла</span>
-            </div>
-          </article>
+    // Подготовка тегов для фильтра
+    function populateTags() {
+      const tags = Array.from(new Set(tasks.flatMap(t => t.tags))).sort();
+      tags.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t;
+        opt.textContent = t;
+        tagFilterEl.appendChild(opt);
+      });
+    }
 
-          <article class="task" aria-label="Задание 4">
-            <h4>Задача 4. Анализ текста</h4>
-            <div>Краткое описание требований.</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag">Текст</span>
-              <span class="tag">4 балла</span>
-            </div>
-          </article>
+    // Фильтрация задач
+    function getFiltered() {
+      const q = currentQuery.toLowerCase().trim();
+      const tg = currentTag;
+      return tasks.filter(t => {
+        const matchesQ = !q || t.title.toLowerCase().includes(q) || t.description.toLowerCase().includes(q);
+        const matchesTag = !tg || t.tags.includes(tg);
+        return matchesQ && matchesTag;
+      });
+    }
 
-          <article class="task" aria-label="Задание 5">
-            <h4>Задача 5. Найдите ошибку</h4>
-            <div>Текст с намеренной ошибкой для поиска.</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag">Пунктуация</span>
-              <span class="tag">3 балла</span>
-            </div>
-          </article>
-        </div>
+    // Рендэр карточек
+    function render() {
+      const filtered = getFiltered();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = filtered.slice(start, start + PAGE_SIZE);
 
-        <div class="pager" aria-label="Пагинация">
-          <button class="btn" disabled>« Предыдущие</button>
-          <div style="color:var(--muted); font-size:12px;">Страницы: 1 из 1</div>
-          <button class="btn" >Следующая »</button>
-        </div>
-      </section>
-    </section>
-  </main>
+      // Очистка
+      contentEl.innerHTML = "";
+      if (pageItems.length === 0) {
+        emptyEl.style.display = "block";
+      } else {
+        emptyEl.style.display = "none";
+        for (const t of pageItems) {
+          const card = document.createElement("section");
+          card.className = "card";
+          const title = document.createElement("h3");
+          title.textContent = t.title;
+          const desc = document.createElement("p");
+          desc.textContent = t.description;
+          const tags = document.createElement("div");
+          tags.className = "tags";
+          t.tags.forEach(tag => {
+            const span = document.createElement("span");
+            span.className = "tag";
+            span.textContent = tag;
+            tags.appendChild(span);
+          });
+          const meta = document.createElement("p");
+          meta.style.margin = "6px 0 0";
+          meta.style.color = "var(--muted)";
+          meta.textContent = `Сложность: ${t.difficulty}`;
 
-  <footer>
-    <p>Идея безопасной подготовки к ОГЭ. Все примеры созданы для практики навыков без копирования реальных заданий.</p>
-  </footer>
+          card.appendChild(title);
+          card.appendChild(desc);
+          card.appendChild(tags);
+          card.appendChild(meta);
+          contentEl.appendChild(card);
+        }
+      }
+
+      // Пагинация
+      const totalPagesDisplay = Math.max(1, totalPages);
+      pageInfoEl.textContent = `страница ${currentPage} из ${totalPagesDisplay}`;
+      prevBtn.disabled = currentPage <= 1;
+      nextBtn.disabled = currentPage >= totalPagesDisplay;
+    }
+
+    // Обработчики
+    searchEl.addEventListener("input", () => {
+      currentQuery = searchEl.value;
+      currentPage = 1;
+      render();
+    });
+
+    tagFilterEl.addEventListener("change", () => {
+      currentTag = tagFilterEl.value;
+      currentPage = 1;
+      render();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      currentQuery = "";
+      currentTag = "";
+      currentPage = 1;
+      searchEl.value = "";
+      tagFilterEl.value = "";
+      render();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        render();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const total = Math.max(1, Math.ceil(getFiltered().length / PAGE_SIZE));
+      if (currentPage < total) {
+        currentPage++;
+        render();
+      }
+    });
+
+    // Инициализация
+    populateTags();
+    render();
+  </script>
 </body>
 </html>
