@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Банк заданий</title>
+  <meta charset="utf-8" />
+  <title>OGE Русский язык — тренировка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #0b1020;
-      --card: #11152a;
-      --muted: #8a92a6;
-      --primary: #4a8cff;
-      --accent: #7be0d6;
-      --white: #ffffff;
+      --bg: #0e111a;
+      --card: #141b28;
+      --muted: #9aa4b2;
+      --accent: #3b82f6;
+      --text: #e9eefc;
+      --green: #22c55e;
+      --red: #f87171;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--white); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-    header { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #222a55; }
-    h1 { font-size: 20px; margin: 0; }
-    .filters { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .input, .select, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #2a2f56; background: #141a38; color: var(--white); }
-    .input { min-width: 180px; }
-    .button { background: linear-gradient(135deg, #4a8cff 0%, #3a6bd8 100%); color: white; border: none; cursor: pointer; }
-    .button.secondary { background: #1e254f; border: 1px solid #2a2f56; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-    .card { background: linear-gradient(180deg, rgba(20,26,62,0.92), rgba(14,18,42,0.92)); border: 1px solid #2e3464; border-radius: 12px; padding: 14px; }
-    .card h3 { margin: 0 0 8px; font-size: 16px; }
-    .card p { margin: 6px 0; color: var(--muted); font-size: 13px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-    .tag { background: #1a214d; color: #d8e0ff; padding: 4px 8px; border-radius: 999px; font-size: 12px; }
-    .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; padding: 14px 0; }
-    .page { padding: 6px 10px; border-radius: 6px; border: 1px solid #2a2f56; background: #141a38; cursor: pointer; }
-    .page.active { background: #4a8cff; border-color: #4a8cff; }
-    .empty { text-align: center; padding: 40px; color: var(--muted); }
-    @media (max-width: 900px) {
+    html, body { margin: 0; padding: 0; height: 100%; background: radial-gradient(circle at 20% -10%, rgba(59,130,246,.15), transparent 40%), var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #2a3244; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand h1 { font-size: 20px; margin: 0; }
+    .badge { padding: 4px 8px; border-radius: 6px; background: rgba(59,130,246,.25); color: #cfe0ff; font-size: 12px; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .panel { background: rgba(20,27,40,.9); border: 1px solid #2a3244; border-radius: 10px; padding: 14px; }
+    .panel + .panel { margin-top: 12px; }
+    label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+    select, button, input[type="text"] { font-family: inherit; }
+    select, input[type="text"] { padding: 8px 10px; border-radius: 6px; border: 1px solid #2a3244; background: #0f1624; color: var(--text); min-width: 200px; }
+    button { padding: 10px 14px; border-radius: 6px; border: 1px solid #2a3244; background: #1d2a56; color: #fff; cursor: pointer; }
+    button.primary { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); border: none; }
+    button.secondary { background: #2a3244; }
+    button.danger { background: #4b1f25; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .task { padding: 12px; border-radius: 8px; background: rgba(11,17,38,.6); border: 1px solid #2a3244; }
+    .task h3 { margin: 0 0 6px; font-size: 16px; }
+    .variant { padding: 6px 8px; border-radius: 6px; border: 1px solid #2a3244; background: rgba(255,255,255,.04); margin: 6px 0; }
+    .variant.selected { outline: 2px solid var(--accent); background: rgba(59,130,246,.15); }
+    .exam { margin-top: 8px; padding: 8px; background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.4); border-radius: 6px; font-size: 13px; }
+    .row-wrap { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .results { margin-top: 12px; padding: 12px; border-radius: 8px; background: rgba(0,0,0,.25); }
+    footer { text-align: center; color: var(--muted); padding: 14px 0; font-size: 12px; }
+    @media (max-width: 860px) {
       .grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -41,173 +48,285 @@
 <body>
   <div class="container">
     <header>
-      <h1>Банк заданий</h1>
-      <div class="filters" aria-label="Фильтры и поиск">
-        <input id="search" class="input" placeholder="Поиск по названию" />
-        <select id="tagFilter" class="select" aria-label="Фильтр по тегу">
-          <option value="">Все теги</option>
-        </select>
-        <button id="resetBtn" class="button secondary" type="button">Сброс</button>
+      <div class="brand">
+        <div class="badge">OGE-Русский</div>
+        <h1>Тренировка по русскому языку — вариант</h1>
+      </div>
+      <div class="row">
+        <span class="badge" id="seedLabel">Вариант: --</span>
       </div>
     </header>
 
-    <main id="content" class="grid" aria-label="Список заданий">
-      <!-- карточки будут вставляться здесь -->
-    </main>
+    <section class="panel" aria-label="Настройки тренировки">
+      <div class="row" style="gap:12px; align-items:flex-end;">
+        <div style="flex:1;">
+          <label for="modeSelect">Режим тестирования</label>
+          <select id="modeSelect" title="Выберите режим: отдельное задание или экзамен полностью">
+            <option value="single">Выбор отдельного задания</option>
+            <option value="exam">Экзамен полностью (13 заданий)</option>
+          </select>
+        </div>
 
-    <div class="pagination" aria-label="Пагинация">
-      <button id="prevBtn" class="page" type="button">«</button>
-      <span id="pageInfo" style="margin:0 6px; color:var(--muted); font-size:13px;"></span>
-      <button id="nextBtn" class="page" type="button">»</button>
-    </div>
+        <div style="min-width:180px;">
+          <label for="taskSelect" id="taskLabel" style="visibility: visible;">Задание</label>
+          <select id="taskSelect" title="Выберите задание" style="min-width:240px;">
+            <!-- заполнится JS -->
+          </select>
+        </div>
 
-    <div id="empty" class="empty" style="display:none;">
-      Нет заданий, соответствующих фильтрам.
-    </div>
+        <div style="display:flex; align-items:flex-end;">
+          <button id="generateBtn" class="primary" title="Сгенерировать задание/экзамен">Сгенерировать</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:8px;">
+        <div class="row-wrap" id="statusBar">
+          <span class="badge" id="statusText">Готово</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Содержание задания" id="contentPanel" style="display:none;">
+      <div class="task" id="taskDetail">
+        <h3 id="taskTitle">Задание</h3>
+        <div id="taskBody"></div>
+        <div id="variantsList" style="margin-top:8px;">
+          <!-- вариации будут здесь -->
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Экзамен" id="examPanel" style="display:none;">
+      <div class="exam" id="examHeader">Экзамен: 13 заданий</div>
+      <div id="examBody" class="grid" style="grid-template-columns: 1fr 1fr;">
+        <!-- 13 блоков будут заполнены здесь -->
+      </div>
+    </section>
+
+    <section class="panel" id="summaryPanel" aria-label="Итоги" style="display:none;">
+      <h3 style="margin:0 0 8px;">Итоги</h3>
+      <div id="summary" class="results">
+        Всего вопросов: <strong id="totCount">0</strong> | Правильных: <strong id="correctCount">0</strong> | Невыполнено: <strong id="pendingCount">0</strong>
+      </div>
+    </section>
+
+    <footer>
+      Пример учебного модуля. Для добавления реальных текстов замените сгенерированные варианты в dataVariants.
+    </footer>
   </div>
 
   <script>
-    // Базовые данные задач (пример)
-    const tasks = [
-      { id: 1, title: "Сумма чисел в массиве", description: "Дано массив чисел. Найти сумму элементов.", tags: ["алгоритмы", "математика"], difficulty: "легко" },
-      { id: 2, title: "Поиск элемента в отсортированном массиве", description: "Использовать двоичный поиск.", tags: ["алгоритмы", "поиск"], difficulty: "средне" },
-      { id: 3, title: "Факториал числа n", description: "Вычислить n! рекурсивно.", tags: ["математика"], difficulty: "легко" },
-      { id: 4, title: "Обход дерева в глубину", description: "Реализовать DFS для дерева.", tags: ["структуры данных", "алгоритмы"], difficulty: "сложно" },
-      { id: 5, title: "Сортировка пузырьком", description: "Научиться сортировке пузырьком.", tags: ["алгоритмы"], difficulty: "легко" },
-      { id: 6, title: "Среднее арифметическое", description: "Найти среднее элементов массива.", tags: ["математика"], difficulty: "легко" },
-      { id: 7, title: "Поиск кратчайшего пути (Dijkstra)", description: "Найти кратчайший путь в графе без отрицательных ребер.", tags: ["графы", "алгоритмы"], difficulty: "сложно" },
-      { id: 8, title: "Работа с строками", description: "Найти подстроку в строке, используя KMP.", tags: ["строки", "алгоритмы"], difficulty: "средне" },
-      { id: 9, title: "Динамическое программирование. Разложение числа на слагаемые", description: "Количество способов разложения.", tags: ["динамика", "математика"], difficulty: "средне" },
-      { id: 10, title: "Свертка матриц", description: "Умножение двух матриц размерности n x n.", tags: ["математика", "линейная алгебра"], difficulty: "сложно" }
-    ];
+    // База данных: 13 задач, по 60 вариантов каждая
+    // Каждая задача имеет заголовок и массив вариантов variants[]. 
+    // Каждый вариант — текст задания/фрагмента и, при необходимости, правильный ответ.
+    const TASK_COUNT = 13;
+    const VARIANTS_PER_TASK = 60;
 
-    // Состояние пагинации
-    const PAGE_SIZE = 4;
-    let currentPage = 1;
-    let currentQuery = "";
-    let currentTag = "";
-
-    // Элементы
-    const contentEl = document.getElementById("content");
-    const searchEl = document.getElementById("search");
-    const tagFilterEl = document.getElementById("tagFilter");
-    const resetBtn = document.getElementById("resetBtn");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const pageInfoEl = document.getElementById("pageInfo");
-    const emptyEl = document.getElementById("empty");
-
-    // Подготовка тегов для фильтра
-    function populateTags() {
-      const tags = Array.from(new Set(tasks.flatMap(t => t.tags))).sort();
-      tags.forEach(t => {
-        const opt = document.createElement("option");
-        opt.value = t;
-        opt.textContent = t;
-        tagFilterEl.appendChild(opt);
-      });
+    // Пример структуры. В реальном сценарии замените на ваши конкретные варианты.
+    // Варианты формируются как строки примера; вам может потребоваться добавить правильный ответ.
+    const data = [];
+    for (let t = 1; t <= TASK_COUNT; t++) {
+      const task = {
+        id: t,
+        title: `Задание ${t}. Текст условия задачи`,
+        body: `Содержимое задания ${t}: прочитайте текст и выполните запись. Это имитация задания для тренировок.`,
+        variants: []
+      };
+      for (let v = 1; v <= VARIANTS_PER_TASK; v++) {
+        // Пример варианта: текст вопроса и варианты ответов (для открытого типа)
+        // Здесь мы просто показываем текст варианта. В реальном тесте можно добавить варианты ответа.
+        task.variants.push({
+          id: v,
+          text: `Вариант ${v} к заданию ${t}. Текст формулировки варианта ответа.`
+        });
+      }
+      data.push(task);
     }
 
-    // Фильтрация задач
-    function getFiltered() {
-      const q = currentQuery.toLowerCase().trim();
-      const tg = currentTag;
-      return tasks.filter(t => {
-        const matchesQ = !q || t.title.toLowerCase().includes(q) || t.description.toLowerCase().includes(q);
-        const matchesTag = !tg || t.tags.includes(tg);
-        return matchesQ && matchesTag;
-      });
+    // UI элементы
+    const modeSelect = document.getElementById('modeSelect');
+    const taskSelect = document.getElementById('taskSelect');
+    const taskLabel = document.getElementById('taskLabel');
+    const generateBtn = document.getElementById('generateBtn');
+    const statusText = document.getElementById('statusText');
+    const contentPanel = document.getElementById('contentPanel');
+    const taskDetail = document.getElementById('taskDetail');
+    const taskTitle = document.getElementById('taskTitle');
+    const taskBody = document.getElementById('taskBody');
+    const variantsList = document.getElementById('variantsList');
+    const examPanel = document.getElementById('examPanel');
+    const examBody = document.getElementById('examBody');
+    const examHeader = document.getElementById('examHeader');
+    const summaryPanel = document.getElementById('summaryPanel');
+    const summary = document.getElementById('summary');
+    const totCount = document.getElementById('totCount');
+    const correctCount = document.getElementById('correctCount');
+    const pendingCount = document.getElementById('pendingCount');
+    const seedLabel = document.getElementById('seedLabel');
+
+    // Состояние
+    let currentVariantIndex = 1; // 1..60
+    let currentTaskId = 1;
+    let examGenerated = false;
+    let lastSeed = Math.floor(Math.random() * 1e6);
+
+    // Инициализация селекта по заданиям
+    function populateTaskSelect() {
+      taskSelect.innerHTML = '';
+      const optAll = document.createElement('option');
+      optAll.value = 'all';
+      optAll.text = 'Все задания';
+      taskSelect.appendChild(optAll);
+      for (let t = 0; t < TASK_COUNT; t++) {
+        const opt = document.createElement('option');
+        opt.value = String(t + 1);
+        opt.text = `Задание ${t + 1}`;
+        taskSelect.appendChild(opt);
+      }
     }
 
-    // Рендэр карточек
-    function render() {
-      const filtered = getFiltered();
-      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-      if (currentPage > totalPages) currentPage = totalPages;
-      const start = (currentPage - 1) * PAGE_SIZE;
-      const pageItems = filtered.slice(start, start + PAGE_SIZE);
+    function setStatus(msg, color = '#fff') {
+      statusText.textContent = msg;
+      statusText.style.background = 'none';
+      statusText.style.color = color;
+    }
 
-      // Очистка
-      contentEl.innerHTML = "";
-      if (pageItems.length === 0) {
-        emptyEl.style.display = "block";
+    // Генерация уникального варианта (для экзамена: 13 заданий, по одному варианта каждого)
+    function generateSingleVariant(taskId, variantIndex) {
+      const task = data.find(d => d.id === taskId);
+      if (!task) return null;
+      const v = task.variants[(variantIndex - 1) % VARIANTS_PER_TASK];
+      return {
+        taskId: taskId,
+        variantIndex: variantIndex,
+        text: v ? v.text : 'Нет варианта'
+      };
+    }
+
+    // Генерация полного экзамена: 13 заданий, по одному случайному варианту из 60
+    function generateFullExam(seed) {
+      // простая псевдослучайная генерация по seed
+      function rnd() {
+        // xorshift32-like
+        seed = (seed ^ (seed << 13)) >>> 0;
+        seed = (seed ^ (seed >>> 17)) >>> 0;
+        seed = (seed ^ (seed << 5)) >>> 0;
+        return (seed >>> 0) / 4294967296;
+      }
+      const items = [];
+      for (let t = 1; t <= TASK_COUNT; t++) {
+        const vIndex = Math.floor(rnd() * VARIANTS_PER_TASK) + 1;
+        items.push({
+          taskId: t,
+          variantIndex: vIndex,
+          text: data[t - 1].variants[vIndex - 1].text
+        });
+      }
+      return items;
+    }
+
+    // Рендеринг single task view
+    function renderSingleTask(taskId, variantIndex) {
+      const task = data.find(d => d.id === taskId);
+      if (!task) return;
+      taskTitle.textContent = task.title;
+      taskBody.textContent = task.body;
+      // Варианты
+      variantsList.innerHTML = '';
+      task.variants.forEach(v => {
+        const div = document.createElement('div');
+        div.className = 'variant';
+        div.textContent = v.text;
+        variantsList.appendChild(div);
+      });
+      contentPanel.style.display = 'block';
+      examPanel.style.display = 'none';
+      summaryPanel.style.display = 'none';
+      // seed label
+      seedLabel.textContent = `Вариант ${variantIndex} из 60`;
+      lastSeed = Math.floor(Math.random() * 1e6);
+      setStatus('Готово', '#aaf');
+    }
+
+    // Рендеринг экзамена
+    function renderExam(examItems) {
+      examPanel.style.display = 'block';
+      contentPanel.style.display = 'none';
+      // заголовок
+      examHeader.textContent = `Экзамен: 13 заданий (генерировано)`;
+      examBody.innerHTML = '';
+      examItems.forEach((item, idx) => {
+        const cell = document.createElement('div');
+        cell.className = 'task';
+        const h = document.createElement('h3');
+        h.textContent = `Задание ${idx + 1}`;
+        const p = document.createElement('p');
+        p.textContent = item.text;
+        cell.appendChild(h);
+        cell.appendChild(p);
+        examBody.appendChild(cell);
+      });
+      summaryPanel.style.display = 'block';
+      // Обновить итоги как placeholder
+      totCount.textContent = String(TASK_COUNT);
+      correctCount.textContent = String(0);
+      pendingCount.textContent = String(TASK_COUNT);
+      setStatus('Экзамен сгенерирован', '#aaf');
+    }
+
+    // Сгенерировать по выбранному режиму
+    function generate() {
+      const mode = modeSelect.value;
+      // Выбор задания
+      const chosen = taskSelect.value;
+      if (mode === 'single') {
+        // показать конкретное задание
+        let taskId = Number(chosen);
+        if (!taskId || isNaN(taskId)) taskId = 1;
+        // текущий вариант: 1..60
+        currentTaskId = taskId;
+        currentVariantIndex = 1;
+        generateSingleVariant(taskId, currentVariantIndex);
+        renderSingleTask(taskId, currentVariantIndex);
       } else {
-        emptyEl.style.display = "none";
-        for (const t of pageItems) {
-          const card = document.createElement("section");
-          card.className = "card";
-          const title = document.createElement("h3");
-          title.textContent = t.title;
-          const desc = document.createElement("p");
-          desc.textContent = t.description;
-          const tags = document.createElement("div");
-          tags.className = "tags";
-          t.tags.forEach(tag => {
-            const span = document.createElement("span");
-            span.className = "tag";
-            span.textContent = tag;
-            tags.appendChild(span);
-          });
-          const meta = document.createElement("p");
-          meta.style.margin = "6px 0 0";
-          meta.style.color = "var(--muted)";
-          meta.textContent = `Сложность: ${t.difficulty}`;
-
-          card.appendChild(title);
-          card.appendChild(desc);
-          card.appendChild(tags);
-          card.appendChild(meta);
-          contentEl.appendChild(card);
-        }
+        // экзамен: сгенерировать по seed
+        const seed = lastSeed || Math.floor(Math.random() * 1e6);
+        const examItems = generateFullExam(seed);
+        examGenerated = true;
+        renderExam(examItems);
       }
-
-      // Пагинация
-      const totalPagesDisplay = Math.max(1, totalPages);
-      pageInfoEl.textContent = `страница ${currentPage} из ${totalPagesDisplay}`;
-      prevBtn.disabled = currentPage <= 1;
-      nextBtn.disabled = currentPage >= totalPagesDisplay;
     }
-
-    // Обработчики
-    searchEl.addEventListener("input", () => {
-      currentQuery = searchEl.value;
-      currentPage = 1;
-      render();
-    });
-
-    tagFilterEl.addEventListener("change", () => {
-      currentTag = tagFilterEl.value;
-      currentPage = 1;
-      render();
-    });
-
-    resetBtn.addEventListener("click", () => {
-      currentQuery = "";
-      currentTag = "";
-      currentPage = 1;
-      searchEl.value = "";
-      tagFilterEl.value = "";
-      render();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-        render();
-      }
-    });
-
-    nextBtn.addEventListener("click", () => {
-      const total = Math.max(1, Math.ceil(getFiltered().length / PAGE_SIZE));
-      if (currentPage < total) {
-        currentPage++;
-        render();
-      }
-    });
 
     // Инициализация
-    populateTags();
-    render();
+    populateTaskSelect();
+    // Установить начальные значения
+    taskSelect.value = '1';
+    setStatus('Готов к тренировке', '#9ff');
+
+    // Обработчики
+    modeSelect.addEventListener('change', () => {
+      // При смене режима переключить видимость
+      if (modeSelect.value === 'single') {
+        contentPanel.style.display = 'block';
+        examPanel.style.display = 'none';
+        summaryPanel.style.display = 'none';
+      } else {
+        contentPanel.style.display = 'none';
+        examPanel.style.display = 'block';
+        summaryPanel.style.display = 'block';
+      }
+    });
+
+    generateBtn.addEventListener('click', () => {
+      generate();
+    });
+
+    // При загрузке показываем первое задание по умолчанию
+    window.addEventListener('load', () => {
+      // По умолчанию: режим single, выбран первый элемент
+      taskSelect.value = '1';
+      generate();
+    });
+
   </script>
 </body>
 </html>
