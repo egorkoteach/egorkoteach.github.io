@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Банк заданий ОГЭ по русскому языку</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Общие стили */
         :root {
@@ -18,7 +19,7 @@
             --success: #4cc9f0;
             --warning: #f8961e;
             --danger: #e63946;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.95);
             --glass: rgba(255, 255, 255, 0.25);
             --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             --border: 1px solid rgba(255, 255, 255, 0.18);
@@ -29,15 +30,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
             background-attachment: fixed;
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .container {
@@ -69,13 +72,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
 
         .logo i {
-            font-size: 28px;
+            font-size: 1.75rem;
         }
 
         nav {
@@ -91,6 +94,7 @@
             border-radius: 50px;
             position: relative;
             overflow: hidden;
+            font-size: 1rem;
         }
 
         .nav-tab::before {
@@ -136,10 +140,11 @@
             display: block;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             color: var(--dark);
             margin-bottom: 20px;
             font-weight: 700;
+            line-height: 1.3;
         }
 
         h1 {
@@ -166,9 +171,20 @@
             border-radius: 2px;
         }
 
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
         p {
             margin-bottom: 15px;
             color: var(--gray);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         /* Главная страница */
@@ -183,7 +199,7 @@
         }
 
         .welcome-section p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 800px;
             margin: 0 auto 30px;
         }
@@ -234,12 +250,17 @@
             justify-content: center;
             margin: 0 auto 20px;
             color: white;
-            font-size: 30px;
+            font-size: 1.875rem;
         }
 
         .feature h3 {
             margin-bottom: 15px;
             color: var(--primary);
+            font-size: 1.375rem;
+        }
+
+        .feature p {
+            font-size: 1rem;
         }
 
         /* Кнопки */
@@ -257,6 +278,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -329,16 +351,18 @@
             justify-content: center;
             margin: 0 auto 20px;
             color: white;
-            font-size: 35px;
+            font-size: 2.1875rem;
         }
 
         .mode-card h3 {
             margin-bottom: 15px;
             color: var(--primary);
+            font-size: 1.375rem;
         }
 
         .mode-card p {
             margin-bottom: 20px;
+            font-size: 1rem;
         }
 
         /* Выбор задания */
@@ -388,13 +412,13 @@
         }
 
         .task-number {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .task-title {
-            font-size: 12px;
+            font-size: 0.75rem;
             opacity: 0.8;
         }
 
@@ -466,7 +490,7 @@
         }
 
         .task-title {
-            font-size: 24px;
+            font-size: 1.5rem;
             color: var(--primary);
         }
 
@@ -477,6 +501,7 @@
             border-radius: 50px;
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+            font-size: 1rem;
         }
 
         .task-text {
@@ -486,6 +511,7 @@
             background: rgba(67, 97, 238, 0.05);
             border-radius: 10px;
             border-left: 4px solid var(--primary);
+            font-size: 1.125rem;
         }
 
         .answer-options {
@@ -502,6 +528,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1rem;
         }
 
         .option:hover {
@@ -520,9 +547,10 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 1rem;
             transition: var(--transition);
             background: rgba(255, 255, 255, 0.7);
+            font-family: inherit;
         }
 
         .text-input:focus {
@@ -543,6 +571,55 @@
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
+        }
+
+        /* Сравнение ответов */
+        .comparison-container {
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .comparison-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .user-answer, .correct-answer {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .user-answer {
+            background: rgba(76, 201, 240, 0.1);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .correct-answer {
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .answer-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .answer-text {
+            white-space: pre-wrap;
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
         /* Результаты */
@@ -589,6 +666,83 @@
             border-left: 4px solid var(--primary);
         }
 
+        .explanation h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            font-size: 1rem;
+        }
+
+        /* Просмотр ответов */
+        .answers-review {
+            margin-top: 30px;
+        }
+
+        .answer-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            margin-bottom: 20px;
+        }
+
+        .answer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .answer-task {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.125rem;
+        }
+
+        .answer-status {
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .answer-status.correct {
+            background: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+        }
+
+        .answer-status.incorrect {
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--danger);
+        }
+
+        .answer-content {
+            margin-bottom: 15px;
+        }
+
+        .answer-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .answer-text {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            font-size: 1rem;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
         /* Отзывы */
         .review-form {
             background: var(--card-bg);
@@ -610,6 +764,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--primary);
+            font-size: 1rem;
         }
 
         .form-control {
@@ -617,9 +772,10 @@
             padding: 15px;
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 1rem;
             transition: var(--transition);
             background: rgba(255, 255, 255, 0.7);
+            font-family: inherit;
         }
 
         .form-control:focus {
@@ -664,11 +820,17 @@
         .review-author {
             font-weight: 600;
             color: var(--primary);
+            font-size: 1.125rem;
         }
 
         .review-date {
             color: var(--gray);
-            font-size: 14px;
+            font-size: 0.875rem;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         /* Футер */
@@ -694,7 +856,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -709,6 +871,7 @@
             color: var(--gray);
             text-decoration: none;
             transition: var(--transition);
+            font-size: 1rem;
         }
 
         .footer-link:hover {
@@ -731,6 +894,7 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            font-size: 1.125rem;
         }
 
         .social-link:hover {
@@ -776,6 +940,31 @@
                 flex-direction: column;
                 gap: 15px;
                 align-items: flex-start;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 2.25rem;
+            }
+
+            .welcome-section p {
+                font-size: 1.125rem;
+            }
+
+            .comparison-content {
+                grid-template-columns: 1fr;
+            }
+
+            .user-answer {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -956,6 +1145,10 @@
             <div id="results-container" style="display: none;">
                 <!-- Результаты будут загружены динамически -->
             </div>
+
+            <div id="answers-review" style="display: none;">
+                <!-- Просмотр ответов будет загружен динамически -->
+            </div>
         </section>
 
         <!-- Отзывы -->
@@ -1015,7 +1208,8 @@
                 description: "Прослушайте текст и напишите сжатое изложение. Учтите, что вы должны передать главное содержание как каждой микротемы, так и всего текста в целом. Объём изложения — не менее 70 слов.",
                 audio: "audio/task1.mp3", // В реальном приложении здесь будет ссылка на аудио
                 type: "text",
-                explanation: "В этом задании важно передать основную мысль текста, сохранив его структуру и логику. Обратите внимание на ключевые слова и фразы, которые помогают понять главную идею."
+                explanation: "В этом задании важно передать основную мысль текста, сохранив его структуру и логику. Обратите внимание на ключевые слова и фразы, которые помогают понять главную идею.",
+                sampleAnswer: "Образец ответа: В современном мире важно сохранять культурное наследие. Многие исторические памятники требуют реставрации и защиты. Общество должно осознавать ценность культурного наследия и принимать активное участие в его сохранении для будущих поколений."
             },
             2: {
                 title: "Синтаксический анализ",
@@ -1029,14 +1223,16 @@
                     "кусты покрыты"
                 ],
                 correct: [0, 1, 2],
-                explanation: "Грамматическая основа — это подлежащее и сказуемое. В предложении 'Солнце уже скрылось' основа 'солнце скрылось', в 'ночные тени быстро надвигались' — 'тени надвигались', в 'В воздухе чувствовалась прохлада' — 'прохлада чувствовалась', в 'Дорога вилась' — 'дорога вилась'."
+                explanation: "Грамматическая основа — это подлежащее и сказуемое. В предложении 'Солнце уже скрылось' основа 'солнце скрылось', в 'ночные тени быстро надвигались' — 'тени надвигались', в 'В воздухе чувствовалась прохлада' — 'прохлада чувствовалась', в 'Дорога вилась' — 'дорога вилась'.",
+                sampleAnswer: "Правильные ответы: тени надвигались, чувствовалась прохлада, дорога вилась"
             },
             // Остальные задания будут аналогично структурированы
             13: {
                 title: "Сочинение-рассуждение",
                 description: "Напишите сочинение-рассуждение, раскрывая смысл высказывания известного лингвиста: «В языке есть… слова. В языке есть… грамматика. Это — те способы, которыми язык пользуется, чтобы строить предложения».",
                 type: "text",
-                explanation: "В сочинении нужно раскрыть смысл цитаты, привести 2 примера из прочитанного текста, иллюстрирующих разные языковые явления, и указать роль этих примеров в тексте."
+                explanation: "В сочинении нужно раскрыть смысл цитаты, привести 2 примера из прочитанного текста, иллюстрирующих разные языковые явления, и указать роль этих примеров в тексте.",
+                sampleAnswer: "Образец ответа: Высказывание лингвиста подчеркивает, что слова и грамматика - это основные средства языка. Слова называют предметы, действия, признаки, а грамматика позволяет соединять слова в предложения. Например, в тексте используется слово 'красивый' для описания природы и грамматическая конструкция 'который' для связи предложений. Эти средства помогают автору точно и выразительно передать свои мысли."
             }
         };
 
@@ -1058,6 +1254,7 @@
         const variantSelection = document.getElementById('variant-selection');
         const taskContainer = document.getElementById('task-container');
         const resultsContainer = document.getElementById('results-container');
+        const answersReview = document.getElementById('answers-review');
         const modeSelection = document.getElementById('mode-selection');
         const submitReviewBtn = document.getElementById('submit-review');
 
@@ -1211,7 +1408,7 @@
                             Ваш браузер не поддерживает аудио элементы.
                         </audio>
                     </div>
-                    <textarea class="text-input" placeholder="Напишите ваше изложение здесь..."></textarea>
+                    <textarea class="text-input" placeholder="Напишите ваше изложение здесь..." id="user-answer"></textarea>
                 ` : ''}
                 
                 ${taskNumber === 2 ? `
@@ -1227,7 +1424,7 @@
                 ` : ''}
                 
                 ${taskNumber === 13 ? `
-                    <textarea class="text-input" placeholder="Напишите ваше сочинение здесь..."></textarea>
+                    <textarea class="text-input" placeholder="Напишите ваше сочинение здесь..." id="user-answer"></textarea>
                 ` : ''}
                 
                 <div class="action-buttons">
@@ -1237,7 +1434,7 @@
                     </button>
                     <button class="btn" id="next-task">
                         <i class="fas fa-arrow-right"></i>
-                        Следующее задание
+                        ${currentMode === 'individual' ? 'Завершить' : 'Следующее задание'}
                     </button>
                 </div>
             `;
@@ -1264,9 +1461,8 @@
             // Обработчик перехода к следующему заданию
             document.getElementById('next-task').addEventListener('click', function() {
                 if (currentMode === 'individual') {
-                    // Возвращаем к выбору задания
-                    taskContainer.style.display = 'none';
-                    taskSelection.style.display = 'block';
+                    // Показываем результаты для одного задания
+                    showResults();
                 } else {
                     // В полном экзамене переходим к следующему заданию
                     if (taskNumber < 13) {
@@ -1295,6 +1491,9 @@
                 // Для заданий 1 и 13 просто показываем пояснение
                 userAnswer = document.querySelector('.text-input').value;
                 isCorrect = true; // Эти задания не проверяются автоматически
+                
+                // Показываем сравнение ответов для письменных заданий
+                showAnswerComparison(taskNumber, userAnswer, task.sampleAnswer);
             } else if (taskNumber === 2) {
                 // Для задания 2 проверяем выбранные варианты
                 const selectedOptions = [];
@@ -1305,18 +1504,55 @@
                 
                 // Сравниваем с правильным ответом
                 isCorrect = JSON.stringify(selectedOptions.sort()) === JSON.stringify(task.correct.sort());
-                userAnswer = selectedOptions.join(', ');
+                userAnswer = selectedOptions.map(idx => task.options[idx]).join(', ');
             }
             
             // Сохраняем ответ пользователя
             userAnswers[taskNumber] = {
                 userAnswer: userAnswer,
                 isCorrect: isCorrect,
-                correctAnswer: task.correct ? task.correct.join(', ') : 'Сравните с образцом'
+                correctAnswer: task.correct ? task.correct.map(idx => task.options[idx]).join(', ') : task.sampleAnswer,
+                explanation: task.explanation,
+                title: task.title
             };
             
-            // Показываем пояснение
-            showExplanation(taskNumber, task.explanation);
+            // Показываем пояснение (кроме письменных заданий, где уже показано сравнение)
+            if (taskNumber !== 1 && taskNumber !== 13) {
+                showExplanation(taskNumber, task.explanation);
+            }
+        }
+
+        // Показ сравнения ответов для письменных заданий
+        function showAnswerComparison(taskNumber, userAnswer, correctAnswer) {
+            const comparisonHTML = `
+                <div class="comparison-container">
+                    <div class="comparison-header">
+                        <i class="fas fa-exchange-alt"></i> Сравнение вашего ответа с образцом
+                    </div>
+                    <div class="comparison-content">
+                        <div class="user-answer">
+                            <div class="answer-label">Ваш ответ:</div>
+                            <div class="answer-text">${userAnswer || 'Ответ не предоставлен'}</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Образец ответа:</div>
+                            <div class="answer-text">${correctAnswer}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explanation">
+                    <h3>Пояснение:</h3>
+                    <p>${tasksData[taskNumber].explanation}</p>
+                    <p><strong>Обратите внимание:</strong> Ваш ответ не проверяется автоматически. Сравните его с образцом и оцените, насколько полно вы раскрыли тему.</p>
+                </div>
+            `;
+            
+            // Вставляем сравнение после кнопок
+            const actionButtons = document.querySelector('.action-buttons');
+            actionButtons.insertAdjacentHTML('afterend', comparisonHTML);
+            
+            // Делаем кнопку проверки неактивной
+            document.getElementById('check-task').disabled = true;
         }
 
         // Показ пояснения к заданию
@@ -1325,11 +1561,9 @@
                 <div class="explanation">
                     <h3>Пояснение:</h3>
                     <p>${explanation}</p>
-                    ${taskNumber === 1 || taskNumber === 13 ? 
-                        '<p><strong>Ваш ответ не проверяется автоматически. Сравните его с образцом решения.</strong></p>' : 
-                        userAnswers[taskNumber].isCorrect ? 
-                            '<p class="result-correct">Ваш ответ правильный!</p>' : 
-                            `<p class="result-incorrect">Ваш ответ неправильный. Правильный ответ: ${userAnswers[taskNumber].correctAnswer}</p>`
+                    ${userAnswers[taskNumber].isCorrect ? 
+                        '<p class="result-correct">Ваш ответ правильный!</p>' : 
+                        `<p class="result-incorrect">Ваш ответ неправильный. Правильный ответ: ${userAnswers[taskNumber].correctAnswer}</p>`
                     }
                 </div>
             `;
@@ -1347,29 +1581,77 @@
             taskContainer.style.display = 'none';
             resultsContainer.style.display = 'block';
             
-            let resultsHTML = '<h2>Результаты экзамена</h2>';
+            // Подсчитываем статистику
+            const totalTasks = currentMode === 'individual' ? 1 : 13;
+            let correctCount = 0;
             
-            for (let i = 1; i <= 13; i++) {
+            for (let i = 1; i <= totalTasks; i++) {
+                if (userAnswers[i] && userAnswers[i].isCorrect) {
+                    correctCount++;
+                }
+            }
+            
+            const score = Math.round((correctCount / totalTasks) * 100);
+            
+            let resultsHTML = `
+                <h2>Результаты ${currentMode === 'individual' ? 'тренировки' : 'экзамена'}</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">${correctCount}/${totalTasks}</div>
+                        <div class="stat-label">правильных ответов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">${score}%</div>
+                        <div class="stat-label">результат</div>
+                    </div>
+                </div>
+            `;
+            
+            for (let i = 1; i <= totalTasks; i++) {
                 const result = userAnswers[i];
                 const task = tasksData[i];
                 
-                resultsHTML += `
-                    <div class="result-item">
-                        <div>
-                            <strong>Задание ${i}: ${task.title}</strong>
-                            ${result ? (
-                                result.isCorrect ? 
+                if (result) {
+                    resultsHTML += `
+                        <div class="result-item">
+                            <div>
+                                <strong>Задание ${i}: ${task.title}</strong>
+                                ${result.isCorrect ? 
                                     '<span class="result-correct">✓ Правильно</span>' : 
                                     '<span class="result-incorrect">✗ Неправильно</span>'
-                            ) : '<span>Не выполнено</span>'}
+                                }
+                            </div>
+                            <button class="btn view-explanation" data-task="${i}">
+                                <i class="fas fa-info-circle"></i>
+                                Пояснение
+                            </button>
                         </div>
-                        <button class="btn view-explanation" data-task="${i}">
-                            <i class="fas fa-info-circle"></i>
-                            Пояснение
-                        </button>
-                    </div>
-                `;
+                    `;
+                } else {
+                    resultsHTML += `
+                        <div class="result-item">
+                            <div>
+                                <strong>Задание ${i}: ${task.title}</strong>
+                                <span>Не выполнено</span>
+                            </div>
+                        </div>
+                    `;
+                }
             }
+            
+            // Добавляем кнопку для просмотра ответов
+            resultsHTML += `
+                <div class="action-buttons" style="margin-top: 30px;">
+                    <button class="btn" id="view-answers">
+                        <i class="fas fa-eye"></i>
+                        Просмотреть все ответы
+                    </button>
+                    <button class="btn btn-outline" id="back-to-start">
+                        <i class="fas fa-home"></i>
+                        Вернуться на главную
+                    </button>
+                </div>
+            `;
             
             resultsContainer.innerHTML = resultsHTML;
             
@@ -1379,6 +1661,115 @@
                     const taskNumber = parseInt(this.getAttribute('data-task'));
                     alert(`Пояснение к заданию ${taskNumber}:\n\n${tasksData[taskNumber].explanation}`);
                 });
+            });
+            
+            // Обработчик для просмотра ответов
+            document.getElementById('view-answers').addEventListener('click', function() {
+                showAnswersReview();
+            });
+            
+            // Обработчик для возврата на главную
+            document.getElementById('back-to-start').addEventListener('click', function() {
+                document.querySelector('[data-tab="home"]').click();
+                resetState();
+            });
+        }
+
+        // Показ всех ответов
+        function showAnswersReview() {
+            resultsContainer.style.display = 'none';
+            answersReview.style.display = 'block';
+            
+            const totalTasks = currentMode === 'individual' ? 1 : 13;
+            
+            let answersHTML = `
+                <h2>Просмотр ответов</h2>
+                <p>Здесь вы можете посмотреть все ваши ответы и сравнить их с правильными</p>
+                <div class="answers-review">
+            `;
+            
+            for (let i = 1; i <= totalTasks; i++) {
+                const answer = userAnswers[i];
+                const task = tasksData[i];
+                
+                if (answer) {
+                    answersHTML += `
+                        <div class="answer-item">
+                            <div class="answer-header">
+                                <div class="answer-task">Задание ${i}: ${task.title}</div>
+                                <div class="answer-status ${answer.isCorrect ? 'correct' : 'incorrect'}">
+                                    ${answer.isCorrect ? 'Правильно' : 'Неправильно'}
+                                </div>
+                            </div>
+                            <div class="answer-content">
+                                <div class="answer-label">Ваш ответ:</div>
+                                <div class="answer-text">${answer.userAnswer || 'Ответ не предоставлен'}</div>
+                            </div>
+                            <div class="answer-content">
+                                <div class="answer-label">${i === 1 || i === 13 ? 'Образец ответа:' : 'Правильный ответ:'}</div>
+                                <div class="answer-text">${answer.correctAnswer}</div>
+                            </div>
+                            <div class="explanation">
+                                <h3>Пояснение:</h3>
+                                <p>${task.explanation}</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    answersHTML += `
+                        <div class="answer-item">
+                            <div class="answer-header">
+                                <div class="answer-task">Задание ${i}: ${task.title}</div>
+                                <div class="answer-status incorrect">Не выполнено</div>
+                            </div>
+                            <div class="answer-content">
+                                <div class="answer-label">Ваш ответ:</div>
+                                <div class="answer-text">Ответ не предоставлен</div>
+                            </div>
+                            <div class="answer-content">
+                                <div class="answer-label">${i === 1 || i === 13 ? 'Образец ответа:' : 'Правильный ответ:'}</div>
+                                <div class="answer-text">${task.sampleAnswer || task.correctAnswer}</div>
+                            </div>
+                            <div class="explanation">
+                                <h3>Пояснение:</h3>
+                                <p>${task.explanation}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            answersHTML += `
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="back-to-results">
+                        <i class="fas fa-arrow-left"></i>
+                        Назад к результатам
+                    </button>
+                    <button class="btn" id="new-attempt">
+                        <i class="fas fa-redo"></i>
+                        Новая попытка
+                    </button>
+                </div>
+            `;
+            
+            answersReview.innerHTML = answersHTML;
+            
+            // Обработчики кнопок
+            document.getElementById('back-to-results').addEventListener('click', function() {
+                answersReview.style.display = 'none';
+                resultsContainer.style.display = 'block';
+            });
+            
+            document.getElementById('new-attempt').addEventListener('click', function() {
+                answersReview.style.display = 'none';
+                resetState();
+                
+                if (currentMode === 'individual') {
+                    taskSelection.style.display = 'block';
+                } else {
+                    variantSelection.style.display = 'block';
+                }
             });
         }
 
@@ -1390,6 +1781,7 @@
             userAnswers = {};
             taskContainer.style.display = 'none';
             resultsContainer.style.display = 'none';
+            answersReview.style.display = 'none';
         }
 
         // Добавление отзыва
