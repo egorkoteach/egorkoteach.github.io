@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Банк заданий ОГЭ по русскому языку</title>
+    <title>LangSchool - Онлайн-школа русского языка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Общие стили */
         :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --secondary: #3f37c9;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #e63946;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --glass: rgba(255, 255, 255, 0.25);
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --border: 1px solid rgba(255, 255, 255, 0.18);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #ec4899;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -33,12 +32,10 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Inter', sans-serif;
             color: var(--dark);
             line-height: 1.6;
-            min-height: 100vh;
-            background-attachment: fixed;
+            background-color: var(--light);
             font-size: 16px;
             font-weight: 400;
         }
@@ -49,23 +46,20 @@
             padding: 0 20px;
         }
 
-        /* Шапка и навигация */
+        /* Шапка */
         header {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: white;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: var(--border);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
         }
 
         .logo {
@@ -75,221 +69,81 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
+            text-decoration: none;
         }
 
-        .logo i {
-            font-size: 1.75rem;
-        }
-
-        nav {
-            display: flex;
-            gap: 5px;
-        }
-
-        .nav-tab {
-            padding: 12px 24px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: 50px;
-            position: relative;
-            overflow: hidden;
-            font-size: 1rem;
-        }
-
-        .nav-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-tab:hover::before {
-            left: 100%;
-        }
-
-        .nav-tab.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-        }
-
-        .nav-tab:hover:not(.active) {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-        }
-
-        /* Основной контент */
-        .content-section {
-            display: none;
-            padding: 40px 0;
-            min-height: 70vh;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        h1, h2, h3, h4 {
-            color: var(--dark);
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        h2 {
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        h4 {
-            font-size: 1.25rem;
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: var(--gray);
-            font-size: 1.125rem;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* Главная страница */
-        .welcome-section {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .welcome-section h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .welcome-section p {
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        nav {
+            display: flex;
             gap: 30px;
-            margin-top: 50px;
         }
 
-        .feature {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            text-align: center;
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
 
-        .feature::before {
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -5px;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
 
-        .feature:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(31, 38, 135, 0.2);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 50%;
+        .auth-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.875rem;
+            gap: 15px;
         }
 
-        .feature h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-size: 1.375rem;
-        }
-
-        .feature p {
-            font-size: 1rem;
-        }
-
-        /* Кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-weight: 600;
+            text-decoration: none;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
             font-size: 1rem;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
             color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn-outline:hover {
@@ -297,1551 +151,879 @@
             color: white;
         }
 
-        /* Банк заданий */
-        .mode-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
         }
 
-        .mode-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
+        /* Герой секция */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .mode-card::before {
+        .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-placeholder {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
-            opacity: 0;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Особенности */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            text-align: center;
         }
 
-        .mode-card:hover::before {
-            opacity: 1;
-        }
-
-        .mode-card:hover {
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(31, 38, 135, 0.2);
+            box-shadow: var(--shadow-lg);
         }
 
-        .mode-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             color: white;
-            font-size: 2.1875rem;
+            font-size: 1.75rem;
         }
 
-        .mode-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-size: 1.375rem;
-        }
-
-        .mode-card p {
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        /* Выбор задания */
-        .task-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .task-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px 15px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .task-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .task-card:hover::before {
-            opacity: 1;
-        }
-
-        .task-card:hover {
-            transform: translateY(-5px);
-            color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
-        }
-
-        .task-number {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .task-title {
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        /* Выбор варианта */
-        .variant-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .variant-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px 15px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .variant-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .variant-card:hover::before {
-            opacity: 1;
-        }
-
-        .variant-card:hover {
-            transform: translateY(-5px);
-            color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
-        }
-
-        /* Задание */
-        .task-container {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            margin-bottom: 30px;
-        }
-
-        .task-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .task-title {
+        .feature-card h3 {
             font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .task-number {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
-            font-size: 1rem;
-        }
-
-        .task-text {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            padding: 15px;
-            background: rgba(67, 97, 238, 0.05);
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            font-size: 1.125rem;
-        }
-
-        .answer-options {
-            margin: 20px 0;
-        }
-
-        .option {
-            margin-bottom: 10px;
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
-
-        .option:hover {
-            background: rgba(67, 97, 238, 0.05);
-            border-color: var(--primary);
-        }
-
-        .option.selected {
-            background: rgba(67, 97, 238, 0.1);
-            border-color: var(--primary);
-        }
-
-        .text-input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
             margin-bottom: 15px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.7);
-            font-family: inherit;
+            color: var(--dark);
         }
 
-        .text-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        .feature-card p {
+            color: var(--gray);
         }
 
-        .audio-player {
-            width: 100%;
-            margin: 20px 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Курсы */
+        .courses {
+            padding: 100px 0;
+            background: var(--light);
         }
 
-        .action-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
-        /* Сравнение ответов */
-        .comparison-container {
-            margin-top: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .comparison-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-
-        .comparison-content {
+        .courses-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        .user-answer, .correct-answer {
-            padding: 20px;
-            min-height: 200px;
-        }
-
-        .user-answer {
-            background: rgba(76, 201, 240, 0.1);
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .correct-answer {
-            background: rgba(67, 97, 238, 0.05);
-        }
-
-        .answer-label {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .answer-text {
-            white-space: pre-wrap;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        /* Результаты */
-        .results-container {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
             box-shadow: var(--shadow);
-            border: var(--border);
-            margin-bottom: 30px;
-        }
-
-        .result-item {
-            padding: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             transition: var(--transition);
         }
 
-        .result-item:hover {
-            background: rgba(67, 97, 238, 0.05);
-            border-radius: 10px;
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .result-correct {
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        .result-incorrect {
-            color: var(--danger);
-            font-weight: 600;
-        }
-
-        .explanation {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(67, 97, 238, 0.05);
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .explanation h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-
-        .explanation p {
-            font-size: 1rem;
-        }
-
-        /* Просмотр ответов */
-        .answers-review {
-            margin-top: 30px;
-        }
-
-        .answer-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            margin-bottom: 20px;
-        }
-
-        .answer-header {
+        .course-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: white;
+            font-size: 1.25rem;
         }
 
-        .answer-task {
-            font-weight: 600;
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-category {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
             color: var(--primary);
-            font-size: 1.125rem;
-        }
-
-        .answer-status {
-            font-weight: 600;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.875rem;
-        }
-
-        .answer-status.correct {
-            background: rgba(76, 201, 240, 0.2);
-            color: var(--success);
-        }
-
-        .answer-status.incorrect {
-            background: rgba(230, 57, 70, 0.2);
-            color: var(--danger);
-        }
-
-        .answer-content {
+            font-weight: 500;
             margin-bottom: 15px;
         }
 
-        .answer-label {
+        .course-card h3 {
+            font-size: 1.375rem;
             font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
 
-        .answer-text {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
-            font-size: 1rem;
-            white-space: pre-wrap;
-            line-height: 1.6;
+        .course-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .course-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Преподаватели */
+        .teachers {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .teacher-card {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .teacher-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .teacher-card h3 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .teacher-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .teacher-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
         }
 
         /* Отзывы */
-        .review-form {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
+        .testimonials {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            border: var(--border);
-            margin-bottom: 30px;
+            text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.7);
-            font-family: inherit;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .reviews-list {
-            margin-top: 40px;
-        }
-
-        .review-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .review-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(31, 38, 135, 0.15);
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            align-items: center;
-        }
-
-        .review-author {
-            font-weight: 600;
-            color: var(--primary);
+        .testimonial-text {
             font-size: 1.125rem;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
 
-        .review-date {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .author-info h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
             color: var(--gray);
-            font-size: 0.875rem;
+            font-size: 0.95rem;
         }
 
-        .review-text {
-            font-size: 1rem;
-            line-height: 1.6;
+        /* CTA секция */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background: var(--gray-light);
+        }
+
+        .btn-transparent {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-transparent:hover {
+            background: white;
+            color: var(--primary);
         }
 
         /* Футер */
         footer {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: var(--dark);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 50px;
-            border-top: var(--border);
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.25rem;
+            gap: 12px;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
+            margin-bottom: 20px;
+            color: white;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            margin: 10px 0;
-        }
-
-        .footer-link {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .footer-link:hover {
-            color: var(--primary);
+        .footer-about p {
+            color: #94a3b8;
+            margin-bottom: 20px;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 10px;
         }
 
         .social-link {
             width: 40px;
             height: 40px;
-            background: var(--primary);
-            color: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            font-size: 1.125rem;
+            color: white;
+            text-decoration: none;
         }
 
         .social-link:hover {
+            background: var(--primary);
             transform: translateY(-3px);
-            background: var(--primary-light);
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
 
         /* Адаптивность */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            
-            nav {
-                width: 100%;
+
+            .hero-buttons {
                 justify-content: center;
             }
-            
-            .features {
-                grid-template-columns: 1fr;
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
             }
-            
-            .mode-selection {
-                grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 768px) {
+            nav, .auth-buttons {
+                display: none;
             }
-            
-            .task-selection {
-                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+
+            .mobile-menu-btn {
+                display: block;
             }
-            
-            .action-buttons {
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
-                gap: 15px;
+                align-items: center;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
             }
-            
-            .task-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
+        }
 
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            .welcome-section h1 {
-                font-size: 2.25rem;
-            }
-
-            .welcome-section p {
-                font-size: 1.125rem;
-            }
-
-            .comparison-content {
+        @media (max-width: 576px) {
+            .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .user-answer {
-                border-right: none;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            .features-grid, .courses-grid, .teachers-grid {
+                grid-template-columns: 1fr;
             }
-        }
 
-        /* Дополнительные улучшения */
-        .progress-bar {
-            height: 6px;
-            background: rgba(67, 97, 238, 0.2);
-            border-radius: 3px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .stat {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            min-width: 150px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
+            .hero-text h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Шапка -->
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span>ОГЭ Русский язык</span>
-                </div>
+                <a href="#" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>LangSchool</span>
+                </a>
+                
                 <nav>
-                    <div class="nav-tab active" data-tab="home">Главная</div>
-                    <div class="nav-tab" data-tab="tasks">Банк заданий</div>
-                    <div class="nav-tab" data-tab="reviews">Отзывы</div>
+                    <a href="#" class="nav-link">Главная</a>
+                    <a href="#" class="nav-link">Курсы</a>
+                    <a href="#" class="nav-link">Преподаватели</a>
+                    <a href="#" class="nav-link">Цены</a>
+                    <a href="#" class="nav-link">Блог</a>
                 </nav>
+                
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-outline">Войти</a>
+                    <a href="#" class="btn btn-primary">Регистрация</a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Главная страница -->
-        <section id="home" class="content-section active">
-            <div class="welcome-section">
-                <h1>Подготовка к ОГЭ по русскому языку</h1>
-                <p>Современная платформа для эффективной подготовки к основному государственному экзамену. Тренируйтесь, отслеживайте прогресс и достигайте лучших результатов!</p>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-value">13</div>
-                        <div class="stat-label">типов заданий</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">60</div>
-                        <div class="stat-label">вариантов</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">1000+</div>
-                        <div class="stat-label">пользователей</div>
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Изучайте русский язык <span>с лучшими преподавателями</span></h1>
+                    <p>Онлайн-школа LangSchool предлагает современный подход к изучению русского языка с персональной поддержкой и гарантией результата.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Начать обучение</a>
+                        <a href="#" class="btn btn-outline">Узнать больше</a>
                     </div>
                 </div>
-                
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h3>Полный охват заданий</h3>
-                        <p>Все 13 типов заданий экзамена с подробными пояснениями и методическими рекомендациями</p>
+                <div class="hero-image">
+                    <div class="hero-image-placeholder">
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Отслеживание прогресса</h3>
-                        <p>Анализируйте свои результаты, выявляйте слабые места и улучшайте показатели</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Особенности -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему выбирают нас</h2>
+                <p>Мы создали идеальные условия для эффективного изучения русского языка онлайн</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-headphones"></i>
-                        </div>
-                        <h3>Изложения</h3>
-                        <p>Реалистичная тренировка задания №1 с возможностью прослушивания текста</p>
-                    </div>
+                    <h3>Опытные преподаватели</h3>
+                    <p>Все наши педагоги - дипломированные специалисты с многолетним опытом преподавания русского языка</p>
                 </div>
                 
-                <a href="#" class="btn" id="start-training">
-                    <i class="fas fa-rocket"></i>
-                    Начать подготовку
-                </a>
-            </div>
-        </section>
-
-        <!-- Банк заданий -->
-        <section id="tasks" class="content-section">
-            <h2>Банк заданий ОГЭ</h2>
-            <p>Выберите режим подготовки, который подходит именно вам</p>
-            
-            <div id="mode-selection">
-                <div class="mode-selection">
-                    <div class="mode-card" data-mode="individual">
-                        <div class="mode-icon">
-                            <i class="fas fa-pencil-alt"></i>
-                        </div>
-                        <h3>Тренировка заданий отдельно</h3>
-                        <p>Сосредоточьтесь на конкретных типах заданий, которые вызывают у вас трудности</p>
-                        <button class="btn">Выбрать</button>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <div class="mode-card" data-mode="full">
-                        <div class="mode-icon">
-                            <i class="fas fa-file-alt"></i>
+                    <h3>Современная платформа</h3>
+                    <p>Удобный личный кабинет с интерактивными заданиями, видеоуроками и отслеживанием прогресса</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Персональная программа обучения, учитывающая ваш уровень, цели и темп освоения материала</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Курсы -->
+    <section class="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Популярные курсы</h2>
+                <p>Выберите программу обучения, которая подходит именно вам</p>
+            </div>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Для начинающих</span>
+                        <h3>Русский язык с нуля</h3>
+                        <p>Полный курс для тех, кто только начинает изучать русский язык. Освойте базовую грамматику и лексику.</p>
+                        <div class="course-meta">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i> 3 месяца
+                            </div>
+                            <div class="course-price">₽9,900</div>
                         </div>
-                        <h3>Решить экзамен полностью</h3>
-                        <p>Пройдите полный вариант экзамена для оценки вашей готовности в условиях, приближенных к реальным</p>
-                        <button class="btn">Выбрать</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Грамматика</span>
+                        <h3>Сложные случаи русской грамматики</h3>
+                        <p>Разберитесь с падежами, видами глаголов и другими сложными темами русской грамматики.</p>
+                        <div class="course-meta">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i> 2 месяца
+                            </div>
+                            <div class="course-price">₽7,500</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Разговорный</span>
+                        <h3>Разговорный русский</h3>
+                        <p>Научитесь свободно общаться на русском языке, преодолейте языковой барьер.</p>
+                        <div class="course-meta">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i> 4 месяца
+                            </div>
+                            <div class="course-price">₽12,900</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div id="task-selection" style="display: none;">
-                <h2>Выберите задание для тренировки</h2>
-                <div class="task-selection">
-                    <!-- Задания будут сгенерированы скриптом -->
-                </div>
-                <div class="action-buttons">
-                    <button class="btn btn-outline" id="back-to-modes">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад к выбору режима
-                    </button>
-                </div>
-            </div>
-            
-            <div id="variant-selection" style="display: none;">
-                <h2>Выберите вариант</h2>
-                <p>Доступно 60 уникальных вариантов для каждого задания</p>
-                <div class="variant-selection">
-                    <!-- Варианты будут сгенерированы скриптом -->
-                </div>
-                <div class="action-buttons">
-                    <button class="btn btn-outline" id="back-to-tasks">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад к выбору задания
-                    </button>
-                </div>
-            </div>
-            
-            <div id="task-container" style="display: none;">
-                <!-- Контент задания будет загружен динамически -->
-            </div>
-            
-            <div id="results-container" style="display: none;">
-                <!-- Результаты будут загружены динамически -->
-            </div>
+        </div>
+    </section>
 
-            <div id="answers-review" style="display: none;">
-                <!-- Просмотр ответов будет загружен динамически -->
-            </div>
-        </section>
-
-        <!-- Отзывы -->
-        <section id="reviews" class="content-section">
-            <h2>Отзывы пользователей</h2>
-            <p>Поделитесь своим опытом использования нашего банка заданий</p>
-            
-            <div class="review-form">
-                <div class="form-group">
-                    <label for="review-name">Ваше имя</label>
-                    <input type="text" id="review-name" class="form-control" placeholder="Введите ваше имя">
-                </div>
-                <div class="form-group">
-                    <label for="review-text">Текст отзыва</label>
-                    <textarea id="review-text" class="form-control" placeholder="Поделитесь вашими впечатлениями о нашем банке заданий"></textarea>
-                </div>
-                <button class="btn" id="submit-review">
-                    <i class="fas fa-paper-plane"></i>
-                    Отправить отзыв
-                </button>
+    <!-- Преподаватели -->
+    <section class="teachers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши преподаватели</h2>
+                <p>Познакомьтесь с профессионалами, которые помогут вам достичь цели</p>
             </div>
             
-            <div class="reviews-list">
-                <!-- Отзывы будут загружены динамически -->
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Анна Петрова</h3>
+                    <div class="teacher-role">Филолог-русист</div>
+                    <p>Опыт преподавания - 8 лет. Специализируется на преподавании русского как иностранного.</p>
+                </div>
+                
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Иван Сидоров</h3>
+                    <div class="teacher-role">Кандидат филологических наук</div>
+                    <p>Автор учебных пособий по русскому языку. Опыт работы - 12 лет.</p>
+                </div>
+                
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Мария Козлова</h3>
+                    <div class="teacher-role">Специалист по РКИ</div>
+                    <p>Сертифицированный преподаватель русского как иностранного. Опыт - 6 лет.</p>
+                </div>
+                
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Дмитрий Иванов</h3>
+                    <div class="teacher-role">Лингвист-преподаватель</div>
+                    <p>Специалист по современному русскому языку. Опыт преподавания - 10 лет.</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Отзывы -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Отзывы студентов</h2>
+                <p>Что говорят наши ученики о процессе обучения</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "За 3 месяца обучения в LangSchool я смогла значительно улучшить свои знания русского языка. Особенно хочу отметить индивидуальный подход и поддержку преподавателя."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Елена Смирнова</h4>
+                            <p>Студентка курса "Русский с нуля"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta">
+        <div class="container">
+            <h2>Готовы начать изучение русского языка?</h2>
+            <p>Присоединяйтесь к тысячам студентов, которые уже достигли своих целей с помощью LangSchool</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-light">Выбрать курс</a>
+                <a href="#" class="btn btn-transparent">Бесплатный урок</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-book-open"></i>
-                    <span>ОГЭ Русский язык</span>
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        LangSchool
+                    </div>
+                    <p>Онлайн-школа русского языка с современным подходом к обучению. Мы помогаем нашим студентам достигать языковых целей с 2018 года.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
-                <p>Материалы подготовлены в соответствии с демоверсией ФИПИ 2025-2026</p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Политика конфиденциальности</a>
-                    <a href="#" class="footer-link">Условия использования</a>
-                    <a href="#" class="footer-link">Контакты</a>
+                
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Курсы</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Русский с нуля</a></li>
+                        <li><a href="#">Разговорный русский</a></li>
+                        <li><a href="#">Грамматика</a></li>
+                        <li><a href="#">Подготовка к экзаменам</a></li>
+                        <li><a href="#">Бизнес-русский</a></li>
+                    </ul>
                 </div>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Компания</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Преподаватели</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
                 </div>
-                <p>© 2025 Банк заданий ОГЭ по русскому языку. Все права защищены.</p>
+                
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Поддержка</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                        <li><a href="#">Оплата</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 LangSchool. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Данные для заданий (упрощённые для демонстрации)
-        const tasksData = {
-            1: {
-                title: "Сжатое изложение",
-                description: "Прослушайте текст и напишите сжатое изложение. Учтите, что вы должны передать главное содержание как каждой микротемы, так и всего текста в целом. Объём изложения — не менее 70 слов.",
-                audio: "get_file.mp3", // В реальном приложении здесь будет ссылка на аудио
-                type: "text",
-                explanation: "В этом задании важно передать основную мысль текста, сохранив его структуру и логику. Обратите внимание на ключевые слова и фразы, которые помогают понять главную идею.",
-                sampleAnswer: "Образец ответа: О школе написано много хороших книг. Однако интересно мне одно: какое влияние, кроме знаний, на характер человека оказывает учитель, класс. Ведь у каждого человека свои воспоминания о школе. Кто-то помнит хорошее, что-то плохое, какие-то учителя и одноклассники забываются, какие-то остаются в памяти навсегда. Не всегда этот факт можно объяснить степенью дружбы, причины более глубокие, сложные.
-
-Кроме талантливых учителей, есть и любимые. Любовь можно заслужить без педагогических способностей. Талантливым стать нельзя, а вот любимым стать можно.
-
-Наша любовь к учителям различна. Так, я полюбили физику не из-за известного профессора, который блестяще ставил опыты, а раньше, благодаря молоденькой учительнице Ксении Евгеньевне. Несмотря на ее несовершенства, мы любили ее за то, что она нас любила и проводила интересные уроки, не стыдясь своих ошибок. (120 слов)
-            },
-            2: {
-                title: "Задание №2. Синтаксический анализ",
-                description: "Прочитайтетекстивыполнитезадания 2, 3. Укажите  варианты  ответов,  в  которых  верно  определена грамматическая основа   в   одном   из   предложений   или   в   одной   из   частей   сложного предложения текста. Запишите номера ответов.",
-                text: "(1)Владимир Иванович Даль говорил, что в русском слове «не менее жизни, чем  в  самом  человеке».  (2)Этому  живому  слову  Даль  посвятил  своюдеятельность,  все  свои  силы  –  его  истинным  призванием  стало  служение родному   русскому   слову,   нашей   национальной   культуре.   (3)Автор «Толкового  словаря  живого  великорусского  языка»  достоин  того,  чтобы  мы больше знали о судьбе этого талантливого человека, об истории создания его замечательного   словаря.   (4)Мы   должны   научиться   черпать   из   этой удивительной  книги  то,  что  поможет  нам  общаться  с  родным  словом,  как с живым  человеком.  (5)А  узнавая,  постигая,  разгадывая  тайны  русского слова,  мы  глубже  познаём  особенности  национального  характера,  русской культуры, истории России, через общение с живым словом лучше начинаем узнавать себя. 1 ",
-                type: "multiple-choice",
-                options: [
-                    "Владимир Иванович Даль говорил (предложение 1) ",
-                    "служение стало (предложение 2)",
-                    "автор достоин (предложение 3)",
-                    "мы должны (предложение 4)",
-                    "узнавая, постигая, разгадывая тайны (предложение 5)"
-                ],
-                correct: [0, 1, 2],
-                explanation: "Ответом к этому заданию является варианты ответов 1, 3.",
-                sampleAnswer: "Правильные ответы: Владимир Иванович Даль говорил и автор достоин."
-            },
-            // Остальные задания будут аналогично структурированы
-            13: {
-                title: "Сочинение-рассуждение",
-                description: "Напишите сочинение-рассуждение, раскрывая смысл высказывания известного лингвиста: «В языке есть… слова. В языке есть… грамматика. Это — те способы, которыми язык пользуется, чтобы строить предложения».",
-                type: "text",
-                explanation: "В сочинении нужно раскрыть смысл цитаты, привести 2 примера из прочитанного текста, иллюстрирующих разные языковые явления, и указать роль этих примеров в тексте.",
-                sampleAnswer: "Образец ответа: Высказывание лингвиста подчеркивает, что слова и грамматика - это основные средства языка. Слова называют предметы, действия, признаки, а грамматика позволяет соединять слова в предложения. Например, в тексте используется слово 'красивый' для описания природы и грамматическая конструкция 'который' для связи предложений. Эти средства помогают автору точно и выразительно передать свои мысли."
-            }
-        };
-
-        // Переменные состояния
-        let currentMode = null;
-        let currentTask = null;
-        let currentVariant = null;
-        let userAnswers = {};
-        let reviews = [];
-
-        // DOM элементы
-        const navTabs = document.querySelectorAll('.nav-tab');
-        const contentSections = document.querySelectorAll('.content-section');
-        const startTrainingBtn = document.getElementById('start-training');
-        const modeCards = document.querySelectorAll('.mode-card');
-        const backToModesBtn = document.getElementById('back-to-modes');
-        const backToTasksBtn = document.getElementById('back-to-tasks');
-        const taskSelection = document.getElementById('task-selection');
-        const variantSelection = document.getElementById('variant-selection');
-        const taskContainer = document.getElementById('task-container');
-        const resultsContainer = document.getElementById('results-container');
-        const answersReview = document.getElementById('answers-review');
-        const modeSelection = document.getElementById('mode-selection');
-        const submitReviewBtn = document.getElementById('submit-review');
-
-        // Инициализация
+        // Простой скрипт для мобильного меню
         document.addEventListener('DOMContentLoaded', function() {
-            // Навигация по вкладкам
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Активируем выбранную вкладку
-                    navTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Показываем соответствующий контент
-                    contentSections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === tabId) {
-                            section.classList.add('active');
-                        }
-                    });
-                });
-            });
-
-            // Кнопка "Начать подготовку" на главной
-            startTrainingBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('[data-tab="tasks"]').click();
-            });
-
-            // Выбор режима подготовки
-            modeCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    currentMode = this.getAttribute('data-mode');
-                    
-                    if (currentMode === 'individual') {
-                        // Показываем выбор заданий
-                        modeSelection.style.display = 'none';
-                        taskSelection.style.display = 'block';
-                        generateTaskSelection();
-                    } else if (currentMode === 'full') {
-                        // Показываем выбор вариантов полного экзамена
-                        modeSelection.style.display = 'none';
-                        variantSelection.style.display = 'block';
-                        generateVariantSelection('full');
-                    }
-                });
-            });
-
-            // Кнопка "Назад" к выбору режима
-            backToModesBtn.addEventListener('click', function() {
-                taskSelection.style.display = 'none';
-                variantSelection.style.display = 'none';
-                modeSelection.style.display = 'block';
-                resetState();
-            });
-
-            // Кнопка "Назад" к выбору задания
-            backToTasksBtn.addEventListener('click', function() {
-                variantSelection.style.display = 'none';
-                taskSelection.style.display = 'block';
-                resetState();
-            });
-
-            // Отправка отзыва
-            submitReviewBtn.addEventListener('click', function() {
-                const name = document.getElementById('review-name').value;
-                const text = document.getElementById('review-text').value;
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                const isVisible = nav.style.display === 'flex';
                 
-                if (name && text) {
-                    addReview(name, text);
-                    document.getElementById('review-name').value = '';
-                    document.getElementById('review-text').value = '';
-                    alert('Спасибо за ваш отзыв!');
+                if (isVisible) {
+                    nav.style.display = 'none';
+                    authButtons.style.display = 'none';
                 } else {
-                    alert('Пожалуйста, заполните все поля');
+                    nav.style.display = 'flex';
+                    authButtons.style.display = 'flex';
+                    nav.style.flexDirection = 'column';
+                    authButtons.style.flexDirection = 'column';
+                    nav.style.gap = '15px';
+                    authButtons.style.gap = '15px';
+                    nav.style.position = 'absolute';
+                    nav.style.top = '100%';
+                    nav.style.left = '0';
+                    nav.style.right = '0';
+                    nav.style.background = 'white';
+                    nav.style.padding = '20px';
+                    nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                    
+                    authButtons.style.position = 'absolute';
+                    authButtons.style.top = 'calc(100% + 180px)';
+                    authButtons.style.left = '0';
+                    authButtons.style.right = '0';
+                    authButtons.style.background = 'white';
+                    authButtons.style.padding = '20px';
+                    authButtons.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
                 }
             });
-
-            // Загрузка отзывов из localStorage
-            loadReviews();
         });
-
-        // Генерация выбора заданий
-        function generateTaskSelection() {
-            const taskSelectionContainer = document.querySelector('.task-selection');
-            taskSelectionContainer.innerHTML = '';
-            
-            for (let i = 1; i <= 13; i++) {
-                const taskCard = document.createElement('div');
-                taskCard.className = 'task-card';
-                taskCard.innerHTML = `
-                    <div class="task-number">${i}</div>
-                    <div class="task-title">${tasksData[i]?.title || 'Задание'}</div>
-                `;
-                taskCard.setAttribute('data-task', i);
-                
-                taskCard.addEventListener('click', function() {
-                    currentTask = parseInt(this.getAttribute('data-task'));
-                    taskSelection.style.display = 'none';
-                    variantSelection.style.display = 'block';
-                    generateVariantSelection('individual');
-                });
-                
-                taskSelectionContainer.appendChild(taskCard);
-            }
-        }
-
-        // Генерация выбора вариантов
-        function generateVariantSelection(type) {
-            const variantSelectionContainer = document.querySelector('.variant-selection');
-            variantSelectionContainer.innerHTML = '';
-            
-            for (let i = 1; i <= 60; i++) {
-                const variantCard = document.createElement('div');
-                variantCard.className = 'variant-card';
-                variantCard.textContent = `Вариант ${i}`;
-                variantCard.setAttribute('data-variant', i);
-                
-                variantCard.addEventListener('click', function() {
-                    currentVariant = parseInt(this.getAttribute('data-variant'));
-                    variantSelection.style.display = 'none';
-                    
-                    if (type === 'individual') {
-                        loadTask(currentTask);
-                    } else {
-                        loadFullExam();
-                    }
-                });
-                
-                variantSelectionContainer.appendChild(variantCard);
-            }
-        }
-
-        // Загрузка отдельного задания
-        function loadTask(taskNumber) {
-            const task = tasksData[taskNumber];
-            if (!task) return;
-            
-            taskContainer.innerHTML = `
-                <div class="task-header">
-                    <div class="task-title">${task.title}</div>
-                    <div class="task-number">Задание ${taskNumber}</div>
-                </div>
-                <div class="task-text">${task.description}</div>
-                
-                ${taskNumber === 1 ? `
-                    <div class="audio-player">
-                        <audio controls>
-                            <source src="${task.audio}" type="audio/mpeg">
-                            Ваш браузер не поддерживает аудио элементы.
-                        </audio>
-                    </div>
-                    <textarea class="text-input" placeholder="Напишите ваше изложение здесь..." id="user-answer"></textarea>
-                ` : ''}
-                
-                ${taskNumber === 2 ? `
-                    <div class="task-text">${task.text}</div>
-                    <div class="answer-options">
-                        ${task.options.map((option, index) => `
-                            <div class="option" data-option="${index}">
-                                <input type="checkbox" id="option-${index}">
-                                <label for="option-${index}">${option}</label>
-                            </div>
-                        `).join('')}
-                    </div>
-                ` : ''}
-                
-                ${taskNumber === 13 ? `
-                    <textarea class="text-input" placeholder="Напишите ваше сочинение здесь..." id="user-answer"></textarea>
-                ` : ''}
-                
-                <div class="action-buttons">
-                    <button class="btn" id="check-task">
-                        <i class="fas fa-check"></i>
-                        Проверить
-                    </button>
-                    <button class="btn" id="next-task">
-                        <i class="fas fa-arrow-right"></i>
-                        ${currentMode === 'individual' ? 'Завершить' : 'Следующее задание'}
-                    </button>
-                </div>
-            `;
-            
-            taskContainer.style.display = 'block';
-            
-            // Обработчики для вариантов ответов
-            if (taskNumber === 2) {
-                const options = document.querySelectorAll('.option');
-                options.forEach(option => {
-                    option.addEventListener('click', function() {
-                        const checkbox = this.querySelector('input[type="checkbox"]');
-                        checkbox.checked = !checkbox.checked;
-                        this.classList.toggle('selected');
-                    });
-                });
-            }
-            
-            // Обработчик проверки задания
-            document.getElementById('check-task').addEventListener('click', function() {
-                checkTask(taskNumber);
-            });
-            
-            // Обработчик перехода к следующему заданию
-            document.getElementById('next-task').addEventListener('click', function() {
-                if (currentMode === 'individual') {
-                    // Показываем результаты для одного задания
-                    showResults();
-                } else {
-                    // В полном экзамене переходим к следующему заданию
-                    if (taskNumber < 13) {
-                        loadTask(taskNumber + 1);
-                    } else {
-                        // Завершаем экзамен
-                        showResults();
-                    }
-                }
-            });
-        }
-
-        // Загрузка полного экзамена
-        function loadFullExam() {
-            // Начинаем с первого задания
-            loadTask(1);
-        }
-
-        // Проверка задания
-        function checkTask(taskNumber) {
-            const task = tasksData[taskNumber];
-            let isCorrect = false;
-            let userAnswer = '';
-            
-            if (taskNumber === 1 || taskNumber === 13) {
-                // Для заданий 1 и 13 просто показываем пояснение
-                userAnswer = document.querySelector('.text-input').value;
-                isCorrect = true; // Эти задания не проверяются автоматически
-                
-                // Показываем сравнение ответов для письменных заданий
-                showAnswerComparison(taskNumber, userAnswer, task.sampleAnswer);
-            } else if (taskNumber === 2) {
-                // Для задания 2 проверяем выбранные варианты
-                const selectedOptions = [];
-                document.querySelectorAll('.option input[type="checkbox"]:checked').forEach(checkbox => {
-                    const optionIndex = parseInt(checkbox.parentElement.getAttribute('data-option'));
-                    selectedOptions.push(optionIndex);
-                });
-                
-                // Сравниваем с правильным ответом
-                isCorrect = JSON.stringify(selectedOptions.sort()) === JSON.stringify(task.correct.sort());
-                userAnswer = selectedOptions.map(idx => task.options[idx]).join(', ');
-            }
-            
-            // Сохраняем ответ пользователя
-            userAnswers[taskNumber] = {
-                userAnswer: userAnswer,
-                isCorrect: isCorrect,
-                correctAnswer: task.correct ? task.correct.map(idx => task.options[idx]).join(', ') : task.sampleAnswer,
-                explanation: task.explanation,
-                title: task.title
-            };
-            
-            // Показываем пояснение (кроме письменных заданий, где уже показано сравнение)
-            if (taskNumber !== 1 && taskNumber !== 13) {
-                showExplanation(taskNumber, task.explanation);
-            }
-        }
-
-        // Показ сравнения ответов для письменных заданий
-        function showAnswerComparison(taskNumber, userAnswer, correctAnswer) {
-            const comparisonHTML = `
-                <div class="comparison-container">
-                    <div class="comparison-header">
-                        <i class="fas fa-exchange-alt"></i> Сравнение вашего ответа с образцом
-                    </div>
-                    <div class="comparison-content">
-                        <div class="user-answer">
-                            <div class="answer-label">Ваш ответ:</div>
-                            <div class="answer-text">${userAnswer || 'Ответ не предоставлен'}</div>
-                        </div>
-                        <div class="correct-answer">
-                            <div class="answer-label">Образец ответа:</div>
-                            <div class="answer-text">${correctAnswer}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="explanation">
-                    <h3>Пояснение:</h3>
-                    <p>${tasksData[taskNumber].explanation}</p>
-                    <p><strong>Обратите внимание:</strong> Ваш ответ не проверяется автоматически. Сравните его с образцом и оцените, насколько полно вы раскрыли тему.</p>
-                </div>
-            `;
-            
-            // Вставляем сравнение после кнопок
-            const actionButtons = document.querySelector('.action-buttons');
-            actionButtons.insertAdjacentHTML('afterend', comparisonHTML);
-            
-            // Делаем кнопку проверки неактивной
-            document.getElementById('check-task').disabled = true;
-        }
-
-        // Показ пояснения к заданию
-        function showExplanation(taskNumber, explanation) {
-            const explanationHTML = `
-                <div class="explanation">
-                    <h3>Пояснение:</h3>
-                    <p>${explanation}</p>
-                    ${userAnswers[taskNumber].isCorrect ? 
-                        '<p class="result-correct">Ваш ответ правильный!</p>' : 
-                        `<p class="result-incorrect">Ваш ответ неправильный. Правильный ответ: ${userAnswers[taskNumber].correctAnswer}</p>`
-                    }
-                </div>
-            `;
-            
-            // Вставляем пояснение после кнопок
-            const actionButtons = document.querySelector('.action-buttons');
-            actionButtons.insertAdjacentHTML('afterend', explanationHTML);
-            
-            // Делаем кнопку проверки неактивной
-            document.getElementById('check-task').disabled = true;
-        }
-
-        // Показ результатов
-        function showResults() {
-            taskContainer.style.display = 'none';
-            resultsContainer.style.display = 'block';
-            
-            // Подсчитываем статистику
-            const totalTasks = currentMode === 'individual' ? 1 : 13;
-            let correctCount = 0;
-            
-            for (let i = 1; i <= totalTasks; i++) {
-                if (userAnswers[i] && userAnswers[i].isCorrect) {
-                    correctCount++;
-                }
-            }
-            
-            const score = Math.round((correctCount / totalTasks) * 100);
-            
-            let resultsHTML = `
-                <h2>Результаты ${currentMode === 'individual' ? 'тренировки' : 'экзамена'}</h2>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-value">${correctCount}/${totalTasks}</div>
-                        <div class="stat-label">правильных ответов</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">${score}%</div>
-                        <div class="stat-label">результат</div>
-                    </div>
-                </div>
-            `;
-            
-            for (let i = 1; i <= totalTasks; i++) {
-                const result = userAnswers[i];
-                const task = tasksData[i];
-                
-                if (result) {
-                    resultsHTML += `
-                        <div class="result-item">
-                            <div>
-                                <strong>Задание ${i}: ${task.title}</strong>
-                                ${result.isCorrect ? 
-                                    '<span class="result-correct">✓ Правильно</span>' : 
-                                    '<span class="result-incorrect">✗ Неправильно</span>'
-                                }
-                            </div>
-                            <button class="btn view-explanation" data-task="${i}">
-                                <i class="fas fa-info-circle"></i>
-                                Пояснение
-                            </button>
-                        </div>
-                    `;
-                } else {
-                    resultsHTML += `
-                        <div class="result-item">
-                            <div>
-                                <strong>Задание ${i}: ${task.title}</strong>
-                                <span>Не выполнено</span>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-            
-            // Добавляем кнопку для просмотра ответов
-            resultsHTML += `
-                <div class="action-buttons" style="margin-top: 30px;">
-                    <button class="btn" id="view-answers">
-                        <i class="fas fa-eye"></i>
-                        Просмотреть все ответы
-                    </button>
-                    <button class="btn btn-outline" id="back-to-start">
-                        <i class="fas fa-home"></i>
-                        Вернуться на главную
-                    </button>
-                </div>
-            `;
-            
-            resultsContainer.innerHTML = resultsHTML;
-            
-            // Обработчики для кнопок просмотра пояснений
-            document.querySelectorAll('.view-explanation').forEach(button => {
-                button.addEventListener('click', function() {
-                    const taskNumber = parseInt(this.getAttribute('data-task'));
-                    alert(`Пояснение к заданию ${taskNumber}:\n\n${tasksData[taskNumber].explanation}`);
-                });
-            });
-            
-            // Обработчик для просмотра ответов
-            document.getElementById('view-answers').addEventListener('click', function() {
-                showAnswersReview();
-            });
-            
-            // Обработчик для возврата на главную
-            document.getElementById('back-to-start').addEventListener('click', function() {
-                document.querySelector('[data-tab="home"]').click();
-                resetState();
-            });
-        }
-
-        // Показ всех ответов
-        function showAnswersReview() {
-            resultsContainer.style.display = 'none';
-            answersReview.style.display = 'block';
-            
-            const totalTasks = currentMode === 'individual' ? 1 : 13;
-            
-            let answersHTML = `
-                <h2>Просмотр ответов</h2>
-                <p>Здесь вы можете посмотреть все ваши ответы и сравнить их с правильными</p>
-                <div class="answers-review">
-            `;
-            
-            for (let i = 1; i <= totalTasks; i++) {
-                const answer = userAnswers[i];
-                const task = tasksData[i];
-                
-                if (answer) {
-                    answersHTML += `
-                        <div class="answer-item">
-                            <div class="answer-header">
-                                <div class="answer-task">Задание ${i}: ${task.title}</div>
-                                <div class="answer-status ${answer.isCorrect ? 'correct' : 'incorrect'}">
-                                    ${answer.isCorrect ? 'Правильно' : 'Неправильно'}
-                                </div>
-                            </div>
-                            <div class="answer-content">
-                                <div class="answer-label">Ваш ответ:</div>
-                                <div class="answer-text">${answer.userAnswer || 'Ответ не предоставлен'}</div>
-                            </div>
-                            <div class="answer-content">
-                                <div class="answer-label">${i === 1 || i === 13 ? 'Образец ответа:' : 'Правильный ответ:'}</div>
-                                <div class="answer-text">${answer.correctAnswer}</div>
-                            </div>
-                            <div class="explanation">
-                                <h3>Пояснение:</h3>
-                                <p>${task.explanation}</p>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    answersHTML += `
-                        <div class="answer-item">
-                            <div class="answer-header">
-                                <div class="answer-task">Задание ${i}: ${task.title}</div>
-                                <div class="answer-status incorrect">Не выполнено</div>
-                            </div>
-                            <div class="answer-content">
-                                <div class="answer-label">Ваш ответ:</div>
-                                <div class="answer-text">Ответ не предоставлен</div>
-                            </div>
-                            <div class="answer-content">
-                                <div class="answer-label">${i === 1 || i === 13 ? 'Образец ответа:' : 'Правильный ответ:'}</div>
-                                <div class="answer-text">${task.sampleAnswer || task.correctAnswer}</div>
-                            </div>
-                            <div class="explanation">
-                                <h3>Пояснение:</h3>
-                                <p>${task.explanation}</p>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-            
-            answersHTML += `
-                </div>
-                <div class="action-buttons">
-                    <button class="btn btn-outline" id="back-to-results">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад к результатам
-                    </button>
-                    <button class="btn" id="new-attempt">
-                        <i class="fas fa-redo"></i>
-                        Новая попытка
-                    </button>
-                </div>
-            `;
-            
-            answersReview.innerHTML = answersHTML;
-            
-            // Обработчики кнопок
-            document.getElementById('back-to-results').addEventListener('click', function() {
-                answersReview.style.display = 'none';
-                resultsContainer.style.display = 'block';
-            });
-            
-            document.getElementById('new-attempt').addEventListener('click', function() {
-                answersReview.style.display = 'none';
-                resetState();
-                
-                if (currentMode === 'individual') {
-                    taskSelection.style.display = 'block';
-                } else {
-                    variantSelection.style.display = 'block';
-                }
-            });
-        }
-
-        // Сброс состояния
-        function resetState() {
-            currentMode = null;
-            currentTask = null;
-            currentVariant = null;
-            userAnswers = {};
-            taskContainer.style.display = 'none';
-            resultsContainer.style.display = 'none';
-            answersReview.style.display = 'none';
-        }
-
-        // Добавление отзыва
-        function addReview(name, text) {
-            const review = {
-                name: name,
-                text: text,
-                date: new Date().toLocaleDateString('ru-RU')
-            };
-            
-            reviews.push(review);
-            saveReviews();
-            displayReviews();
-        }
-
-        // Сохранение отзывов в localStorage
-        function saveReviews() {
-            localStorage.setItem('oge-reviews', JSON.stringify(reviews));
-        }
-
-        // Загрузка отзывов из localStorage
-        function loadReviews() {
-            const savedReviews = localStorage.getItem('oge-reviews');
-            if (savedReviews) {
-                reviews = JSON.parse(savedReviews);
-                displayReviews();
-            }
-        }
-
-        // Отображение отзывов
-        function displayReviews() {
-            const reviewsList = document.querySelector('.reviews-list');
-            if (reviews.length === 0) {
-                reviewsList.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
-                return;
-            }
-            
-            let reviewsHTML = '';
-            
-            reviews.forEach(review => {
-                reviewsHTML += `
-                    <div class="review-item">
-                        <div class="review-header">
-                            <div class="review-author">${review.name}</div>
-                            <div class="review-date">${review.date}</div>
-                        </div>
-                        <div class="review-text">${review.text}</div>
-                    </div>
-                `;
-            });
-            
-            reviewsList.innerHTML = reviewsHTML;
-        }
     </script>
 </body>
 </html>
-
-
