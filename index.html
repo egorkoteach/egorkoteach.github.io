@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangSchool - Онлайн-школа русского языка</title>
+    <title>RusLang | Онлайн-школа русского языка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,11 +18,10 @@
             --gray: #64748b;
             --gray-light: #e2e8f0;
             --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
             --transition: all 0.3s ease;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
         }
 
         * {
@@ -120,7 +119,7 @@
             align-items: center;
             gap: 8px;
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
@@ -263,7 +262,7 @@
         .feature-card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
@@ -312,7 +311,7 @@
 
         .course-card {
             background: white;
-            border-radius: 12px;
+            border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -391,7 +390,7 @@
             text-align: center;
             background: white;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
@@ -446,7 +445,7 @@
         .testimonial-card {
             background: white;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             text-align: center;
         }
@@ -689,21 +688,21 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>LangSchool</span>
+                    <i class="fas fa-language"></i>
+                    <span>RusLang</span>
                 </a>
                 
                 <nav>
                     <a href="#" class="nav-link">Главная</a>
                     <a href="#" class="nav-link">Курсы</a>
                     <a href="#" class="nav-link">Преподаватели</a>
-                    <a href="#" class="nav-link">Цены</a>
+                    <a href="#" class="nav-link">Методика</a>
                     <a href="#" class="nav-link">Блог</a>
                 </nav>
                 
                 <div class="auth-buttons">
                     <a href="#" class="btn btn-outline">Войти</a>
-                    <a href="#" class="btn btn-primary">Регистрация</a>
+                    <a href="#" class="btn btn-primary">Начать обучение</a>
                 </div>
                 
                 <button class="mobile-menu-btn">
@@ -718,16 +717,16 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Изучайте русский язык <span>с лучшими преподавателями</span></h1>
-                    <p>Онлайн-школа LangSchool предлагает современный подход к изучению русского языка с персональной поддержкой и гарантией результата.</p>
+                    <h1>Освойте русский язык <span>с удовольствием</span></h1>
+                    <p>Современная онлайн-платформа для эффективного изучения русского языка с персональным подходом и гарантией результата.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Начать обучение</a>
+                        <a href="#" class="btn btn-primary">Бесплатный урок</a>
                         <a href="#" class="btn btn-outline">Узнать больше</a>
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-placeholder">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-book-open"></i>
                     </div>
                 </div>
             </div>
@@ -738,8 +737,8 @@
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Почему выбирают нас</h2>
-                <p>Мы создали идеальные условия для эффективного изучения русского языка онлайн</p>
+                <h2>Почему выбирают RusLang</h2>
+                <p>Современный подход к изучению русского языка, который действительно работает</p>
             </div>
             
             <div class="features-grid">
@@ -755,7 +754,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Современная платформа</h3>
+                    <h3>Интерактивная платформа</h3>
                     <p>Удобный личный кабинет с интерактивными заданиями, видеоуроками и отслеживанием прогресса</p>
                 </div>
                 
@@ -774,7 +773,7 @@
     <section class="courses">
         <div class="container">
             <div class="section-header">
-                <h2>Популярные курсы</h2>
+                <h2>Наши курсы</h2>
                 <p>Выберите программу обучения, которая подходит именно вам</p>
             </div>
             
@@ -868,15 +867,6 @@
                     <div class="teacher-role">Специалист по РКИ</div>
                     <p>Сертифицированный преподаватель русского как иностранного. Опыт - 6 лет.</p>
                 </div>
-                
-                <div class="teacher-card">
-                    <div class="teacher-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Дмитрий Иванов</h3>
-                    <div class="teacher-role">Лингвист-преподаватель</div>
-                    <p>Специалист по современному русскому языку. Опыт преподавания - 10 лет.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -892,7 +882,7 @@
             <div class="testimonials-slider">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        "За 3 месяца обучения в LangSchool я смогла значительно улучшить свои знания русского языка. Особенно хочу отметить индивидуальный подход и поддержку преподавателя."
+                        "За 3 месяца обучения в RusLang я смогла значительно улучшить свои знания русского языка. Особенно хочу отметить индивидуальный подход и поддержку преподавателя."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -912,7 +902,7 @@
     <section class="cta">
         <div class="container">
             <h2>Готовы начать изучение русского языка?</h2>
-            <p>Присоединяйтесь к тысячам студентов, которые уже достигли своих целей с помощью LangSchool</p>
+            <p>Присоединяйтесь к тысячам студентов, которые уже достигли своих целей с помощью RusLang</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-light">Выбрать курс</a>
                 <a href="#" class="btn btn-transparent">Бесплатный урок</a>
@@ -926,10 +916,10 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <i class="fas fa-graduation-cap"></i>
-                        LangSchool
+                        <i class="fas fa-language"></i>
+                        RusLang
                     </div>
-                    <p>Онлайн-школа русского языка с современным подходом к обучению. Мы помогаем нашим студентам достигать языковых целей с 2018 года.</p>
+                    <p>Онлайн-школа русского языка с современным подходом к обучению. Мы помогаем нашим студентам достигать языковых целей.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">
                             <i class="fab fa-vk"></i>
@@ -975,13 +965,12 @@
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Политика конфиденциальности</a></li>
                         <li><a href="#">Условия использования</a></li>
-                        <li><a href="#">Оплата</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 LangSchool. Все права защищены.</p>
+                <p>&copy; 2023 RusLang. Все права защищены.</p>
             </div>
         </div>
     </footer>
