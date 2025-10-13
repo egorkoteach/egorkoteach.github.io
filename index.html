@@ -3,1125 +3,958 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ОГЭ Русский язык | Современная подготовка</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Банк заданий ОГЭ по русскому языку</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
-            --glass: rgba(255, 255, 255, 0.1);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --neumorph: 10px 10px 20px rgba(0, 0, 0, 0.05), -10px -10px 20px rgba(255, 255, 255, 0.8);
-        }
-        
+        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            color: var(--dark);
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Шапка и навигация */
         header {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            color: var(--dark);
-            padding: 1.2rem 0;
-            box-shadow: var(--shadow);
-            position: fixed;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 0.8rem 0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            z-index: 100;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .logo-icon {
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-            position: relative;
-        }
-        
-        nav ul li a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            padding: 8px 15px;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        nav ul li a:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            transition: all 0.4s;
-            z-index: -1;
-            border-radius: 30px;
-        }
-        
-        nav ul li a:hover {
-            color: white;
-        }
-        
-        nav ul li a:hover:before {
-            left: 0;
-        }
-        
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 10rem 0 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .hero-text {
-            color: white;
-        }
-        
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            font-weight: 800;
-        }
-        
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .hero-image {
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--primary);
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
+            font-size: 24px;
             font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            transition: all 0.4s;
-            z-index: -1;
-        }
-        
-        .btn:hover {
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn:hover:before {
-            left: 0;
-        }
-        
-        .btn i {
-            margin-left: 10px;
-            transition: transform 0.3s;
-        }
-        
-        .btn:hover i {
-            transform: translateX(5px);
-        }
-        
-        .btn-accent {
-            background: var(--accent);
-            color: white;
-        }
-        
-        /* Sections */
-        section {
-            padding: 6rem 0;
-        }
-        
-        .section-title {
+            color: #2c3e50;
+            padding: 20px 0;
             text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
         }
         
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            margin-bottom: 1rem;
+        nav {
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #eee;
         }
         
-        .section-title p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: #6c757d;
+        .nav-tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
         
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .nav-tab.active {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
         }
         
-        .about-text h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            color: var(--secondary);
+        .nav-tab:hover {
+            background-color: #f5f5f5;
         }
         
-        .about-features {
-            margin-top: 2rem;
+        /* Основной контент */
+        .content-section {
+            display: none;
+            padding: 40px 0;
+            min-height: 70vh;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* Главная страница */
+        .welcome-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .welcome-section h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
         
         .feature {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-icon {
-            background: var(--gradient);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .about-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Structure Section */
-        .structure {
             background: white;
-            position: relative;
-        }
-        
-        .structure-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%234361ee" opacity="0.03"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
-            background-size: cover;
-        }
-        
-        .structure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .structure-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: var(--neumorph);
-            transition: all 0.4s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .structure-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gradient);
-            transition: width 0.3s;
-        }
-        
-        .structure-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .structure-card:hover:before {
-            width: 100%;
-            opacity: 0.1;
-        }
-        
-        .structure-card h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-        }
-        
-        .structure-card h3 span {
-            margin-right: 15px;
-            background: var(--gradient);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-        
-        /* Tips Section */
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .tip-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: var(--neumorph);
-            transition: all 0.4s;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
         
-        .tip-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
+        .feature h3 {
+            margin-bottom: 15px;
+            color: #3498db;
         }
         
-        .tip-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        /* Банк заданий */
+        .mode-selection {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
         }
         
-        .tip-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .tip-card h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-        
-        /* Materials Section */
-        .materials {
+        .mode-card {
             background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
         
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+        .mode-card:hover {
+            transform: translateY(-5px);
         }
         
-        .material-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--neumorph);
-            transition: all 0.4s;
-            position: relative;
+        .mode-card h3 {
+            margin-bottom: 15px;
         }
         
-        .material-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .mode-card p {
+            margin-bottom: 20px;
         }
         
-        .material-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
             color: white;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            z-index: 2;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
-        .material-img {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
+        .btn:hover {
+            background-color: #2980b9;
         }
         
-        .material-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+        /* Выбор задания */
+        .task-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
         }
         
-        .material-card:hover .material-img img {
-            transform: scale(1.1);
+        .task-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        .material-content {
-            padding: 2rem;
+        .task-card:hover {
+            background-color: #3498db;
+            color: white;
         }
         
-        .material-content h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        /* Выбор варианта */
+        .variant-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 30px 0;
         }
         
-        .material-stats {
+        .variant-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Задание */
+        .task-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .task-header {
             display: flex;
             justify-content: space-between;
-            margin-top: 1.5rem;
-            color: #6c757d;
-            font-size: 0.9rem;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
         }
         
-        /* CTA Section */
-        .cta {
-            background: var(--gradient);
+        .task-title {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        
+        .task-number {
+            background-color: #3498db;
             color: white;
-            text-align: center;
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 500;
         }
         
-        .cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .task-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .answer-options {
+            margin: 20px 0;
+        }
+        
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .option.selected {
+            background-color: #e1f5fe;
+            border-color: #3498db;
+        }
+        
+        .text-input {
             width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="0,0 0,100 1000,0"></polygon></svg>');
-            background-size: cover;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
         
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
         }
         
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
         }
         
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-        
-        .btn-light {
+        /* Результаты */
+        .results-container {
             background: white;
-            color: var(--primary);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
         
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 5rem 0 2rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-column h3 {
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-column ul li a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: all 0.3s;
+        .result-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
         
-        .footer-column ul li a i {
-            margin-right: 10px;
-            width: 20px;
+        .result-correct {
+            color: #27ae60;
         }
         
-        .footer-column ul li a:hover {
-            color: white;
-            transform: translateX(5px);
+        .result-incorrect {
+            color: #e74c3c;
         }
         
-        .social-links {
-            display: flex;
-            margin-top: 1.5rem;
+        .explanation {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
         }
         
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: all 0.3s;
+        /* Отзывы */
+        .review-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
         
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #adb5bd;
-            font-size: 0.9rem;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
         
-        /* Progress Bar */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .form-control {
             width: 100%;
-            height: 4px;
-            background: transparent;
-            z-index: 1001;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
         }
         
-        .progress-bar {
-            height: 4px;
-            background: var(--gradient);
-            width: 0%;
-            transition: width 0.3s;
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
         
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50%;
+        .reviews-list {
+            margin-top: 40px;
+        }
+        
+        .review-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .review-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
         
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
+        .review-author {
+            font-weight: 500;
         }
         
-        .back-to-top:hover {
-            transform: translateY(-5px);
+        .review-date {
+            color: #7f8c8d;
         }
         
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content, .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-text {
-                text-align: center;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            
-            .about-image {
-                order: -1;
-            }
+        /* Футер */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
         }
         
+        /* Адаптивность */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                background: white;
-                width: 80%;
-                height: calc(100vh - 70px);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: all 0.4s;
-                z-index: 999;
-            }
-            
-            nav.active {
-                right: 0;
-            }
-            
-            nav ul {
+            .features {
                 flex-direction: column;
-                padding: 2rem;
+                align-items: center;
             }
             
-            nav ul li {
-                margin: 1rem 0;
+            .feature {
+                width: 100%;
+                max-width: 400px;
             }
             
-            .hero-text h1 {
-                font-size: 2.2rem;
+            .mode-selection {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
+            .task-selection {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-    
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    
-    <!-- Header -->
-    <header id="header">
+    <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon"><i class="fas fa-book-open"></i></span>
-                    ОГЭ Русский
-                </div>
-                <div class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="#about">Об экзамене</a></li>
-                        <li><a href="#structure">Структура</a></li>
-                        <li><a href="#tips">Советы</a></li>
-                        <li><a href="#materials">Материалы</a></li>
-                        <li><a href="#cta" class="btn btn-accent">Начать подготовку</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <div class="logo">Банк заданий ОГЭ по русскому языку</div>
+            <nav>
+                <div class="nav-tab active" data-tab="home">Главная</div>
+                <div class="nav-tab" data-tab="tasks">Банк заданий</div>
+                <div class="nav-tab" data-tab="reviews">Отзывы</div>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>ОГЭ по русскому языку 2024</h1>
-                    <p>Инновационная платформа для подготовки к основному государственному экзамену. Современные методы обучения, интерактивные задания и персональные рекомендации.</p>
-                    <a href="#about" class="btn">Исследовать возможности <i class="fas fa-arrow-right"></i></a>
+    <main class="container">
+        <!-- Главная страница -->
+        <section id="home" class="content-section active">
+            <div class="welcome-section">
+                <h1>Подготовка к ОГЭ по русскому языку</h1>
+                <p>Добро пожаловать на наш образовательный портал! Здесь вы найдете все необходимое для успешной подготовки к основному государственному экзамену по русскому языку.</p>
+                <p>Мы предлагаем обширный банк заданий, соответствующих демоверсии ОГЭ 2025-2026 года, с возможностью тренировки отдельных заданий или прохождения полного экзамена.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <h3>13 типов заданий</h3>
+                        <p>Полный охват всех заданий экзамена с подробными пояснениями</p>
+                    </div>
+                    <div class="feature">
+                        <h3>60 вариантов</h3>
+                        <p>Большое количество вариантов для эффективной подготовки</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Автопроверка</h3>
+                        <p>Мгновенная проверка ответов и анализ ошибок</p>
+                    </div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032781450?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Подготовка к экзамену">
-                </div>
+                
+                <a href="#" class="btn" id="start-training">Начать подготовку</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Об экзамене ОГЭ по русскому языку</h2>
-                <p>Узнайте все детали о структуре, содержании и критериях оценивания экзамена</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Что такое ОГЭ по русскому языку?</h3>
-                    <p>ОГЭ (Основной государственный экзамен) по русскому языку — это обязательный экзамен для всех выпускников 9-х классов в России. Результаты экзамена влияют на итоговую оценку в аттестате и являются важным критерием при поступлении в колледжи и техникумы.</p>
-                    <p>Экзамен проверяет знания по орфографии, пунктуации, грамматике, а также умение создавать тексты разных жанров. Успешная сдача ОГЭ по русскому языку подтверждает, что ученик освоил программу основной школы и готов к продолжению образования.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4>Продолжительность</h4>
-                                <p>3 часа 55 минут (235 минут)</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <div>
-                                <h4>Количество заданий</h4>
-                                <p>9 заданий с развернутым ответом</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div>
-                                <h4>Максимальный балл</h4>
-                                <p>33 первичных балла</p>
-                            </div>
-                        </div>
+        <!-- Банк заданий -->
+        <section id="tasks" class="content-section">
+            <div id="mode-selection">
+                <h2>Выберите режим подготовки</h2>
+                <div class="mode-selection">
+                    <div class="mode-card" data-mode="individual">
+                        <h3>Тренировка заданий отдельно</h3>
+                        <p>Сосредоточьтесь на конкретных типах заданий, которые вызывают у вас трудности</p>
+                        <button class="btn">Выбрать</button>
                     </div>
-                    
-                    <a href="#" class="btn">Подробнее об экзамене <i class="fas fa-external-link-alt"></i></a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Изучение русского языка">
+                    <div class="mode-card" data-mode="full">
+                        <h3>Решить экзамен полностью</h3>
+                        <p>Пройдите полный вариант экзамена для оценки вашей готовности</p>
+                        <button class="btn">Выбрать</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div id="task-selection" style="display: none;">
+                <h2>Выберите задание для тренировки</h2>
+                <div class="task-selection">
+                    <!-- Задания будут сгенерированы скриптом -->
+                </div>
+                <button class="btn" id="back-to-modes">Назад к выбору режима</button>
+            </div>
+            
+            <div id="variant-selection" style="display: none;">
+                <h2>Выберите вариант</h2>
+                <div class="variant-selection">
+                    <!-- Варианты будут сгенерированы скриптом -->
+                </div>
+                <button class="btn" id="back-to-tasks">Назад к выбору задания</button>
+            </div>
+            
+            <div id="task-container" style="display: none;">
+                <!-- Контент задания будет загружен динамически -->
+            </div>
+            
+            <div id="results-container" style="display: none;">
+                <!-- Результаты будут загружены динамически -->
+            </div>
+        </section>
 
-    <!-- Structure Section -->
-    <section id="structure" class="structure">
-        <div class="structure-bg"></div>
-        <div class="container">
-            <div class="section-title">
-                <h2>Структура экзамена</h2>
-                <p>ОГЭ по русскому языку состоит из трех частей, проверяющих разные навыки</p>
+        <!-- Отзывы -->
+        <section id="reviews" class="content-section">
+            <h2>Оставьте свой отзыв</h2>
+            <div class="review-form">
+                <div class="form-group">
+                    <label for="review-name">Ваше имя</label>
+                    <input type="text" id="review-name" class="form-control" placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Текст отзыва</label>
+                    <textarea id="review-text" class="form-control" placeholder="Поделитесь вашими впечатлениями о нашем банке заданий"></textarea>
+                </div>
+                <button class="btn" id="submit-review">Отправить отзыв</button>
             </div>
-            <div class="structure-grid">
-                <div class="structure-card">
-                    <h3><span>1</span> Часть 1: Изложение</h3>
-                    <p>Прослушайте текст и напишите сжатое изложение, сохранив микротемы исходного текста. Объём изложения — не менее 70 слов. Это задание проверяет ваше умение обрабатывать и сжимать информацию.</p>
-                    <ul>
-                        <li>Аудирование текста</li>
-                        <li>Сжатие информации</li>
-                        <li>Сохранение микротем</li>
-                    </ul>
-                </div>
-                <div class="structure-card">
-                    <h3><span>2</span> Часть 2: Тестовые задания</h3>
-                    <p>7 заданий с кратким ответом, проверяющих знания орфографии, пунктуации, грамматики и синтаксиса русского языка. Задания основаны на прочитанном тексте.</p>
-                    <ul>
-                        <li>Анализ текста</li>
-                        <li>Орфографические навыки</li>
-                        <li>Пунктуационная грамотность</li>
-                    </ul>
-                </div>
-                <div class="structure-card">
-                    <h3><span>3</span> Часть 3: Сочинение</h3>
-                    <p>Напишите сочинение-рассуждение на одну из трёх предложенных тем. Объём сочинения — не менее 70 слов. Это задание проверяет ваше умение создавать связные тексты и аргументировать свою позицию.</p>
-                    <ul>
-                        <li>Выбор темы</li>
-                        <li>Построение аргументов</li>
-                        <li>Связность текста</li>
-                    </ul>
-                </div>
+            
+            <div class="reviews-list">
+                <h2>Отзывы пользователей</h2>
+                <!-- Отзывы будут загружены динамически -->
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Tips Section -->
-    <section id="tips">
-        <div class="container">
-            <div class="section-title">
-                <h2>Советы по подготовке</h2>
-                <p>Эффективные стратегии для успешной сдачи экзамена</p>
-            </div>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <div class="tip-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Регулярность занятий</h3>
-                    <p>Занимайтесь регулярно, лучше по 30-40 минут ежедневно, чем по несколько часов раз в неделю. Составьте план подготовки и следуйте ему.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">
-                        <i class="fas fa-pen-fancy"></i>
-                    </div>
-                    <h3>Практика написания</h3>
-                    <p>Регулярно пишите изложения и сочинения, чтобы развить навык создания текстов в условиях ограниченного времени.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Работа над ошибками</h3>
-                    <p>Внимательно анализируйте свои ошибки в пробных тестах и работайте над слабыми местами. Ведите дневник ошибок.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3>Изучение критериев</h3>
-                    <p>Тщательно изучите критерии оценивания каждой части экзамена, чтобы понимать, на что обращают внимание проверяющие.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Materials Section -->
-    <section id="materials" class="materials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Полезные материалы</h2>
-                <p>Собранные ресурсы для эффективной подготовки к экзамену</p>
-            </div>
-            <div class="materials-grid">
-                <div class="material-card">
-                    <div class="material-badge">Бесплатно</div>
-                    <div class="material-img">
-                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Демоверсия ОГЭ">
-                    </div>
-                    <div class="material-content">
-                        <h3>Демоверсия ОГЭ 2024</h3>
-                        <p>Официальная демонстрационная версия экзамена с ответами и критериями оценивания от ФИПИ.</p>
-                        <div class="material-stats">
-                            <span><i class="far fa-file-pdf"></i> PDF</span>
-                            <span><i class="far fa-clock"></i> 15 МБ</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <div class="material-badge">Популярное</div>
-                    <div class="material-img">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тесты и задания">
-                    </div>
-                    <div class="material-content">
-                        <h3>Типовые задания</h3>
-                        <p>Сборник типовых тестовых заданий по всем разделам экзамена с подробными решениями.</p>
-                        <div class="material-stats">
-                            <span><i class="far fa-file-alt"></i> 120 стр.</span>
-                            <span><i class="far fa-clock"></i> 2 ч. чтения</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <div class="material-badge">Новое</div>
-                    <div class="material-img">
-                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Теория">
-                    </div>
-                    <div class="material-content">
-                        <h3>Теоретические материалы</h3>
-                        <p>Полный справочник по орфографии, пунктуации и грамматике русского языка с примерами.</p>
-                        <div class="material-stats">
-                            <span><i class="far fa-file-pdf"></i> PDF</span>
-                            <span><i class="far fa-clock"></i> 85 стр.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="cta" class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Начните подготовку к ОГЭ уже сегодня!</h2>
-                <p>Присоединяйтесь к тысячам учеников, которые уже используют нашу платформу для успешной подготовки к экзамену. Интерактивные задания, персональные рекомендации и отслеживание прогресса.</p>
-                <a href="#" class="btn btn-light">Начать обучение <i class="fas fa-rocket"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>ОГЭ Русский язык</h3>
-                    <p>Инновационная платформа для подготовки к основному государственному экзамену по русскому языку. Современные методы обучения и персональный подход.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Разделы</h3>
-                    <ul>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Об экзамене</a></li>
-                        <li><a href="#structure"><i class="fas fa-chevron-right"></i> Структура</a></li>
-                        <li><a href="#tips"><i class="fas fa-chevron-right"></i> Советы</a></li>
-                        <li><a href="#materials"><i class="fas fa-chevron-right"></i> Материалы</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Полезные ссылки</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Официальный сайт ФИПИ</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Решу ОГЭ</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Яндекс Репетитор</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Незнайка</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-envelope"></i> info@oge-russian.ru</a></li>
-                        <li><a href="#"><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Москва, ул. Образцова, 25</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2024 ОГЭ по русскому языку. Все права защищены.</p>
-            </div>
+            <p>© 2025 Банк заданий ОГЭ по русскому языку. Все права защищены.</p>
+            <p>Материалы подготовлены в соответствии с демоверсией ФИПИ 2025-2026</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-        
-        // Header Scroll Effect
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Данные для заданий (упрощённые для демонстрации)
+        const tasksData = {
+            1: {
+                title: "Сжатое изложение",
+                description: "Прослушайте текст и напишите сжатое изложение. Учтите, что вы должны передать главное содержание как каждой микротемы, так и всего текста в целом. Объём изложения — не менее 70 слов.",
+                audio: "audio/task1.mp3", // В реальном приложении здесь будет ссылка на аудио
+                type: "text",
+                explanation: "В этом задании важно передать основную мысль текста, сохранив его структуру и логику. Обратите внимание на ключевые слова и фразы, которые помогают понять главную идею."
+            },
+            2: {
+                title: "Синтаксический анализ",
+                description: "Прочитайте текст и выполните задания. Укажите варианты ответов, в которых верно определена грамматическая основа в одном из предложений или в одной из частей сложного предложения текста.",
+                text: "Солнце уже скрылось, и ночные тени быстро надвигались с востока. В воздухе чувствовалась прохлада. Дорога вилась между кустами орешника, уже покрытыми темнотой.",
+                type: "multiple-choice",
+                options: [
+                    "тени надвигались",
+                    "чувствовалась прохлада",
+                    "дорога вилась",
+                    "кусты покрыты"
+                ],
+                correct: [0, 1, 2],
+                explanation: "Грамматическая основа — это подлежащее и сказуемое. В предложении 'Солнце уже скрылось' основа 'солнце скрылось', в 'ночные тени быстро надвигались' — 'тени надвигались', в 'В воздухе чувствовалась прохлада' — 'прохлада чувствовалась', в 'Дорога вилась' — 'дорога вилась'."
+            },
+            // Остальные задания будут аналогично структурированы
+            13: {
+                title: "Сочинение-рассуждение",
+                description: "Напишите сочинение-рассуждение, раскрывая смысл высказывания известного лингвиста: «В языке есть… слова. В языке есть… грамматика. Это — те способы, которыми язык пользуется, чтобы строить предложения».",
+                type: "text",
+                explanation: "В сочинении нужно раскрыть смысл цитаты, привести 2 примера из прочитанного текста, иллюстрирующих разные языковые явления, и указать роль этих примеров в тексте."
             }
-            
-            // Progress Bar
-            const winHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const scrollTop = window.pageYOffset;
-            const trackLength = docHeight - winHeight;
-            const progress = Math.floor((scrollTop / trackLength) * 100);
-            
-            document.getElementById('progressBar').style.width = progress + '%';
-            
-            // Back to Top Button
-            const backToTop = document.getElementById('backToTop');
-            if (scrollTop > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+        };
+
+        // Переменные состояния
+        let currentMode = null;
+        let currentTask = null;
+        let currentVariant = null;
+        let userAnswers = {};
+        let reviews = [];
+
+        // DOM элементы
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const contentSections = document.querySelectorAll('.content-section');
+        const startTrainingBtn = document.getElementById('start-training');
+        const modeCards = document.querySelectorAll('.mode-card');
+        const backToModesBtn = document.getElementById('back-to-modes');
+        const backToTasksBtn = document.getElementById('back-to-tasks');
+        const taskSelection = document.getElementById('task-selection');
+        const variantSelection = document.getElementById('variant-selection');
+        const taskContainer = document.getElementById('task-container');
+        const resultsContainer = document.getElementById('results-container');
+        const modeSelection = document.getElementById('mode-selection');
+        const submitReviewBtn = document.getElementById('submit-review');
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            // Навигация по вкладкам
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Активируем выбранную вкладку
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Показываем соответствующий контент
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === tabId) {
+                            section.classList.add('active');
+                        }
                     });
+                });
+            });
+
+            // Кнопка "Начать подготовку" на главной
+            startTrainingBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('[data-tab="tasks"]').click();
+            });
+
+            // Выбор режима подготовки
+            modeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    currentMode = this.getAttribute('data-mode');
+                    
+                    if (currentMode === 'individual') {
+                        // Показываем выбор заданий
+                        modeSelection.style.display = 'none';
+                        taskSelection.style.display = 'block';
+                        generateTaskSelection();
+                    } else if (currentMode === 'full') {
+                        // Показываем выбор вариантов полного экзамена
+                        modeSelection.style.display = 'none';
+                        variantSelection.style.display = 'block';
+                        generateVariantSelection('full');
+                    }
+                });
+            });
+
+            // Кнопка "Назад" к выбору режима
+            backToModesBtn.addEventListener('click', function() {
+                taskSelection.style.display = 'none';
+                variantSelection.style.display = 'none';
+                modeSelection.style.display = 'block';
+                resetState();
+            });
+
+            // Кнопка "Назад" к выбору задания
+            backToTasksBtn.addEventListener('click', function() {
+                variantSelection.style.display = 'none';
+                taskSelection.style.display = 'block';
+                resetState();
+            });
+
+            // Отправка отзыва
+            submitReviewBtn.addEventListener('click', function() {
+                const name = document.getElementById('review-name').value;
+                const text = document.getElementById('review-text').value;
+                
+                if (name && text) {
+                    addReview(name, text);
+                    document.getElementById('review-name').value = '';
+                    document.getElementById('review-text').value = '';
+                    alert('Спасибо за ваш отзыв!');
+                } else {
+                    alert('Пожалуйста, заполните все поля');
                 }
             });
+
+            // Загрузка отзывов из localStorage
+            loadReviews();
         });
+
+        // Генерация выбора заданий
+        function generateTaskSelection() {
+            const taskSelectionContainer = document.querySelector('.task-selection');
+            taskSelectionContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 13; i++) {
+                const taskCard = document.createElement('div');
+                taskCard.className = 'task-card';
+                taskCard.textContent = `Задание ${i}`;
+                taskCard.setAttribute('data-task', i);
+                
+                taskCard.addEventListener('click', function() {
+                    currentTask = parseInt(this.getAttribute('data-task'));
+                    taskSelection.style.display = 'none';
+                    variantSelection.style.display = 'block';
+                    generateVariantSelection('individual');
+                });
+                
+                taskSelectionContainer.appendChild(taskCard);
+            }
+        }
+
+        // Генерация выбора вариантов
+        function generateVariantSelection(type) {
+            const variantSelectionContainer = document.querySelector('.variant-selection');
+            variantSelectionContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 60; i++) {
+                const variantCard = document.createElement('div');
+                variantCard.className = 'variant-card';
+                variantCard.textContent = `Вариант ${i}`;
+                variantCard.setAttribute('data-variant', i);
+                
+                variantCard.addEventListener('click', function() {
+                    currentVariant = parseInt(this.getAttribute('data-variant'));
+                    variantSelection.style.display = 'none';
+                    
+                    if (type === 'individual') {
+                        loadTask(currentTask);
+                    } else {
+                        loadFullExam();
+                    }
+                });
+                
+                variantSelectionContainer.appendChild(variantCard);
+            }
+        }
+
+        // Загрузка отдельного задания
+        function loadTask(taskNumber) {
+            const task = tasksData[taskNumber];
+            if (!task) return;
+            
+            taskContainer.innerHTML = `
+                <div class="task-header">
+                    <div class="task-title">${task.title}</div>
+                    <div class="task-number">Задание ${taskNumber}</div>
+                </div>
+                <div class="task-text">${task.description}</div>
+                
+                ${taskNumber === 1 ? `
+                    <div class="audio-player">
+                        <audio controls>
+                            <source src="${task.audio}" type="audio/mpeg">
+                            Ваш браузер не поддерживает аудио элементы.
+                        </audio>
+                    </div>
+                    <textarea class="text-input" placeholder="Напишите ваше изложение здесь..."></textarea>
+                ` : ''}
+                
+                ${taskNumber === 2 ? `
+                    <div class="task-text">${task.text}</div>
+                    <div class="answer-options">
+                        ${task.options.map((option, index) => `
+                            <div class="option" data-option="${index}">
+                                <input type="checkbox" id="option-${index}">
+                                <label for="option-${index}">${option}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                ${taskNumber === 13 ? `
+                    <textarea class="text-input" placeholder="Напишите ваше сочинение здесь..."></textarea>
+                ` : ''}
+                
+                <div class="action-buttons">
+                    <button class="btn" id="check-task">Проверить</button>
+                    <button class="btn" id="next-task">Следующее задание</button>
+                </div>
+            `;
+            
+            taskContainer.style.display = 'block';
+            
+            // Обработчики для вариантов ответов
+            if (taskNumber === 2) {
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', function() {
+                        const checkbox = this.querySelector('input[type="checkbox"]');
+                        checkbox.checked = !checkbox.checked;
+                        this.classList.toggle('selected');
+                    });
+                });
+            }
+            
+            // Обработчик проверки задания
+            document.getElementById('check-task').addEventListener('click', function() {
+                checkTask(taskNumber);
+            });
+            
+            // Обработчик перехода к следующему заданию
+            document.getElementById('next-task').addEventListener('click', function() {
+                if (currentMode === 'individual') {
+                    // Возвращаем к выбору задания
+                    taskContainer.style.display = 'none';
+                    taskSelection.style.display = 'block';
+                } else {
+                    // В полном экзамене переходим к следующему заданию
+                    if (taskNumber < 13) {
+                        loadTask(taskNumber + 1);
+                    } else {
+                        // Завершаем экзамен
+                        showResults();
+                    }
+                }
+            });
+        }
+
+        // Загрузка полного экзамена
+        function loadFullExam() {
+            // Начинаем с первого задания
+            loadTask(1);
+        }
+
+        // Проверка задания
+        function checkTask(taskNumber) {
+            const task = tasksData[taskNumber];
+            let isCorrect = false;
+            let userAnswer = '';
+            
+            if (taskNumber === 1 || taskNumber === 13) {
+                // Для заданий 1 и 13 просто показываем пояснение
+                userAnswer = document.querySelector('.text-input').value;
+                isCorrect = true; // Эти задания не проверяются автоматически
+            } else if (taskNumber === 2) {
+                // Для задания 2 проверяем выбранные варианты
+                const selectedOptions = [];
+                document.querySelectorAll('.option input[type="checkbox"]:checked').forEach(checkbox => {
+                    const optionIndex = parseInt(checkbox.parentElement.getAttribute('data-option'));
+                    selectedOptions.push(optionIndex);
+                });
+                
+                // Сравниваем с правильным ответом
+                isCorrect = JSON.stringify(selectedOptions.sort()) === JSON.stringify(task.correct.sort());
+                userAnswer = selectedOptions.join(', ');
+            }
+            
+            // Сохраняем ответ пользователя
+            userAnswers[taskNumber] = {
+                userAnswer: userAnswer,
+                isCorrect: isCorrect,
+                correctAnswer: task.correct ? task.correct.join(', ') : 'Сравните с образцом'
+            };
+            
+            // Показываем пояснение
+            showExplanation(taskNumber, task.explanation);
+        }
+
+        // Показ пояснения к заданию
+        function showExplanation(taskNumber, explanation) {
+            const explanationHTML = `
+                <div class="explanation">
+                    <h3>Пояснение:</h3>
+                    <p>${explanation}</p>
+                    ${taskNumber === 1 || taskNumber === 13 ? 
+                        '<p><strong>Ваш ответ не проверяется автоматически. Сравните его с образцом решения.</strong></p>' : 
+                        userAnswers[taskNumber].isCorrect ? 
+                            '<p class="result-correct">Ваш ответ правильный!</p>' : 
+                            `<p class="result-incorrect">Ваш ответ неправильный. Правильный ответ: ${userAnswers[taskNumber].correctAnswer}</p>`
+                    }
+                </div>
+            `;
+            
+            // Вставляем пояснение после кнопок
+            const actionButtons = document.querySelector('.action-buttons');
+            actionButtons.insertAdjacentHTML('afterend', explanationHTML);
+            
+            // Делаем кнопку проверки неактивной
+            document.getElementById('check-task').disabled = true;
+        }
+
+        // Показ результатов
+        function showResults() {
+            taskContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            
+            let resultsHTML = '<h2>Результаты экзамена</h2>';
+            
+            for (let i = 1; i <= 13; i++) {
+                const result = userAnswers[i];
+                const task = tasksData[i];
+                
+                resultsHTML += `
+                    <div class="result-item">
+                        <div>
+                            <strong>Задание ${i}: ${task.title}</strong>
+                            ${result ? (
+                                result.isCorrect ? 
+                                    '<span class="result-correct">✓ Правильно</span>' : 
+                                    '<span class="result-incorrect">✗ Неправильно</span>'
+                            ) : '<span>Не выполнено</span>'}
+                        </div>
+                        <button class="btn view-explanation" data-task="${i}">Посмотреть пояснение</button>
+                    </div>
+                `;
+            }
+            
+            resultsContainer.innerHTML = resultsHTML;
+            
+            // Обработчики для кнопок просмотра пояснений
+            document.querySelectorAll('.view-explanation').forEach(button => {
+                button.addEventListener('click', function() {
+                    const taskNumber = parseInt(this.getAttribute('data-task'));
+                    alert(`Пояснение к заданию ${taskNumber}:\n\n${tasksData[taskNumber].explanation}`);
+                });
+            });
+        }
+
+        // Сброс состояния
+        function resetState() {
+            currentMode = null;
+            currentTask = null;
+            currentVariant = null;
+            userAnswers = {};
+            taskContainer.style.display = 'none';
+            resultsContainer.style.display = 'none';
+        }
+
+        // Добавление отзыва
+        function addReview(name, text) {
+            const review = {
+                name: name,
+                text: text,
+                date: new Date().toLocaleDateString('ru-RU')
+            };
+            
+            reviews.push(review);
+            saveReviews();
+            displayReviews();
+        }
+
+        // Сохранение отзывов в localStorage
+        function saveReviews() {
+            localStorage.setItem('oge-reviews', JSON.stringify(reviews));
+        }
+
+        // Загрузка отзывов из localStorage
+        function loadReviews() {
+            const savedReviews = localStorage.getItem('oge-reviews');
+            if (savedReviews) {
+                reviews = JSON.parse(savedReviews);
+                displayReviews();
+            }
+        }
+
+        // Отображение отзывов
+        function displayReviews() {
+            const reviewsList = document.querySelector('.reviews-list');
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<h2>Отзывы пользователей</h2><p>Пока нет отзывов. Будьте первым!</p>';
+                return;
+            }
+            
+            let reviewsHTML = '<h2>Отзывы пользователей</h2>';
+            
+            reviews.forEach(review => {
+                reviewsHTML += `
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-author">${review.name}</div>
+                            <div class="review-date">${review.date}</div>
+                        </div>
+                        <div class="review-text">${review.text}</div>
+                    </div>
+                `;
+            });
+            
+            reviewsList.innerHTML = reviewsHTML;
+        }
     </script>
 </body>
 </html>
