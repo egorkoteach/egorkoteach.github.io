@@ -4,431 +4,842 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Банк заданий ОГЭ по русскому языку</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Общие стили */
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --glass: rgba(255, 255, 255, 0.25);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --border: 1px solid rgba(255, 255, 255, 0.18);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
             line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Шапка и навигация */
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: var(--border);
         }
-        
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 24px;
             font-weight: 700;
-            color: #2c3e50;
-            padding: 20px 0;
-            text-align: center;
+            color: var(--primary);
         }
-        
+
+        .logo i {
+            font-size: 28px;
+        }
+
         nav {
             display: flex;
-            justify-content: center;
-            border-top: 1px solid #eee;
+            gap: 5px;
         }
-        
+
         .nav-tab {
-            padding: 15px 30px;
+            padding: 12px 24px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-tab:hover::before {
+            left: 100%;
+        }
+
         .nav-tab.active {
-            color: #3498db;
-            border-bottom: 3px solid #3498db;
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
         }
-        
-        .nav-tab:hover {
-            background-color: #f5f5f5;
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
         }
-        
+
         /* Основной контент */
         .content-section {
             display: none;
             padding: 40px 0;
             min-height: 70vh;
+            animation: fadeIn 0.5s ease;
         }
-        
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .content-section.active {
             display: block;
         }
-        
+
         h1, h2, h3 {
-            color: #2c3e50;
+            color: var(--dark);
             margin-bottom: 20px;
+            font-weight: 700;
         }
-        
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
         p {
             margin-bottom: 15px;
+            color: var(--gray);
         }
-        
+
         /* Главная страница */
         .welcome-section {
             text-align: center;
             padding: 40px 0;
         }
-        
+
         .welcome-section h1 {
-            font-size: 36px;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
-        
+
         .welcome-section p {
-            font-size: 18px;
+            font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
         }
-        
+
         .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-        
+
         .feature {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            min-width: 250px;
-            margin-bottom: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(31, 38, 135, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+
         .feature h3 {
             margin-bottom: 15px;
-            color: #3498db;
+            color: var(--primary);
         }
-        
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         /* Банк заданий */
         .mode-selection {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 40px 0;
         }
-        
+
         .mode-card {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .mode-card:hover::before {
+            opacity: 1;
+        }
+
         .mode-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(31, 38, 135, 0.2);
         }
-        
+
+        .mode-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 35px;
+        }
+
         .mode-card h3 {
             margin-bottom: 15px;
+            color: var(--primary);
         }
-        
+
         .mode-card p {
             margin-bottom: 20px;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
+
         /* Выбор задания */
         .task-selection {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
-        
+
         .task-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .task-card:hover::before {
+            opacity: 1;
+        }
+
         .task-card:hover {
-            background-color: #3498db;
+            transform: translateY(-5px);
             color: white;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
         }
-        
+
+        .task-number {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .task-title {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
         /* Выбор варианта */
         .variant-selection {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
+            gap: 15px;
             margin: 30px 0;
         }
-        
+
         .variant-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .variant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .variant-card:hover::before {
+            opacity: 1;
+        }
+
         .variant-card:hover {
-            background-color: #3498db;
+            transform: translateY(-5px);
             color: white;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
         }
-        
+
         /* Задание */
         .task-container {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             margin-bottom: 30px;
         }
-        
+
         .task-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-        
+
         .task-title {
             font-size: 24px;
-            color: #2c3e50;
+            color: var(--primary);
         }
-        
+
         .task-number {
-            background-color: #3498db;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
         }
-        
+
         .task-text {
             margin-bottom: 20px;
             line-height: 1.8;
+            padding: 15px;
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
         }
-        
+
         .answer-options {
             margin: 20px 0;
         }
-        
+
         .option {
             margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+
         .option:hover {
-            background-color: #f5f5f5;
+            background: rgba(67, 97, 238, 0.05);
+            border-color: var(--primary);
         }
-        
+
         .option.selected {
-            background-color: #e1f5fe;
-            border-color: #3498db;
+            background: rgba(67, 97, 238, 0.1);
+            border-color: var(--primary);
         }
-        
+
         .text-input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             margin-bottom: 15px;
             font-size: 16px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.7);
         }
-        
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
         .audio-player {
             width: 100%;
             margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .action-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
         }
-        
+
         /* Результаты */
         .results-container {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             margin-bottom: 30px;
         }
-        
+
         .result-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
         }
-        
+
+        .result-item:hover {
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+        }
+
         .result-correct {
-            color: #27ae60;
+            color: var(--success);
+            font-weight: 600;
         }
-        
+
         .result-incorrect {
-            color: #e74c3c;
+            color: var(--danger);
+            font-weight: 600;
         }
-        
+
         .explanation {
-            margin-top: 10px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-            border-left: 4px solid #3498db;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
         }
-        
+
         /* Отзывы */
         .review-form {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             margin-bottom: 30px;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary);
         }
-        
+
         .form-control {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             font-size: 16px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.7);
         }
-        
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-        
+
         .reviews-list {
             margin-top: 40px;
         }
-        
+
         .review-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: var(--border);
             margin-bottom: 20px;
+            transition: var(--transition);
         }
-        
+
+        .review-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(31, 38, 135, 0.15);
+        }
+
         .review-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            align-items: center;
         }
-        
+
         .review-author {
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary);
         }
-        
+
         .review-date {
-            color: #7f8c8d;
+            color: var(--gray);
+            font-size: 14px;
         }
-        
+
         /* Футер */
         footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px 0;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--dark);
+            padding: 40px 0;
             text-align: center;
             margin-top: 50px;
+            border-top: var(--border);
         }
-        
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        .footer-link {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--primary-light);
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
-            .features {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
             
-            .feature {
+            nav {
                 width: 100%;
-                max-width: 400px;
+                justify-content: center;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
             }
             
             .mode-selection {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
             }
             
             .task-selection {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+
+        /* Дополнительные улучшения */
+        .progress-bar {
+            height: 6px;
+            background: rgba(67, 97, 238, 0.2);
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            min-width: 150px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="logo">Банк заданий ОГЭ по русскому языку</div>
-            <nav>
-                <div class="nav-tab active" data-tab="home">Главная</div>
-                <div class="nav-tab" data-tab="tasks">Банк заданий</div>
-                <div class="nav-tab" data-tab="reviews">Отзывы</div>
-            </nav>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>ОГЭ Русский язык</span>
+                </div>
+                <nav>
+                    <div class="nav-tab active" data-tab="home">Главная</div>
+                    <div class="nav-tab" data-tab="tasks">Банк заданий</div>
+                    <div class="nav-tab" data-tab="reviews">Отзывы</div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -437,41 +848,75 @@
         <section id="home" class="content-section active">
             <div class="welcome-section">
                 <h1>Подготовка к ОГЭ по русскому языку</h1>
-                <p>Добро пожаловать на наш образовательный портал! Здесь вы найдете все необходимое для успешной подготовки к основному государственному экзамену по русскому языку.</p>
-                <p>Мы предлагаем обширный банк заданий, соответствующих демоверсии ОГЭ 2025-2026 года, с возможностью тренировки отдельных заданий или прохождения полного экзамена.</p>
+                <p>Современная платформа для эффективной подготовки к основному государственному экзамену. Тренируйтесь, отслеживайте прогресс и достигайте лучших результатов!</p>
                 
-                <div class="features">
-                    <div class="feature">
-                        <h3>13 типов заданий</h3>
-                        <p>Полный охват всех заданий экзамена с подробными пояснениями</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">13</div>
+                        <div class="stat-label">типов заданий</div>
                     </div>
-                    <div class="feature">
-                        <h3>60 вариантов</h3>
-                        <p>Большое количество вариантов для эффективной подготовки</p>
+                    <div class="stat">
+                        <div class="stat-value">60</div>
+                        <div class="stat-label">вариантов</div>
                     </div>
-                    <div class="feature">
-                        <h3>Автопроверка</h3>
-                        <p>Мгновенная проверка ответов и анализ ошибок</p>
+                    <div class="stat">
+                        <div class="stat-value">1000+</div>
+                        <div class="stat-label">пользователей</div>
                     </div>
                 </div>
                 
-                <a href="#" class="btn" id="start-training">Начать подготовку</a>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Полный охват заданий</h3>
+                        <p>Все 13 типов заданий экзамена с подробными пояснениями и методическими рекомендациями</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Отслеживание прогресса</h3>
+                        <p>Анализируйте свои результаты, выявляйте слабые места и улучшайте показатели</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Аудио-изложения</h3>
+                        <p>Реалистичная тренировка задания №1 с возможностью прослушивания текста</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn" id="start-training">
+                    <i class="fas fa-rocket"></i>
+                    Начать подготовку
+                </a>
             </div>
         </section>
 
         <!-- Банк заданий -->
         <section id="tasks" class="content-section">
+            <h2>Банк заданий ОГЭ</h2>
+            <p>Выберите режим подготовки, который подходит именно вам</p>
+            
             <div id="mode-selection">
-                <h2>Выберите режим подготовки</h2>
                 <div class="mode-selection">
                     <div class="mode-card" data-mode="individual">
+                        <div class="mode-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
                         <h3>Тренировка заданий отдельно</h3>
                         <p>Сосредоточьтесь на конкретных типах заданий, которые вызывают у вас трудности</p>
                         <button class="btn">Выбрать</button>
                     </div>
                     <div class="mode-card" data-mode="full">
+                        <div class="mode-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
                         <h3>Решить экзамен полностью</h3>
-                        <p>Пройдите полный вариант экзамена для оценки вашей готовности</p>
+                        <p>Пройдите полный вариант экзамена для оценки вашей готовности в условиях, приближенных к реальным</p>
                         <button class="btn">Выбрать</button>
                     </div>
                 </div>
@@ -482,15 +927,26 @@
                 <div class="task-selection">
                     <!-- Задания будут сгенерированы скриптом -->
                 </div>
-                <button class="btn" id="back-to-modes">Назад к выбору режима</button>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="back-to-modes">
+                        <i class="fas fa-arrow-left"></i>
+                        Назад к выбору режима
+                    </button>
+                </div>
             </div>
             
             <div id="variant-selection" style="display: none;">
                 <h2>Выберите вариант</h2>
+                <p>Доступно 60 уникальных вариантов для каждого задания</p>
                 <div class="variant-selection">
                     <!-- Варианты будут сгенерированы скриптом -->
                 </div>
-                <button class="btn" id="back-to-tasks">Назад к выбору задания</button>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="back-to-tasks">
+                        <i class="fas fa-arrow-left"></i>
+                        Назад к выбору задания
+                    </button>
+                </div>
             </div>
             
             <div id="task-container" style="display: none;">
@@ -504,7 +960,9 @@
 
         <!-- Отзывы -->
         <section id="reviews" class="content-section">
-            <h2>Оставьте свой отзыв</h2>
+            <h2>Отзывы пользователей</h2>
+            <p>Поделитесь своим опытом использования нашего банка заданий</p>
+            
             <div class="review-form">
                 <div class="form-group">
                     <label for="review-name">Ваше имя</label>
@@ -514,11 +972,13 @@
                     <label for="review-text">Текст отзыва</label>
                     <textarea id="review-text" class="form-control" placeholder="Поделитесь вашими впечатлениями о нашем банке заданий"></textarea>
                 </div>
-                <button class="btn" id="submit-review">Отправить отзыв</button>
+                <button class="btn" id="submit-review">
+                    <i class="fas fa-paper-plane"></i>
+                    Отправить отзыв
+                </button>
             </div>
             
             <div class="reviews-list">
-                <h2>Отзывы пользователей</h2>
                 <!-- Отзывы будут загружены динамически -->
             </div>
         </section>
@@ -526,8 +986,24 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Банк заданий ОГЭ по русскому языку. Все права защищены.</p>
-            <p>Материалы подготовлены в соответствии с демоверсией ФИПИ 2025-2026</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>ОГЭ Русский язык</span>
+                </div>
+                <p>Материалы подготовлены в соответствии с демоверсией ФИПИ 2025-2026</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Политика конфиденциальности</a>
+                    <a href="#" class="footer-link">Условия использования</a>
+                    <a href="#" class="footer-link">Контакты</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>© 2025 Банк заданий ОГЭ по русскому языку. Все права защищены.</p>
+            </div>
         </div>
     </footer>
 
@@ -673,7 +1149,10 @@
             for (let i = 1; i <= 13; i++) {
                 const taskCard = document.createElement('div');
                 taskCard.className = 'task-card';
-                taskCard.textContent = `Задание ${i}`;
+                taskCard.innerHTML = `
+                    <div class="task-number">${i}</div>
+                    <div class="task-title">${tasksData[i]?.title || 'Задание'}</div>
+                `;
                 taskCard.setAttribute('data-task', i);
                 
                 taskCard.addEventListener('click', function() {
@@ -752,8 +1231,14 @@
                 ` : ''}
                 
                 <div class="action-buttons">
-                    <button class="btn" id="check-task">Проверить</button>
-                    <button class="btn" id="next-task">Следующее задание</button>
+                    <button class="btn" id="check-task">
+                        <i class="fas fa-check"></i>
+                        Проверить
+                    </button>
+                    <button class="btn" id="next-task">
+                        <i class="fas fa-arrow-right"></i>
+                        Следующее задание
+                    </button>
                 </div>
             `;
             
@@ -878,7 +1363,10 @@
                                     '<span class="result-incorrect">✗ Неправильно</span>'
                             ) : '<span>Не выполнено</span>'}
                         </div>
-                        <button class="btn view-explanation" data-task="${i}">Посмотреть пояснение</button>
+                        <button class="btn view-explanation" data-task="${i}">
+                            <i class="fas fa-info-circle"></i>
+                            Пояснение
+                        </button>
                     </div>
                 `;
             }
@@ -935,11 +1423,11 @@
         function displayReviews() {
             const reviewsList = document.querySelector('.reviews-list');
             if (reviews.length === 0) {
-                reviewsList.innerHTML = '<h2>Отзывы пользователей</h2><p>Пока нет отзывов. Будьте первым!</p>';
+                reviewsList.innerHTML = '<p>Пока нет отзывов. Будьте первым!</p>';
                 return;
             }
             
-            let reviewsHTML = '<h2>Отзывы пользователей</h2>';
+            let reviewsHTML = '';
             
             reviews.forEach(review => {
                 reviewsHTML += `
