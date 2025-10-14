@@ -3,625 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог заданий ОГЭ по русскому языку | Задания открытого банка ФИПИ</title>
+    <title>EduAudio Pro | Образовательная платформа</title>
     <style>
         :root {
-            --primary-color: #0066cc;
-            --secondary-color: #f0f8ff;
-            --accent-color: #ff6b00;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --border-color: #ddd;
-            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --success: #4ade80;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
         }
-        
+
+        .dark-theme {
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-light: #94a3b8;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-        
+
         body {
-            background-color: #f9f9f9;
-            color: var(--text-color);
-            line-height: 1.6;
+            background: var(--background);
+            color: var(--text);
+            transition: all 0.3s ease;
         }
-        
-        .container {
-            max-width: 1200px;
+
+        .app-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary-color), #004d99);
-            color: white;
-            padding: 20px 0;
-            box-shadow: var(--shadow);
-        }
-        
-        .header-content {
+
+        /* Header */
+        .app-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
         }
-        
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .logo h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+            font-size: 2.2em;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
-        .logo p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        .header-actions {
+
+        .header-controls {
             display: flex;
             gap: 15px;
-            margin-top: 10px;
+            align-items: center;
         }
-        
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: white;
-            color: var(--primary-color);
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
+
+        /* Tabs */
+        .tabs-header {
+            display: flex;
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            border-radius: 12px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            flex: 1;
+            min-width: 200px;
+            justify-content: center;
+            margin: 5px;
+        }
+
+        .tab:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Content Areas */
+        .tabs-content {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
-        
-        .btn:hover {
-            background-color: var(--secondary-color);
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
             transform: translateY(-2px);
         }
-        
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
-        
-        .btn-primary:hover {
-            background-color: #e55a00;
-        }
-        
-        .content-section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
+
+        /* Progress */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
             margin: 20px 0;
-            padding: 25px;
         }
-        
-        .section-title {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: width 0.3s ease;
         }
-        
-        .filters {
+
+        /* Audio Visualizer */
+        .audio-visualizer {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
+            align-items: end;
+            height: 80px;
+            gap: 3px;
+            margin: 25px 0;
         }
-        
-        .sort-select {
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            background-color: white;
-            color: var(--text-color);
+
+        .visualizer-bar {
+            flex: 1;
+            background: var(--accent);
+            border-radius: 3px;
+            min-height: 3px;
+            animation: pulse 1.5s ease-in-out infinite;
         }
-        
-        .task-list {
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        /* Task Types */
+        .task-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
+            margin-top: 25px;
         }
-        
+
         .task-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            background-color: white;
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-        
-        .task-card:hover {
-            box-shadow: var(--shadow);
-            transform: translateY(-3px);
-        }
-        
+
         .task-header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            justify-content: between;
+            align-items: center;
             margin-bottom: 15px;
-            flex-wrap: wrap;
         }
-        
-        .task-number {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .task-id {
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        .task-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .task-meta {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .task-points {
-            background-color: var(--secondary-color);
-            padding: 4px 10px;
+
+        .task-difficulty {
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.8em;
             font-weight: 600;
         }
-        
-        .task-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .icon-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--light-gray);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .icon-btn:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .task-content {
-            margin: 15px 0;
-        }
-        
-        .task-description {
-            margin-bottom: 15px;
-        }
-        
-        .audio-player {
-            margin: 15px 0;
-            width: 100%;
-        }
-        
-        .task-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .task-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .task-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-        
-        .task-link:hover {
-            text-decoration: underline;
-        }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            gap: 10px;
-        }
-        
-        .page-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            background-color: white;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .page-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-        
-        .page-btn:hover:not(.active) {
-            background-color: var(--light-gray);
-        }
-        
-        .info-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-left: 10px;
-            color: var(--primary-color);
-        }
-        
-        .expandable-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-        
-        .expandable-content.expanded {
-            max-height: 1000px;
-        }
-        
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .toggle-btn::after {
-            content: "▼";
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .toggle-btn.expanded::after {
-            transform: rotate(180deg);
-        }
-        
-        .criteria-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.9rem;
-        }
-        
-        .criteria-table th, .criteria-table td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: left;
-        }
-        
-        .criteria-table th {
-            background-color: var(--secondary-color);
-            font-weight: 600;
-        }
-        
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px 0;
-            margin-top: 40px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
+
+        .difficulty-easy { background: var(--success); color: white; }
+        .difficulty-medium { background: var(--warning); color: white; }
+        .difficulty-hard { background: var(--error); color: white; }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
+            .tabs-header {
                 flex-direction: column;
-                align-items: flex-start;
             }
             
-            .header-actions {
-                width: 100%;
-                justify-content: flex-start;
-                margin-top: 15px;
+            .tab {
+                min-width: 100%;
             }
             
-            .task-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .task-actions {
-                margin-top: 10px;
-            }
-            
-            .task-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .footer-content {
-                flex-direction: column;
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>Каталог заданий ОГЭ по русскому языку</h1>
-                    <p>Задания открытого банка ФИПИ часть 1</p>
-                </div>
-                <div class="header-actions">
-                    <a href="?theme=85&amp;ttest=true" class="btn btn-primary">Пройти тестирование по этим заданиям</a>
-                    <a href="/prob-catalog" class="btn">Вернуться к каталогу заданий</a>
-                    <a href="test?theme=85&amp;print=true" class="btn" target="_blank">Версия для печати</a>
-                </div>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <div style="font-size: 2em;">🎧</div>
+                <h1>EduAudio Pro</h1>
             </div>
-        </div>
-    </header>
-    
-    <main class="container">
-        <section class="content-section">
-            <div class="filters">
-                <div>
-                    <span>Сортировка:</span>
-                    <select class="sort-select">
-                        <option value="">Основная</option>
-                        <option value="hardr">Сначала простые</option>
-                        <option value="hard">Сначала сложные</option>
-                        <option value="fav">По популярности</option>
-                        <option value="ids">Сначала новые</option>
-                        <option value="idsr">Сначала старые</option>
-                    </select>
-                </div>
-                <div>
-                    <span>Найдено заданий: <strong>18</strong></span>
-                </div>
+            <div class="header-controls">
+                <button class="btn btn-outline" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span> Тема
+                </button>
+                <button class="btn btn-primary">
+                    <span>👤</span> Профиль
+                </button>
             </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs-header">
+            <div class="tab active" data-tab="main">🏠 Главная</div>
+            <div class="tab" data-tab="dictations">📝 Диктанты</div>
+            <div class="tab" data-tab="expositions">🎧 Изложения</div>
+            <div class="tab" data-tab="essays">✍️ Сочинения</div>
+            <div class="tab" data-tab="assignments">📚 Задания</div>
+            <div class="tab" data-tab="progress">📊 Прогресс</div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="tabs-content">
             
-            <div class="task-list">
-                <!-- Пример задания 1 -->
-                <div class="task-card">
-                    <div class="task-header">
-                        <div class="task-number">
-                            <div class="task-id">1</div>
-                            <div>
-                                <h3 class="task-title">Тип 1 № 4837</h3>
-                                <div class="task-meta">
-                                    <span class="task-points">6 баллов</span>
-                                    <span>Добавили в избранное: 262</span>
-                                </div>
-                            </div>
+            <!-- Главная панель -->
+            <div class="tab-content active" id="main">
+                <h2>Добро пожаловать в EduAudio Pro! 👋</h2>
+                <p style="color: var(--text-light); margin-bottom: 25px;">Ваша универсальная платформа для создания образовательных аудиоматериалов</p>
+                
+                <div class="cards-grid">
+                    <div class="card" onclick="switchTab('dictations')">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #4ade80;">📝</div>
+                            <h3>Диктанты</h3>
                         </div>
-                        <div class="task-actions">
-                            <button class="icon-btn" title="Добавить в вариант">+</button>
-                            <button class="icon-btn" title="Добавить в избранное">★</button>
-                            <button class="icon-btn" title="Сообщить об ошибке">!</button>
-                            <button class="icon-btn" title="Информация о задании">i</button>
+                        <p>Создавайте диктанты с автоматической проверкой и разными уровнями сложности</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
                         </div>
                     </div>
-                    
-                    <div class="task-content">
-                        <div class="task-description">
-                            <p><strong>Текст, начинающийся словами «Испытания ждут дружбу всегда».</strong></p>
-                            <p>Прослушайте текст и напишите сжатое изложение. Исходный текст для сжатого изложения прослушивается 2 раза.</p>
-                            <p>Учтите, что Вы должны передать главное содержание как микротемы, так и всего текста в целом.</p>
-                            <p>Объём изложения — не менее 70 слов.</p>
-                            <p>Пишите изложение аккуратно, разборчивым почерком.</p>
+
+                    <div class="card" onclick="switchTab('expositions')">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #3b82f6;">🎧</div>
+                            <h3>Изложения</h3>
                         </div>
-                        
-                        <div class="audio-player">
-                            <p>Воспользуйтесь плеером, чтобы прослушать запись.</p>
-                            <audio controls style="width: 100%;">
-                                <source src="/get_file?id=4997" type="audio/mpeg">
-                                Ваш браузер не поддерживает элемент audio.
-                            </audio>
+                        <p>Генератор аудио-изложений с настраиваемыми параметрами воспроизведения</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
                         </div>
                     </div>
-                    
-                    <div class="task-footer">
-                        <div class="task-links">
-                            <button class="toggle-btn">Пояснение</button>
-                            <button class="toggle-btn">Критерии</button>
-                            <a href="#" class="task-link">Помощь</a>
+
+                    <div class="card" onclick="switchTab('essays')">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #f59e0b;">✍️</div>
+                            <h3>Сочинения</h3>
+                        </div>
+                        <p>Темы для сочинений с примерами и структурными подсказками</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Диктанты -->
+            <div class="tab-content" id="dictations">
+                <h2>📝 Генератор диктантов</h2>
+                <p>Создавайте диктанты для разных классов с автоматической проверкой</p>
+                
+                <div class="task-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Орфографический диктант</h3>
+                            <span class="task-difficulty difficulty-easy">1-2 класс</span>
+                        </div>
+                        <p>Диктант на основные правила орфографии с медленным темпом</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">
+                            ▶️ Начать диктант
+                        </button>
+                    </div>
+
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Пунктуационный диктант</h3>
+                            <span class="task-difficulty difficulty-medium">5-7 класс</span>
+                        </div>
+                        <p>Тренировка расстановки знаков препинания в сложных предложениях</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">
+                            ▶️ Начать диктант
+                        </button>
+                    </div>
+
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Контрольный диктант</h3>
+                            <span class="task-difficulty difficulty-hard">9-11 класс</span>
+                        </div>
+                        <p>Полный диктант с комплексной проверкой всех правил русского языка</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">
+                            ▶️ Начать диктант
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Изложения -->
+            <div class="tab-content" id="expositions">
+                <h2>🎧 Генератор аудио-изложений</h2>
+                
+                <div style="background: rgba(67, 97, 238, 0.1); padding: 25px; border-radius: 15px; margin: 25px 0;">
+                    <h3>Параметры генерации</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div>
+                            <label>Тематика:</label>
+                            <select style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-top: 8px;">
+                                <option>Природа и времена года</option>
+                                <option>Животные и растения</option>
+                                <option>Школьная жизнь</option>
+                                <option>Города и путешествия</option>
+                            </select>
                         </div>
                         <div>
-                            <span class="info-badge">Актуально для ОГЭ текущего года</span>
+                            <label>Уровень сложности:</label>
+                            <select style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-top: 8px;">
+                                <option>Начальный (1-2 класс)</option>
+                                <option>Базовый (3-5 класс)</option>
+                                <option>Продвинутый (6-9 класс)</option>
+                            </select>
                         </div>
                     </div>
                     
-                    <div class="expandable-content">
-                        <h4>Расшифровка записи</h4>
-                        <p>Испытания ждут дружбу всегда. Главное из них сегодня — изменившийся уклад, перемена в образе и распорядке жизни. С ускорением темпа жизни, со стремлением быстро реализовать себя пришло понимание значимости времени. Раньше невозможно было представить, например, чтобы хозяева тяготились гостями. Теперь, когда время — цена достижения своей цели, отдых и гостеприимство перестали быть значимыми. Частые встречи и неторопливые беседы не являются уже непременными спутниками дружбы. В силу того что живём мы в разных ритмах, встречи друзей становятся редкими.</p>
-                        <!-- Остальной текст расшифровки -->
-                    </div>
-                </div>
-                
-                <!-- Пример задания 2 -->
-                <div class="task-card">
-                    <div class="task-header">
-                        <div class="task-number">
-                            <div class="task-id">2</div>
-                            <div>
-                                <h3 class="task-title">Тип 1 № 4838</h3>
-                                <div class="task-meta">
-                                    <span class="task-points">6 баллов</span>
-                                    <span>Добавили в избранное: 175</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-actions">
-                            <button class="icon-btn" title="Добавить в вариант">+</button>
-                            <button class="icon-btn" title="Добавить в избранное">★</button>
-                            <button class="icon-btn" title="Сообщить об ошибке">!</button>
-                            <button class="icon-btn" title="Информация о задании">i</button>
-                        </div>
+                    <div class="audio-visualizer">
+                        <div class="visualizer-bar" style="animation-delay: 0s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0.1s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0.2s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0.3s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0.4s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0.5s"></div>
                     </div>
                     
-                    <div class="task-content">
-                        <div class="task-description">
-                            <p><strong>Текст, начинающийся словами «Универсального рецепта того, как выбрать правильный...»</strong></p>
-                            <p>Прослушайте текст и напишите сжатое изложение. Исходный текст для сжатого изложения прослушивается 2 раза.</p>
-                            <p>Учтите, что Вы должны передать главное содержание как микротемы, так и всего текста в целом.</p>
-                            <p>Объём изложения — не менее 70 слов.</p>
-                            <p>Пишите изложение аккуратно, разборчивым почерком.</p>
-                        </div>
-                        
-                        <div class="audio-player">
-                            <p>Воспользуйтесь плеером, чтобы прослушать запись.</p>
-                            <audio controls style="width: 100%;">
-                                <source src="/get_file?id=4998" type="audio/mpeg">
-                                Ваш браузер не поддерживает элемент audio.
-                            </audio>
-                        </div>
-                    </div>
-                    
-                    <div class="task-footer">
-                        <div class="task-links">
-                            <button class="toggle-btn">Пояснение</button>
-                            <button class="toggle-btn">Критерии</button>
-                            <a href="#" class="task-link">Помощь</a>
-                        </div>
-                        <div>
-                            <span class="info-badge">Актуально для ОГЭ текущего года</span>
-                        </div>
-                    </div>
-                    
-                    <div class="expandable-content">
-                        <h4>Микротемы</h4>
-                        <ol>
-                            <li>Универсального рецепта по выбору правильного жизненного пути, предназначенного только тебе, просто нет и быть не может. И окончательный выбор всегда остаётся за человеком.</li>
-                            <li>Этот выбор мы делаем уже в детстве. Но большинство важнейших решений мы всё-таки принимаем в юности. Вторая половина второго десятилетия жизни – самый ответственный период. Именно в это время человек выбирает самое главное и на всю жизнь: ближайшего друга, круг основных интересов, профессию.</li>
-                            <li>Такой выбор – дело ответственное. Его нельзя отложить на потом. Неверные решения без последствий не останутся. Ведь успех приходит к тем, кто упорно достигает намеченных целей.</li>
-                        </ol>
-                    </div>
-                </div>
-                
-                <!-- Остальные задания будут аналогичными -->
-                
-            </div>
-            
-            <div class="pagination">
-                <div class="page-btn active">1</div>
-                <div class="page-btn">2</div>
-                <div class="page-btn">3</div>
-                <div class="page-btn">4</div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="/about">О проекте</a>
-                    <a href="/staff">Редакция</a>
-                    <a href="/legal">Правовая информация</a>
-                    <a href="/advert">О рекламе</a>
-                </div>
-                <div class="copyright">
-                    © Комаров Е.А. 2025
+                    <button class="btn btn-primary" style="width: 100%;">
+                        🎵 Сгенерировать аудио-изложение
+                    </button>
                 </div>
             </div>
-        </div>
-    </footer>
-    
+
+            <!-- Сочинения -->
+            <div class="tab-content" id="essays">
+                <h2>✍️ Банк сочинений</h2>
+                <p>Темы для сочинений с примерами и структурными подсказками</p>
+                
+                <div class="cards-grid" style="margin-top: 25px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div style="background: #8b5cf6; color: white; padding: 10px; border-radius: 10px;">1</div>
+                            <h3>"Как я провёл лето"</h3>
+                        </div>
+                        <p>Классическая тема для сочинения-рассказа о летних каникулах</p>
+                        <ul style="margin: 15px 0; padding-left: 20px;">
+                            <li>План сочинения</li>
+                            <li>Примеры вступлений</li>
+                            <li>Клише и выражения</li>
+                        </ul>
+                        <button class="btn btn-outline">Открыть материалы</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div style="background: #06b6d4; color: white; padding: 10px; border-radius: 10px;">2</div>
+                            <h3>"Образ героя в литературе"</h3>
+                        </div>
+                        <p>Аналитическое сочинение на литературную тему</p>
+                        <ul style="margin: 15px 0; padding-left: 20px;">
+                            <li>Структура анализа</li>
+                            <li>Примеры характеристик</li>
+                            <li>Цитаты для аргументации</li>
+                        </ul>
+                        <button class="btn btn-outline">Открыть материалы</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Дополнительные задания -->
+            <div class="tab-content" id="assignments">
+                <h2>📚 Дополнительные задания</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;">
+                    <div class="card">
+                        <h3>🔄 Пересказ текста</h3>
+                        <p>Аудиотексты для тренировки пересказа с таймером и подсказками</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">Начать тренировку</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 Аудирование</h3>
+                        <p>Задания на понимание услышанного с вопросами разного типа</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">Начать аудирование</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>📖 Чтение с выражением</h3>
+                        <p>Тексты для отработки техники выразительного чтения</p>
+                        <button class="btn btn-primary" style="margin-top: 15px;">Выбрать текст</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Прогресс -->
+            <div class="tab-content" id="progress">
+                <h2>📊 Ваш прогресс обучения</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 25px;">
+                    <div class="card">
+                        <h3>📝 Диктанты</h3>
+                        <div style="font-size: 2em; font-weight: bold; color: var(--primary);">87%</div>
+                        <p>Средний результат</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎧 Изложения</h3>
+                        <div style="font-size: 2em; font-weight: bold; color: var(--primary);">92%</div>
+                        <p>Качество выполнения</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>✍️ Сочинения</h3>
+                        <div style="font-size: 2em; font-weight: bold; color: var(--primary);">78%</div>
+                        <p>Оценка за работы</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Работа с раскрывающимися блоками
-            const toggleButtons = document.querySelectorAll('.toggle-btn');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const content = this.parentElement.parentElement.nextElementSibling;
-                    
-                    if (content.classList.contains('expanded')) {
-                        content.classList.remove('expanded');
-                        this.classList.remove('expanded');
-                    } else {
-                        content.classList.add('expanded');
-                        this.classList.add('expanded');
-                    }
-                });
+        // Переключение вкладок
+        function switchTab(tabName) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
             });
             
-            // Пагинация
-            const pageButtons = document.querySelectorAll('.page-btn');
-            
-            pageButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    pageButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    // Здесь можно добавить логику загрузки новой страницы
-                });
+            // Убрать активный класс со всех табов
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
             });
             
-            // Сортировка
-            const sortSelect = document.querySelector('.sort-select');
+            // Показать выбранную вкладку
+            document.getElementById(tabName).classList.add('active');
             
-            sortSelect.addEventListener('change', function() {
-                // Здесь можно добавить логику сортировки заданий
-                console.log('Сортировка по:', this.value);
+            // Активировать соответствующий таб
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        }
+
+        // Инициализация переключения табов
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                switchTab(this.getAttribute('data-tab'));
             });
         });
+
+        // Переключение темы
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        }
+
+        // Анимация визуализатора аудио
+        function animateVisualizer() {
+            const bars = document.querySelectorAll('.visualizer-bar');
+            bars.forEach(bar => {
+                const randomHeight = Math.random() * 100 + 10;
+                bar.style.height = `${randomHeight}%`;
+            });
+        }
+
+        // Запуск анимации визуализатора
+        setInterval(animateVisualizer, 200);
     </script>
 </body>
 </html>
