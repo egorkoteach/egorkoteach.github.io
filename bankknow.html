@@ -3,460 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ОГЭ Русский язык - Полный курс подготовки</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Каталог заданий. Задания открытого банка ФИПИ часть 1</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #7209b7;
-            --accent: #f72585;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #e63946;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --border-radius: 16px;
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 100%);
-            color: var(--dark);
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            min-height: 100vh;
+            color: #333;
+            background-color: #f5f5f5;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        .logo {
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-controls {
             display: flex;
+            gap: 15px;
             align-items: center;
-            gap: 0.7rem;
-            font-size: 1.5rem;
-            font-weight: 700;
         }
 
-        .logo i {
-            color: var(--accent);
+        .orange-select {
+            background: linear-gradient(#FFF0E6, #FFD2B6);
+            border: 1px solid silver;
+            border-radius: 3px;
+            padding: 8px 12px;
+            font-size: 14px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
+        .nav-links {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
-        nav a {
-            color: white;
+        .nav-links a {
+            color: #2a5298;
             text-decoration: none;
+            margin-right: 15px;
             font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
         }
 
-        nav a:hover, nav a.active {
-            background: rgba(255, 255, 255, 0.2);
+        .nav-links a:hover {
+            text-decoration: underline;
         }
 
-        .user-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.3);
-        }
-
-        .btn-accent:hover {
-            background: #e11574;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .sidebar {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
-        }
-
-        .sidebar h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .task-nav {
-            list-style: none;
-        }
-
-        .task-nav li {
-            margin-bottom: 0.5rem;
-        }
-
-        .task-nav a {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.8rem 1rem;
-            color: var(--dark);
-            text-decoration: none;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .task-nav a:hover, .task-nav a.active {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-        }
-
-        .task-nav i {
-            width: 20px;
-            text-align: center;
-        }
-
-        .progress-section {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            margin: 0.7rem 0;
+        .problem-list {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--success);
-            border-radius: 4px;
-            width: 35%;
+        .problem-container {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
         }
 
-        .content-area {
-            min-height: 80vh;
+        .problem-container:last-child {
+            border-bottom: none;
         }
 
-        .page-header {
+        .problem-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
-        .page-title {
-            color: var(--primary);
-            font-size: 1.8rem;
+        .problem-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2a5298;
+            min-width: 40px;
         }
 
-        .task-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+        .problem-title {
+            flex-grow: 1;
+            margin: 0 15px;
         }
 
-        .task-header {
+        .problem-actions {
             display: flex;
-            justify-content: between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
+            gap: 10px;
         }
 
-        .task-title {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .task-description {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .task-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .task-content {
-            margin-bottom: 2rem;
-        }
-
-        .question {
-            background: rgba(248, 249, 250, 0.7);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        .options {
-            display: grid;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .option {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 12px;
+        .action-btn {
+            background: none;
+            border: none;
             cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
+            font-size: 16px;
+            color: #666;
+            transition: color 0.3s;
         }
 
-        .option:hover {
-            border-color: var(--primary);
+        .action-btn:hover {
+            color: #2a5298;
         }
 
-        .option.selected {
-            border-color: var(--primary);
-            background: rgba(67, 97, 238, 0.05);
+        .problem-content {
+            margin-top: 15px;
         }
 
-        .option input {
-            margin-top: 0.2rem;
+        .problem-text {
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
-        .task-actions {
+        .audio-player {
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .solution {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .solution h3 {
+            margin-bottom: 10px;
+            color: #2a5298;
+        }
+
+        .criteria {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 5px;
+        }
+
+        .criteria h3 {
+            margin-bottom: 10px;
+            color: #2a5298;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .pagination {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 5px;
         }
 
-        .hint-box {
-            background: linear-gradient(135deg, #e9f0ff 0%, #f0e9ff 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--accent);
+        .page-btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 3px;
         }
 
-        .hint-header {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .tasks-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .overview-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
-        }
-
-        .overview-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .overview-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .overview-card.completed {
-            border-top-color: var(--success);
-        }
-
-        .overview-card.current {
-            border-top-color: var(--accent);
+        .page-btn.active {
+            background-color: #2a5298;
+            color: white;
+            border-color: #2a5298;
         }
 
         footer {
-            background: var(--dark);
+            background-color: #2a5298;
             color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 20px 0;
+            margin-top: 30px;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
         }
 
         .footer-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 15px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: white;
             text-decoration: none;
-            transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: white;
-        }
-
-        @media (max-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                position: static;
-            }
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            .header-controls {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .problem-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .problem-title {
+                margin: 10px 0;
             }
             
             .footer-content {
                 flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            
-            .task-actions {
-                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -465,273 +267,169 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span>ОГЭ Русский</span>
+                <div class="header-title">
+                    Каталог заданий. Задания открытого банка ФИПИ часть 1
                 </div>
-                
-                <nav>
-                    <ul>
-                        <li><a href="#" class="active">Главная</a></li>
-                        <li><a href="#">Задания</a></li>
-                        <li><a href="#">Статистика</a></li>
-                        <li><a href="#">Мои работы</a></li>
-                        <li><a href="#">Справочник</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="user-actions">
-                    <a href="#" class="btn btn-outline">Войти</a>
-                    <a href="#" class="btn btn-accent">Регистрация</a>
+                <div class="header-controls">
+                    <select class="orange-select" autocomplete="off">
+                        <option value="">Сортировка</option>
+                        <option value="">Основная</option>
+                        <option value="hardr">Сначала простые</option>
+                        <option value="hard">Сначала сложные</option>
+                        <option value="fav">По популярности</option>
+                        <option value="ids">Сначала новые</option>
+                        <option value="idsr">Сначала старые</option>
+                    </select>
+                    <a href="?theme=85&amp;print=true" style="color: white; text-decoration: none;">Версия для печати</a>
                 </div>
             </div>
         </div>
     </header>
-    
+
     <div class="container">
-        <div class="main-content">
-            <aside class="sidebar">
-                <h3><i class="fas fa-tasks"></i> Задания ОГЭ</h3>
-                <ul class="task-nav">
-                    <li><a href="#" class="active"><i class="fas fa-file-alt"></i> Задание 1. Изложение</a></li>
-                    <li><a href="#"><i class="fas fa-font"></i> Задание 2. Синтаксический анализ</a></li>
-                    <li><a href="#"><i class="fas fa-spell-check"></i> Задание 3. Пунктуационный анализ</a></li>
-                    <li><a href="#"><i class="fas fa-keyboard"></i> Задание 4. Орфографический анализ</a></li>
-                    <li><a href="#"><i class="fas fa-pen-nib"></i> Задание 5. Анализ содержания текста</a></li>
-                    <li><a href="#"><i class="fas fa-comment-alt"></i> Задание 6. Анализ средств выразительности</a></li>
-                    <li><a href="#"><i class="fas fa-edit"></i> Задание 7. Лексический анализ</a></li>
-                    <li><a href="#"><i class="fas fa-align-left"></i> Задание 8. Сочинение</a></li>
-                    <li><a href="#"><i class="fas fa-language"></i> Задание 9. Грамматика</a></li>
-                    <li><a href="#"><i class="fas fa-text-height"></i> Задание 10. Стилистика</a></li>
-                    <li><a href="#"><i class="fas fa-paragraph"></i> Задание 11. Понимание текста</a></li>
-                    <li><a href="#"><i class="fas fa-quote-right"></i> Задание 12. Цитирование</a></li>
-                    <li><a href="#"><i class="fas fa-list-ol"></i> Задание 13. Нумерация</a></li>
-                    <li><a href="#"><i class="fas fa-check-double"></i> Задание 14. Проверка</a></li>
-                </ul>
-                
-                <div class="progress-section">
-                    <h3><i class="fas fa-chart-line"></i> Ваш прогресс</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+        <div class="nav-links">
+            <a href="?theme=85&amp;ttest=true">Пройти тестирование по этим заданиям</a>
+            <a href="/prob-catalog">Вернуться к каталогу заданий</a>
+        </div>
+
+        <div class="problem-list">
+            <!-- Пример одного задания -->
+            <div class="problem-container">
+                <div class="problem-header">
+                    <div class="problem-number">1</div>
+                    <div class="problem-title">
+                        <strong>Тип 1 № 4837</strong> (6 баллов)
                     </div>
-                    <p>Выполнено: 5 из 14 заданий</p>
-                </div>
-            </aside>
-            
-            <main class="content-area">
-                <div class="page-header">
-                    <h1 class="page-title">Задание 1. Сжатое изложение</h1>
-                    <div class="task-badge">
-                        <i class="fas fa-star"></i> Баллы: 7
+                    <div class="problem-actions">
+                        <button class="action-btn" title="Добавить в вариант">+</button>
+                        <button class="action-btn" title="Добавить в избранное">★</button>
+                        <button class="action-btn" title="Сообщить об ошибке">!</button>
+                        <button class="action-btn" title="Информация о задании">i</button>
                     </div>
                 </div>
-                
-                <div class="task-card">
-                    <div class="task-header">
-                        <div>
-                            <h2 class="task-title">Сжатое изложение</h2>
-                            <p class="task-description">Прослушайте текст и напишите сжатое изложение. Учтите, что вы должны передать главное содержание как каждой микротемы, так и всего текста в целом. Объём изложения — не менее 70 слов.</p>
-                        </div>
+                <div class="problem-content">
+                    <div class="problem-text">
+                        <p>Текст, начинающийся словами <b>«Испытания ждут дружбу всегда»</b>.</p>
+                        <p>Прослушайте текст и напишите сжатое изложение. Исходный текст для сжатого изложения прослушивается 2 раза.</p>
+                        <p>Учтите, что Вы должны передать главное содержание как микротемы, так и всего текста в целом.</p>
+                        <p>Объём изложения — не менее 70 слов.</p>
+                        <p>Пишите изложение аккуратно, разборчивым почерком.</p>
                     </div>
-                    
-                    <div class="task-content">
-                        <div class="question">
-                            <h3>Текст для изложения:</h3>
-                            <p>Человек и природа неразрывно связаны друг с другом. Мы зависим от окружающего нас мира: чистого воздуха, плодородной почвы, пресной воды. Но часто ли мы задумываемся о том, как наши действия влияют на природу?</p>
-                            <p>С развитием цивилизации воздействие человека на окружающую среду значительно усилилось. Промышленные предприятия, транспорт, сельское хозяйство — все это изменяет природные ландшафты, загрязняет атмосферу и водоемы. Многие виды растений и животных исчезают с лица Земли, а некоторые находятся на грани исчезновения.</p>
-                            <p>Однако в последние десятилетия люди стали осознавать свою ответственность за сохранение природы. Создаются заповедники и национальные парки, разрабатываются экологически чистые технологии, проводятся мероприятия по очистке территорий от мусора. Важно понимать, что забота о природе — это не просто обязанность, а необходимость для выживания самого человечества.</p>
-                            <p>Каждый из нас может внести свой вклад в защиту окружающей среды. Экономия воды и электроэнергии, сортировка мусора, участие в субботниках — эти простые действия, совершаемые регулярно, способны изменить ситуацию к лучшему. Помните: будущее нашей планеты зависит от того, как мы относимся к ней сегодня.</p>
-                        </div>
-                        
-                        <div class="hint-box">
-                            <div class="hint-header">
-                                <i class="fas fa-lightbulb"></i>
-                                <h3>Как выполнять задание:</h3>
-                            </div>
-                            <p>1. Прослушайте текст, выделяя основные мысли каждого абзаца.</p>
-                            <p>2. Определите микротемы (основные мысли) текста.</p>
-                            <p>3. Используйте приемы сжатия: исключение, обобщение, упрощение.</p>
-                            <p>4. Сохраняйте логическую последовательность изложения.</p>
-                            <p>5. Проверьте, что объем изложения не менее 70 слов.</p>
-                        </div>
-                        
-                        <textarea placeholder="Начните писать ваше изложение здесь..." style="width: 100%; height: 200px; padding: 1rem; border-radius: 12px; border: 2px solid #e9ecef; resize: vertical; margin-bottom: 1rem;"></textarea>
-                        
-                        <div style="display: flex; justify-content: space-between; color: var(--gray); margin-bottom: 1.5rem;">
-                            <div>Минимум: 70 слов</div>
-                            <div>Слов: 0</div>
-                            <div>Символов: 0</div>
-                        </div>
+                    <div class="audio-player">
+                        <audio controls style="width: 100%;">
+                            <source src="/get_file?id=4997" type="audio/mpeg">
+                            Ваш браузер не поддерживает аудио элемент.
+                        </audio>
                     </div>
-                    
-                    <div class="task-actions">
-                        <button class="btn"><i class="fas fa-play"></i> Прослушать текст</button>
-                        <button class="btn btn-outline"><i class="fas fa-save"></i> Сохранить черновик</button>
-                        <button class="btn btn-accent"><i class="fas fa-check-circle"></i> Проверить изложение</button>
+                    <div class="problem-actions">
+                        <button class="action-btn">Пояснение</button>
+                        <button class="action-btn">Критерии</button>
+                        <button class="action-btn">Помощь</button>
                     </div>
                 </div>
-                
-                <div class="task-card">
-                    <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Другие задания ОГЭ</h2>
-                    
-                    <div class="tasks-overview">
-                        <div class="overview-card completed">
-                            <h3><i class="fas fa-check-circle"></i> Задание 2</h3>
-                            <p>Синтаксический анализ предложения</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge" style="background: var(--success);">Выполнено</span>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-card completed">
-                            <h3><i class="fas fa-check-circle"></i> Задание 3</h3>
-                            <p>Пунктуационный анализ</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge" style="background: var(--success);">Выполнено</span>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-card completed">
-                            <h3><i class="fas fa-check-circle"></i> Задание 4</h3>
-                            <p>Орфографический анализ</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge" style="background: var(--success);">Выполнено</span>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-card completed">
-                            <h3><i class="fas fa-check-circle"></i> Задание 5</h3>
-                            <p>Анализ содержания текста</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge" style="background: var(--success);">Выполнено</span>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-card current">
-                            <h3><i class="fas fa-pen"></i> Задание 1</h3>
-                            <p>Сжатое изложение</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge" style="background: var(--accent);">Текущее</span>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-card">
-                            <h3><i class="fas fa-clock"></i> Задание 6</h3>
-                            <p>Анализ средств выразительности</p>
-                            <div style="margin-top: 1rem;">
-                                <span class="task-badge">Не начато</span>
-                            </div>
-                        </div>
+            </div>
+
+            <!-- Второе задание -->
+            <div class="problem-container">
+                <div class="problem-header">
+                    <div class="problem-number">2</div>
+                    <div class="problem-title">
+                        <strong>Тип 1 № 4838</strong> (6 баллов)
+                    </div>
+                    <div class="problem-actions">
+                        <button class="action-btn" title="Добавить в вариант">+</button>
+                        <button class="action-btn" title="Добавить в избранное">★</button>
+                        <button class="action-btn" title="Сообщить об ошибке">!</button>
+                        <button class="action-btn" title="Информация о задании">i</button>
                     </div>
                 </div>
-            </main>
+                <div class="problem-content">
+                    <div class="problem-text">
+                        <p>Текст, начинающийся словами <b>«Универсального рецепта того, как выбрать правильный»</b></p>
+                        <p>Прослушайте текст и напишите сжатое изложение. Исходный текст для сжатого изложения прослушивается 2 раза.</p>
+                        <p>Учтите, что Вы должны передать главное содержание как микротемы, так и всего текста в целом.</p>
+                        <p>Объём изложения — не менее 70 слов.</p>
+                        <p>Пишите изложение аккуратно, разборчивым почерком.</p>
+                    </div>
+                    <div class="audio-player">
+                        <audio controls style="width: 100%;">
+                            <source src="/get_file?id=4998" type="audio/mpeg">
+                            Ваш браузер не поддерживает аудио элемент.
+                        </audio>
+                    </div>
+                    <div class="problem-actions">
+                        <button class="action-btn">Пояснение</button>
+                        <button class="action-btn">Критерии</button>
+                        <button class="action-btn">Помощь</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Добавьте остальные задания по аналогии -->
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
         </div>
     </div>
-    
+
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span>ОГЭ Русский</span>
-                </div>
-                
                 <div class="footer-links">
-                    <a href="#">О проекте</a>
-                    <a href="#">Контакты</a>
-                    <a href="#">Помощь</a>
-                    <a href="#">Политика конфиденциальности</a>
+                    <a href="/about">О проекте</a>
+                    <a href="/staff">Редакция</a>
+                    <a href="/legal">Правовая информация</a>
+                    <a href="/advert">О рекламе</a>
                 </div>
-                
-                <div>
-                    <p>© 2023 Подготовка к ОГЭ по русскому языку. Все права защищены.</p>
+                <div class="footer-copyright">
+                    © Комаров Е.А. 2025
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Простой JavaScript для демонстрации функциональности
         document.addEventListener('DOMContentLoaded', function() {
-            // Имитация базы заданий
-            const tasksDatabase = {
-                1: {
-                    title: "Сжатое изложение",
-                    description: "Прослушайте текст и напишите сжатое изложение. Учтите, что вы должны передать главное содержание как каждой микротемы, так и всего текста в целом.",
-                    type: "text",
-                    points: 7,
-                    texts: [
-                        "Человек и природа неразрывно связаны друг с другом...",
-                        "Дружба — это великая ценность, которую нужно беречь...",
-                        "Книги играют важную роль в жизни человека..."
-                    ]
-                },
-                2: {
-                    title: "Синтаксический анализ",
-                    description: "Выполните синтаксический анализ предложений.",
-                    type: "test",
-                    points: 1,
-                    questions: [
-                        {
-                            text: "Укажите количество грамматических основ в предложении:",
-                            options: ["1", "2", "3", "4"],
-                            correct: 1
-                        }
-                    ]
-                },
-                3: {
-                    title: "Пунктуационный анализ",
-                    description: "Расставьте знаки препинания в предложениях.",
-                    type: "test",
-                    points: 1,
-                    questions: [
-                        {
-                            text: "Расставьте знаки препинания: Солнце (1) уже скрылось (2) и на землю спускалась (3) прохладная ночь.",
-                            options: ["1, 2", "2", "1, 2, 3", "Знаки не нужны"],
-                            correct: 0
-                        }
-                    ]
-                }
-                // Остальные задания будут добавлены аналогично
-            };
-
-            // Обработчики для навигации по заданиям
-            const taskLinks = document.querySelectorAll('.task-nav a');
-            taskLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Убираем активный класс у всех ссылок
-                    taskLinks.forEach(l => l.classList.remove('active'));
-                    // Добавляем активный класс текущей ссылке
+            // Обработка кнопок пагинации
+            const pageButtons = document.querySelectorAll('.page-btn');
+            pageButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    pageButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Здесь будет логика загрузки задания
-                    const taskNumber = this.textContent.match(/\d+/)[0];
-                    loadTask(taskNumber);
                 });
             });
 
-            // Функция загрузки задания (заглушка)
-            function loadTask(taskNumber) {
-                console.log(`Загружаем задание ${taskNumber}`);
-                // В реальном приложении здесь будет загрузка данных из базы
-                // и обновление интерфейса
-            }
-
-            // Обработчики для кнопок действий
-            const actionButtons = document.querySelectorAll('.task-actions .btn');
+            // Обработка кнопок действий в заданиях
+            const actionButtons = document.querySelectorAll('.action-btn');
             actionButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const action = this.textContent.trim();
-                    console.log(`Выполняется действие: ${action}`);
-                    
-                    // В реальном приложении здесь будет соответствующая логика
-                    if (action.includes('Проверить')) {
-                        alert('Изложение отправлено на проверку. В реальном приложении здесь будет анализ текста.');
-                    } else if (action.includes('Прослушать')) {
-                        alert('Начинается воспроизведение текста. В реальном приложении здесь будет аудиоплеер.');
+                    const buttonText = this.textContent || this.title;
+                    if (buttonText === 'Пояснение') {
+                        // Логика показа пояснения
+                        const solution = this.closest('.problem-content').querySelector('.solution');
+                        if (solution) {
+                            solution.style.display = solution.style.display === 'none' ? 'block' : 'none';
+                        }
+                    } else if (buttonText === 'Критерии') {
+                        // Логика показа критериев
+                        const criteria = this.closest('.problem-content').querySelector('.criteria');
+                        if (criteria) {
+                            criteria.style.display = criteria.style.display === 'none' ? 'block' : 'none';
+                        }
                     }
                 });
+            });
+
+            // Обработка сортировки
+            const sortSelect = document.querySelector('.orange-select');
+            sortSelect.addEventListener('change', function() {
+                // Логика сортировки заданий
+                console.log('Сортировка по:', this.value);
             });
         });
     </script>
