@@ -3,52 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русский язык онлайн | Банк заданий</title>
+    <title>Русский язык онлайн | Интерактивный банк заданий</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --success: #4ade80;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --text: #334155;
+            --text-light: #64748b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f9f9f9;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Header Styles */
         header {
-            background-color: var(--primary);
+            background: var(--gradient);
             color: white;
             padding: 1rem 0;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .header-content {
@@ -60,22 +70,32 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--secondary);
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(5px);
         }
 
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, white, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav a {
@@ -83,12 +103,29 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
         }
 
         nav a:hover, nav a.active {
-            background-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-btn {
@@ -102,37 +139,67 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
-            padding: 4rem 0;
+            padding: 5rem 0;
             text-align: center;
-            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .search-box {
             max-width: 600px;
             margin: 0 auto;
             position: relative;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .search-box input {
             width: 100%;
-            padding: 15px 20px;
+            padding: 18px 25px;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .search-box button {
@@ -143,37 +210,104 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 10px 20px;
+            padding: 13px 25px;
             cursor: pointer;
             transition: var(--transition);
+            font-weight: 500;
         }
 
         .search-box button:hover {
-            background: #c0392b;
+            background: #3aa8d8;
+            transform: translateY(-2px);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 85%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
         }
 
         /* Main Content */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 280px 1fr;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin: 3rem 0;
         }
 
         /* Sidebar */
         .sidebar {
             background: white;
-            border-radius: 10px;
+            border-radius: 20px;
             padding: 1.5rem;
             box-shadow: var(--shadow);
             height: fit-content;
+            position: sticky;
+            top: 100px;
+            transition: var(--transition);
+        }
+
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--light);
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .filter-group {
@@ -185,61 +319,171 @@
             color: var(--text-light);
             font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .filter-options {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .filter-options label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .filter-options label:hover {
+            background: var(--light);
         }
 
         .filter-options input {
             margin: 0;
+            accent-color: var(--primary);
+        }
+
+        /* Class Tabs */
+        .class-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .class-tab {
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            background: var(--light);
+            color: var(--text);
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .class-tab:hover::before, .class-tab.active::before {
+            left: 0;
+        }
+
+        .class-tab:hover, .class-tab.active {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(67, 97, 238, 0.3);
         }
 
         /* Assignments Grid */
+        .assignments-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
         .assignments-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .assignment-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            border: 1px solid #f1f5f9;
+            position: relative;
+            cursor: pointer;
         }
 
         .assignment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
         }
 
         .card-header {
             padding: 1.5rem;
-            background: var(--primary);
+            background: var(--gradient);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
+            background-size: cover;
         }
 
         .card-header h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .card-meta {
             display: flex;
             justify-content: space-between;
             font-size: 0.9rem;
-            color: var(--light);
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 1;
         }
 
         .card-body {
@@ -247,7 +491,21 @@
         }
 
         .card-body p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
             color: var(--text-light);
         }
 
@@ -257,44 +515,49 @@
         }
 
         .btn {
-            padding: 8px 15px;
+            padding: 10px 18px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 500;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .btn-primary {
-            background: var(--secondary);
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #2980b9;
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
+            border: 1px solid var(--primary);
+            color: var(--primary);
         }
 
         .btn-outline:hover {
-            background: var(--secondary);
+            background: var(--primary);
             color: white;
+            transform: translateY(-2px);
         }
 
         /* Audio Player */
         .audio-player {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 1.5rem;
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
+            border-left: 5px solid var(--accent);
         }
 
         .player-header {
@@ -308,13 +571,15 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex: 1;
+            max-width: 500px;
         }
 
         .play-btn {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--secondary);
+            background: var(--primary);
             color: white;
             border: none;
             display: flex;
@@ -322,27 +587,42 @@
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
         }
 
         .play-btn:hover {
-            background: #2980b9;
+            background: var(--secondary);
             transform: scale(1.05);
         }
 
         .progress-container {
             flex-grow: 1;
-            height: 6px;
-            background: var(--light);
-            border-radius: 3px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
             position: relative;
             cursor: pointer;
+            overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            background: var(--secondary);
-            border-radius: 3px;
+            background: var(--gradient);
+            border-radius: 10px;
             width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: white;
+            border-radius: 50%;
         }
 
         .time-display {
@@ -361,37 +641,53 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            z-index: 2000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
             background: white;
-            border-radius: 10px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 2.5rem;
             position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.4s ease;
         }
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
+            top: 20px;
+            right: 20px;
+            background: var(--light);
             border: none;
-            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
             cursor: pointer;
-            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: var(--error);
+            color: white;
+            transform: rotate(90deg);
         }
 
         .modal-header {
             margin-bottom: 1.5rem;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--light);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
         }
 
         .modal-body {
@@ -399,39 +695,45 @@
         }
 
         .answer-section {
-            background: #f8f9fa;
+            background: #f8fafc;
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 1.5rem;
+            border-left: 4px solid var(--success);
         }
 
         .answer-section h4 {
             margin-bottom: 1rem;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 0 1.5rem;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--accent);
         }
 
         .footer-section p, .footer-section a {
-            color: #bdc3c7;
-            margin-bottom: 10px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
             display: block;
             text-decoration: none;
             transition: var(--transition);
@@ -439,45 +741,77 @@
 
         .footer-section a:hover {
             color: white;
+            transform: translateX(5px);
         }
 
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: #34495e;
+            background: #334155;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
+            background: var(--accent);
+            transform: translateY(-5px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #34495e;
-            color: #95a5a6;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
             font-size: 0.9rem;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive Styles */
-        @media (max-width: 992px) {
+        @media (max-width: 1100px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
             
             .sidebar {
+                position: static;
                 order: 2;
             }
             
@@ -511,11 +845,31 @@
             }
             
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
             
             .assignments-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .class-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .class-tab {
+                flex: 0 0 auto;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
             }
         }
     </style>
@@ -526,8 +880,10 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <h1>Русский язык онлайн</h1>
+                    <div class="logo-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h1>РусскийЯзык.Онлайн</h1>
                 </div>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -538,6 +894,7 @@
                         <li><a href="#">Изложения</a></li>
                         <li><a href="#">Диктанты</a></li>
                         <li><a href="#">Сочинения</a></li>
+                        <li><a href="#">ОГЭ</a></li>
                         <li><a href="#">Тесты</a></li>
                         <li><a href="#">О проекте</a></li>
                     </ul>
@@ -548,12 +905,19 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
         <div class="container">
-            <h2>Банк заданий по русскому языку</h2>
-            <p>Сжатые изложения, аудиозаписи и ответы для эффективной подготовки к урокам и экзаменам</p>
-            <div class="search-box">
-                <input type="text" placeholder="Поиск заданий по теме или классу...">
-                <button><i class="fas fa-search"></i> Найти</button>
+            <div class="hero-content">
+                <h2>Банк заданий по русскому языку</h2>
+                <p>Интерактивная платформа с заданиями, аудиозаписями и ответами для эффективной подготовки</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск заданий по теме, классу или типу...">
+                    <button><i class="fas fa-search"></i> Найти</button>
+                </div>
             </div>
         </div>
     </section>
@@ -563,7 +927,7 @@
         <div class="main-content">
             <!-- Sidebar with Filters -->
             <aside class="sidebar">
-                <h3>Фильтры заданий</h3>
+                <h3><i class="fas fa-filter"></i> Фильтры заданий</h3>
                 
                 <div class="filter-group">
                     <h4>Класс</h4>
@@ -572,7 +936,7 @@
                         <label><input type="checkbox"> 6 класс</label>
                         <label><input type="checkbox"> 7 класс</label>
                         <label><input type="checkbox"> 8 класс</label>
-                        <label><input type="checkbox"> 9 класс</label>
+                        <label><input type="checkbox"> 9 класс (ОГЭ)</label>
                     </div>
                 </div>
                 
@@ -583,6 +947,7 @@
                         <label><input type="checkbox"> Диктант</label>
                         <label><input type="checkbox"> Сочинение</label>
                         <label><input type="checkbox"> Тест</label>
+                        <label><input type="checkbox"> Аудирование</label>
                     </div>
                 </div>
                 
@@ -594,6 +959,7 @@
                         <label><input type="checkbox"> Дружба</label>
                         <label><input type="checkbox"> Семья</label>
                         <label><input type="checkbox"> Родина</label>
+                        <label><input type="checkbox"> Искусство</label>
                     </div>
                 </div>
                 
@@ -607,18 +973,36 @@
                 </div>
                 
                 <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">
-                    <i class="fas fa-filter"></i> Применить фильтры
+                    <i class="fas fa-sync-alt"></i> Применить фильтры
                 </button>
             </aside>
 
             <!-- Assignments Section -->
             <section class="assignments-section">
-                <h2 style="margin-bottom: 1.5rem;">Сжатые изложения</h2>
+                <div class="section-header">
+                    <h2>Задания по русскому языку</h2>
+                    <div class="sort-options">
+                        <select style="padding: 10px 15px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                            <option>Сортировка: по популярности</option>
+                            <option>Сортировка: по сложности</option>
+                            <option>Сортировка: по дате добавления</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Class Tabs -->
+                <div class="class-tabs">
+                    <div class="class-tab active" data-class="5">5 класс</div>
+                    <div class="class-tab" data-class="6">6 класс</div>
+                    <div class="class-tab" data-class="7">7 класс</div>
+                    <div class="class-tab" data-class="8">8 класс</div>
+                    <div class="class-tab" data-class="9">9 класс (ОГЭ)</div>
+                </div>
                 
                 <!-- Audio Player -->
                 <div class="audio-player">
                     <div class="player-header">
-                        <h3>Прослушать текст</h3>
+                        <h3>Аудиотекст для изложения</h3>
                         <div class="player-controls">
                             <button class="play-btn">
                                 <i class="fas fa-play"></i>
@@ -626,79 +1010,15 @@
                             <div class="progress-container">
                                 <div class="progress-bar"></div>
                             </div>
-                            <div class="time-display">0:00 / 0:00</div>
+                            <div class="time-display">0:00 / 2:15</div>
                         </div>
                     </div>
-                    <p>Текст: "Первый снег" - 5 класс</p>
+                    <p>Текст: "Первый снег" - 5 класс | Сложность: легкая</p>
                 </div>
                 
                 <!-- Assignments Grid -->
-                <div class="assignments-grid">
-                    <!-- Assignment 1 -->
-                    <div class="assignment-card">
-                        <div class="card-header">
-                            <h3>Первый снег</h3>
-                            <div class="card-meta">
-                                <span>5 класс</span>
-                                <span><i class="far fa-clock"></i> 15 мин</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>Текст о первом снеге, который преображает мир, создавая ощущение чистоты и волшебства. Подходит для отработки навыков сжатия текста.</p>
-                            <div class="card-actions">
-                                <button class="btn btn-primary open-assignment" data-id="1">
-                                    <i class="fas fa-eye"></i> Открыть
-                                </button>
-                                <button class="btn btn-outline">
-                                    <i class="fas fa-download"></i> Скачать
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Assignment 2 -->
-                    <div class="assignment-card">
-                        <div class="card-header">
-                            <h3>Весенний ручей</h3>
-                            <div class="card-meta">
-                                <span>6 класс</span>
-                                <span><i class="far fa-clock"></i> 20 мин</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>Описание весеннего ручья, который пробуждает природу после зимнего сна. Текст помогает отработать исключение и обобщение при сжатии.</p>
-                            <div class="card-actions">
-                                <button class="btn btn-primary open-assignment" data-id="2">
-                                    <i class="fas fa-eye"></i> Открыть
-                                </button>
-                                <button class="btn btn-outline">
-                                    <i class="fas fa-download"></i> Скачать
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Assignment 3 -->
-                    <div class="assignment-card">
-                        <div class="card-header">
-                            <h3>Лес осенью</h3>
-                            <div class="card-meta">
-                                <span>7 класс</span>
-                                <span><i class="far fa-clock"></i> 25 мин</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>Текст описывает осенний лес в его золотом убранстве. Подходит для тренировки навыков сжатия текста с сохранением основных мыслей.</p>
-                            <div class="card-actions">
-                                <button class="btn btn-primary open-assignment" data-id="3">
-                                    <i class="fas fa-eye"></i> Открыть
-                                </button>
-                                <button class="btn btn-outline">
-                                    <i class="fas fa-download"></i> Скачать
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="assignments-grid" id="assignments-container">
+                    <!-- Assignments will be loaded here by JavaScript -->
                 </div>
             </section>
         </div>
@@ -717,15 +1037,15 @@
             </div>
             <div class="modal-body">
                 <h3>Исходный текст</h3>
-                <p id="modal-text">Проснулся утром — и сразу почувствовал что-то необычное. В комнате стоял какой-то особый, таинственный свет. Я подошёл к окну и ахнул. За ночь мир преобразился. Всё вокруг: земля, крыши домов, ветки деревьев — было покрыто пушистым белым снегом. Он лежал ровным сияющим ковром, слегка голубевшим в утренних сумерках. Крупные хлопья снега неторопливо и величаво кружились в воздухе, словно танцуя медленный вальс. На душе стало необычайно светло и спокойно. Первый снег всегда приносит с собой ощущение чистоты, тишины и волшебства. Он скрыл под собой осеннюю грязь, укутал город в нарядную шубу и подарил надежду на что-то новое и прекрасное. Этот миг тишины и красоты хотелось сохранить в памяти навсегда.</p>
+                <p id="modal-text">Проснулся утром — и сразу почувствовал что-то необычное. В комнате стоял какой-то особый, таинственный свет. Я подошёл к окну и ахнул. За ночь мир преобразился. Всё вокруг: земля, крыши домов, ветки деревьев — было покрыто пушистым белым снегом. Он лежал ровным сияющим ковром, слегка голубевшим в утренних сумерках. Крупные хлопья снега неторопливо и вегляво кружились в воздухе, словно танцуя медленный вальс. На душе стало необычайно светло и спокойно. Первый снег всегда приносит с собой ощущение чистоты, тишины и волшебства. Он скрыл под собой осеннюю грязь, укутал город в нарядную шубу и подарил надежду на что-то новое и прекрасное. Этот миг тишины и красоты хотелось сохранить в памяти навсегда.</p>
                 
                 <div class="answer-section">
-                    <h4>Пример сжатого изложения</h4>
+                    <h4><i class="fas fa-check-circle"></i> Пример сжатого изложения</h4>
                     <p id="modal-answer">Утром я почувствовал необычное. В комнате был таинственный свет. Подойдя к окну, я увидел, что за ночь мир преобразился. Всё вокруг покрыл пушистый белый снег. Он лежал ровным сияющим ковром. Крупные хлопья снега величаво кружились в воздухе. На душе стало светло и спокойно. Первый снег приносит ощущение чистоты и волшебства. Он скрыл осеннюю грязь, укутал город и подарил надежду на новое. Этот миг хотелось сохранить навсегда.</p>
                 </div>
                 
                 <div class="answer-section">
-                    <h4>Критерии оценки</h4>
+                    <h4><i class="fas fa-star"></i> Критерии оценки</h4>
                     <ul>
                         <li>Сохранение микротем: 1 балл</li>
                         <li>Приемы сжатия: 2 балла</li>
@@ -734,12 +1054,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="card-actions" style="padding-top: 1rem; border-top: 1px solid var(--light);">
+            <div class="card-actions" style="padding-top: 1rem; border-top: 1px solid #e2e8f0;">
                 <button class="btn btn-primary">
                     <i class="fas fa-download"></i> Скачать текст
                 </button>
                 <button class="btn btn-outline">
                     <i class="fas fa-headphones"></i> Скачать аудио
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-print"></i> Распечатать
                 </button>
             </div>
         </div>
@@ -751,7 +1074,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>О проекте</h3>
-                    <p>Банк заданий по русскому языку создан для помощи ученикам и учителям в подготовке к урокам и экзаменам.</p>
+                    <p>Интерактивный банк заданий по русскому языку создан для помощи ученикам и учителям в подготовке к урокам и экзаменам.</p>
                     <p>Все материалы доступны бесплатно.</p>
                 </div>
                 
@@ -761,6 +1084,7 @@
                     <a href="#">Изложения</a>
                     <a href="#">Диктанты</a>
                     <a href="#">Сочинения</a>
+                    <a href="#">ОГЭ</a>
                     <a href="#">Тесты</a>
                 </div>
                 
@@ -768,10 +1092,12 @@
                     <h3>Контакты</h3>
                     <p><i class="fas fa-envelope"></i> info@russian-online.ru</p>
                     <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Образцова, 15</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-vk"></i></a>
                         <a href="#"><i class="fab fa-telegram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -783,10 +1109,238 @@
     </footer>
 
     <script>
+        // Database of assignments by class
+        const assignmentsDatabase = {
+            5: [
+                {
+                    id: 1,
+                    title: "Первый снег",
+                    class: "5 класс",
+                    time: "15 мин",
+                    difficulty: "легкая",
+                    type: "изложение",
+                    theme: "природа",
+                    text: "Проснулся утром — и сразу почувствовал что-то необычное. В комнате стоял какой-то особый, таинственный свет. Я подошёл к окну и ахнул. За ночь мир преобразился. Всё вокруг: земля, крыши домов, ветки деревьев — было покрыто пушистым белым снегом. Он лежал ровным сияющим ковром, слегка голубевшим в утренних сумерках. Крупные хлопья снега неторопливо и величаво кружились в воздухе, словно танцуя медленный вальс. На душе стало необычайно светло и спокойно. Первый снег всегда приносит с собой ощущение чистоты, тишины и волшебства. Он скрыл под собой осеннюю грязь, укутал город в нарядную шубу и подарил надежду на что-то новое и прекрасное. Этот миг тишины и красоты хотелось сохранить в памяти навсегда.",
+                    answer: "Утром я почувствовал необычное. В комнате был таинственный свет. Подойдя к окну, я увидел, что за ночь мир преобразился. Всё вокруг покрыл пушистый белый снег. Он лежал ровным сияющим ковром. Крупные хлопья снега величаво кружились в воздухе. На душе стало светло и спокойно. Первый снег приносит ощущение чистоты и волшебства. Он скрыл осеннюю грязь, укутал город и подарил надежду на новое. Этот миг хотелось сохранить навсегда.",
+                    audio: true,
+                    downloads: 124,
+                    rating: 4.8
+                },
+                {
+                    id: 2,
+                    title: "Мой друг",
+                    class: "5 класс",
+                    time: "20 мин",
+                    difficulty: "легкая",
+                    type: "сочинение",
+                    theme: "дружба",
+                    text: "У меня есть друг. Его зовут Серёжа. Мы дружим с первого класса. Серёжа весёлый и добрый. Он всегда помогает мне в учёбе. Мы вместе делаем уроки, играем в футбол и ходим в кино. Однажды я заболел и пропустил неделю занятий. Серёжа принёс мне учебники и тетради, объяснил новые темы. Благодаря ему я быстро наверстал пропущенное. Я ценю нашу дружбу и стараюсь быть хорошим другом для Серёжи.",
+                    answer: "У меня есть друг Серёжа. Мы дружим с первого класса. Он весёлый и добрый, помогает в учёбе. Вместе делаем уроки, играем, ходим в кино. Когда я болел, Серёжа принёс учебники, объяснил темы. Я ценю нашу дружбу.",
+                    audio: false,
+                    downloads: 98,
+                    rating: 4.5
+                },
+                {
+                    id: 3,
+                    title: "Осень в парке",
+                    class: "5 класс",
+                    time: "15 мин",
+                    difficulty: "легкая",
+                    type: "изложение",
+                    theme: "природа",
+                    text: "Осень — красивое время года. Особенно хорошо в парке. Деревья надели разноцветные наряды: жёлтые, красные, оранжевые. Листья тихо падают на землю, покрывая её мягким ковром. Воздух чистый и прозрачный. Птицы по-осеннему щебечут, готовясь к отлёту. Дети собирают красивые листья для гербария. Я люблю гулять в осеннем парке и любоваться природой.",
+                    answer: "Осень — красивое время. В парке деревья в разноцветных нарядах. Листья падают на землю. Воздух чистый. Птицы щебечут, готовясь к отлёту. Дети собирают листья. Я люблю гулять в осеннем парке.",
+                    audio: true,
+                    downloads: 112,
+                    rating: 4.7
+                }
+            ],
+            6: [
+                {
+                    id: 4,
+                    title: "Весенний ручей",
+                    class: "6 класс",
+                    time: "20 мин",
+                    difficulty: "средняя",
+                    type: "изложение",
+                    theme: "природа",
+                    text: "Весенний ручей — это настоящий символ пробуждения природы после долгой зимней спячки. С первыми лучами мартовского солнца снег начинает таять, и повсюду появляются веселые ручейки. Они звенят, переливаются на солнце и несут свои воды к рекам и озерам. Весенний ручей не просто течет — он поет песню о приближающемся тепле, о скором приходе весны. Дети с удовольствием пускают по нему кораблики, наблюдая, как те подпрыгивают на волнах и несутся вперед, к неизведанным далям. Взрослые же, глядя на этот ручей, вспоминают свое детство и чувствуют, как вместе с природой пробуждаются и их сердца.",
+                    answer: "Весенний ручей символизирует пробуждение природы после зимы. С первыми лучами солнца появляются ручейки, которые звенят и переливаются. Ручей поет о приближающемся тепле. Дети пускают по нему кораблики, а взрослые вспоминают детство и чувствуют пробуждение сердца.",
+                    audio: true,
+                    downloads: 134,
+                    rating: 4.6
+                },
+                {
+                    id: 5,
+                    title: "Моя семья",
+                    class: "6 класс",
+                    time: "25 мин",
+                    difficulty: "средняя",
+                    type: "сочинение",
+                    theme: "семья",
+                    text: "Моя семья небольшая, но очень дружная. Она состоит из четырёх человек: папы, мамы, меня и младшей сестры Кати. Папа работает инженером, мама — учительница в школе. Я учусь в шестом классе, а Катя ходит в детский сад. По вечерам мы все собираемся за ужином и рассказываем друг другу о своих делах. В выходные мы часто ходим в парк, кино или на природу. Я очень люблю свою семью и ценю то, что мы всегда поддерживаем друг друга.",
+                    answer: "Моя семья дружная: папа, мама, я и сестра Катя. Папа — инженер, мама — учительница. Я учусь в шестом классе, Катя — в детском саду. Вечерами ужинаем вместе, в выходные ходим гулять. Я люблю свою семью.",
+                    audio: false,
+                    downloads: 87,
+                    rating: 4.4
+                }
+            ],
+            7: [
+                {
+                    id: 6,
+                    title: "Лес осенью",
+                    class: "7 класс",
+                    time: "25 мин",
+                    difficulty: "средняя",
+                    type: "изложение",
+                    theme: "природа",
+                    text: "Осенний лес — это удивительное зрелище, которое никого не оставляет равнодушным. Деревья надевают свои самые яркие наряды: золотые, багряные, оранжевые. Воздух становится прозрачным и чистым, а под ногами шуршит ковер из опавших листьев. В осеннем лесу царит особая тишина, нарушаемая лишь шелестом листьев и редкими птичьими голосами. Грибники с корзинками внимательно всматриваются в лесную подстилку, надеясь найти крепкие боровики или яркие рыжики. Осенний лес дарит нам не только свою красоту, но и щедрые дары, напоминая о цикличности природы и о том, что после увядания обязательно наступит новое возрождение.",
+                    answer: "Осенний лес поражает своей красотой. Деревья в золотых и багряных нарядах, воздух чистый, под ногами шуршат листья. В лесу тихо, слышен лишь шелест листьев и птичьи голоса. Грибники ищут грибы. Лес дарит красоту и дары, напоминая о цикличности природы.",
+                    audio: true,
+                    downloads: 156,
+                    rating: 4.9
+                }
+            ],
+            8: [
+                {
+                    id: 7,
+                    title: "Родной край",
+                    class: "8 класс",
+                    time: "30 мин",
+                    difficulty: "сложная",
+                    type: "сочинение",
+                    theme: "родина",
+                    text: "Родной край... Эти слова вызывают в душе каждого человека тёплые и светлые чувства. Для меня родной край — это не просто место, где я родился и вырос. Это уголок земли, с которым связаны самые дорогие воспоминания детства. Здесь я впервые увидел белый снег, услышал пение птиц, научился читать и писать. В родном краю живут мои друзья, здесь находится моя школа, в которой я учусь. Я люблю бродить по знакомым улочкам, любоваться старинными зданиями и современными постройками. Каждый раз, возвращаясь из поездки, я с радостью вдыхаю знакомый воздух и понимаю: это моя малая родина, и я её часть.",
+                    answer: "Родной край вызывает тёплые чувства. Для меня это место, где я родился, с которым связаны воспоминания детства. Здесь я впервые увидел снег, научился читать. В родном краю живут друзья, находится школа. Я люблю бродить по улочкам, любоваться зданиями. Возвращаясь из поездки, я радуюсь: это моя малая родина.",
+                    audio: false,
+                    downloads: 143,
+                    rating: 4.7
+                }
+            ],
+            9: [
+                {
+                    id: 8,
+                    title: "ОГЭ: Задание 1 (Изложение)",
+                    class: "9 класс",
+                    time: "30 мин",
+                    difficulty: "сложная",
+                    type: "ОГЭ",
+                    theme: "природа",
+                    text: "Что такое красота? На этот вопрос трудно дать однозначный ответ. Для каждого человека понятие красоты своё. Одни видят красоту в природе: в закате солнца, в первом снеге, в цветущем саду. Другие находят её в произведениях искусства: в музыке, живописи, архитектуре. Третьи считают, что настоящая красота — это красота человеческой души, проявляющаяся в добрых поступках, в способности сочувствовать и помогать другим. На мой взгляд, красота — это гармония, которая окружает нас повсюду. Нужно только уметь её видеть и ценить.",
+                    answer: "Красота — понятие индивидуальное. Кто-то видит её в природе, кто-то — в искусстве, а кто-то — в человеческой душе. Красота — это гармония, которую нужно уметь видеть и ценить.",
+                    audio: true,
+                    downloads: 287,
+                    rating: 4.8
+                },
+                {
+                    id: 9,
+                    title: "ОГЭ: Задание 9 (Правописание приставок)",
+                    class: "9 класс",
+                    time: "15 мин",
+                    difficulty: "средняя",
+                    type: "ОГЭ",
+                    theme: "грамматика",
+                    text: "Задание на правописание приставок ПРЕ- и ПРИ-. Определите, в каких словах пишется приставка ПРЕ-, а в каких ПРИ-.",
+                    answer: "Прервать, прибежать, презирать, присесть, превозносить, приклеить, преграда, пригород.",
+                    audio: false,
+                    downloads: 324,
+                    rating: 4.6
+                },
+                {
+                    id: 10,
+                    title: "ОГЭ: Задание 15 (Знаки препинания)",
+                    class: "9 класс",
+                    time: "20 мин",
+                    difficulty: "сложная",
+                    type: "ОГЭ",
+                    theme: "пунктуация",
+                    text: "Расставьте знаки препинания в предложении: Солнце которое только что взошло осветило вершины деревьев и они заискрились в его лучах.",
+                    answer: "Солнце, которое только что взошло, осветило вершины деревьев, и они заискрились в его лучах.",
+                    audio: false,
+                    downloads: 298,
+                    rating: 4.7
+                }
+            ]
+        };
+
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('nav').classList.toggle('active');
         });
+
+        // Class Tabs Functionality
+        const classTabs = document.querySelectorAll('.class-tab');
+        const assignmentsContainer = document.getElementById('assignments-container');
+        
+        classTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                classTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Load assignments for selected class
+                const selectedClass = this.getAttribute('data-class');
+                loadAssignments(selectedClass);
+            });
+        });
+
+        // Load assignments for a specific class
+        function loadAssignments(className) {
+            const assignments = assignmentsDatabase[className] || [];
+            assignmentsContainer.innerHTML = '';
+            
+            if (assignments.length === 0) {
+                assignmentsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-light);">Задания для этого класса пока не добавлены.</p>';
+                return;
+            }
+            
+            assignments.forEach(assignment => {
+                const card = document.createElement('div');
+                card.className = 'assignment-card';
+                card.innerHTML = `
+                    ${assignment.audio ? '<div class="card-badge"><i class="fas fa-volume-up"></i> Аудио</div>' : ''}
+                    <div class="card-header">
+                        <h3>${assignment.title}</h3>
+                        <div class="card-meta">
+                            <span>${assignment.class}</span>
+                            <span><i class="far fa-clock"></i> ${assignment.time}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>${assignment.text.substring(0, 120)}...</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <i class="fas fa-download"></i> ${assignment.downloads}
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-star"></i> ${assignment.rating}
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-tag"></i> ${assignment.theme}
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary open-assignment" data-id="${assignment.id}">
+                                <i class="fas fa-eye"></i> Открыть
+                            </button>
+                            <button class="btn btn-outline">
+                                <i class="fas fa-download"></i> Скачать
+                            </button>
+                        </div>
+                    </div>
+                `;
+                assignmentsContainer.appendChild(card);
+            });
+            
+            // Add event listeners to open buttons
+            document.querySelectorAll('.open-assignment').forEach(button => {
+                button.addEventListener('click', function() {
+                    const assignmentId = parseInt(this.getAttribute('data-id'));
+                    openAssignmentModal(assignmentId);
+                });
+            });
+        }
 
         // Audio Player Functionality
         const playBtn = document.querySelector('.play-btn');
@@ -796,7 +1350,7 @@
         
         let isPlaying = false;
         let currentTime = 0;
-        const duration = 120; // 2 minutes in seconds
+        const duration = 135; // 2 minutes 15 seconds in seconds
         
         playBtn.addEventListener('click', function() {
             isPlaying = !isPlaying;
@@ -850,16 +1404,28 @@
 
         // Modal Functionality
         const modal = document.getElementById('assignment-modal');
-        const openButtons = document.querySelectorAll('.open-assignment');
         const closeButton = document.querySelector('.close-modal');
         
-        openButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const assignmentId = this.getAttribute('data-id');
-                loadAssignment(assignmentId);
-                modal.style.display = 'flex';
-            });
-        });
+        function openAssignmentModal(assignmentId) {
+            // Find assignment in database
+            let assignment = null;
+            for (const classAssignments of Object.values(assignmentsDatabase)) {
+                assignment = classAssignments.find(a => a.id === assignmentId);
+                if (assignment) break;
+            }
+            
+            if (!assignment) return;
+            
+            // Populate modal with assignment data
+            document.getElementById('modal-title').textContent = assignment.title;
+            document.getElementById('modal-class').textContent = assignment.class;
+            document.getElementById('modal-time').textContent = assignment.time;
+            document.getElementById('modal-text').textContent = assignment.text;
+            document.getElementById('modal-answer').textContent = assignment.answer;
+            
+            // Show modal
+            modal.style.display = 'flex';
+        }
         
         closeButton.addEventListener('click', function() {
             modal.style.display = 'none';
@@ -870,43 +1436,9 @@
                 modal.style.display = 'none';
             }
         });
-        
-        function loadAssignment(id) {
-            // In a real app, you would fetch assignment data from a server
-            // For this example, we'll use hardcoded data based on the ID
-            
-            const assignments = {
-                1: {
-                    title: "Первый снег",
-                    class: "5 класс",
-                    time: "15 мин",
-                    text: "Проснулся утром — и сразу почувствовал что-то необычное. В комнате стоял какой-то особый, таинственный свет. Я подошёл к окну и ахнул. За ночь мир преобразился. Всё вокруг: земля, крыши домов, ветки деревьев — было покрыто пушистым белым снегом. Он лежал ровным сияющим ковром, слегка голубевшим в утренних сумерках. Крупные хлопья снега неторопливо и величаво кружились в воздухе, словно танцуя медленный вальс. На душе стало необычайно светло и спокойно. Первый снег всегда приносит с собой ощущение чистоты, тишины и волшебства. Он скрыл под собой осеннюю грязь, укутал город в нарядную шубу и подарил надежду на что-то новое и прекрасное. Этот миг тишины и красоты хотелось сохранить в памяти навсегда.",
-                    answer: "Утром я почувствовал необычное. В комнате был таинственный свет. Подойдя к окну, я увидел, что за ночь мир преобразился. Всё вокруг покрыл пушистый белый снег. Он лежал ровным сияющим ковром. Крупные хлопья снега величаво кружились в воздухе. На душе стало светло и спокойно. Первый снег приносит ощущение чистоты и волшебства. Он скрыл осеннюю грязь, укутал город и подарил надежду на новое. Этот миг хотелось сохранить навсегда."
-                },
-                2: {
-                    title: "Весенний ручей",
-                    class: "6 класс",
-                    time: "20 мин",
-                    text: "Весенний ручей — это настоящий символ пробуждения природы после долгой зимней спячки. С первыми лучами мартовского солнца снег начинает таять, и повсюду появляются веселые ручейки. Они звенят, переливаются на солнце и несут свои воды к рекам и озерам. Весенний ручей не просто течет — он поет песню о приближающемся тепле, о скором приходе весны. Дети с удовольствием пускают по нему кораблики, наблюдая, как те подпрыгивают на волнах и несутся вперед, к неизведанным далям. Взрослые же, глядя на этот ручей, вспоминают свое детство и чувствуют, как вместе с природой пробуждаются и их сердца.",
-                    answer: "Весенний ручей символизирует пробуждение природы после зимы. С первыми лучами солнца появляются ручейки, которые звенят и переливаются. Ручей поет о приближающемся тепле. Дети пускают по нему кораблики, а взрослые вспоминают детство и чувствуют пробуждение сердца."
-                },
-                3: {
-                    title: "Лес осенью",
-                    class: "7 класс",
-                    time: "25 мин",
-                    text: "Осенний лес — это удивительное зрелище, которое никого не оставляет равнодушным. Деревья надевают свои самые яркие наряды: золотые, багряные, оранжевые. Воздух становится прозрачным и чистым, а под ногами шуршит ковер из опавших листьев. В осеннем лесу царит особая тишина, нарушаемая лишь шелестом листьев и редкими птичьими голосами. Грибники с корзинками внимательно всматриваются в лесную подстилку, надеясь найти крепкие боровики или яркие рыжики. Осенний лес дарит нам не только свою красоту, но и щедрые дары, напоминая о цикличности природы и о том, что после увядания обязательно наступит новое возрождение.",
-                    answer: "Осенний лес поражает своей красотой. Деревья в золотых и багряных нарядах, воздух чистый, под ногами шуршат листья. В лесу тихо, слышен лишь шелест листьев и птичьи голоса. Грибники ищут грибы. Лес дарит красоту и дары, напоминая о цикличности природы."
-                }
-            };
-            
-            const assignment = assignments[id];
-            
-            document.getElementById('modal-title').textContent = assignment.title;
-            document.getElementById('modal-class').textContent = assignment.class;
-            document.getElementById('modal-time').textContent = assignment.time;
-            document.getElementById('modal-text').textContent = assignment.text;
-            document.getElementById('modal-answer').textContent = assignment.answer;
-        }
+
+        // Initialize with 5th grade assignments
+        loadAssignments('5');
     </script>
 </body>
 </html>
