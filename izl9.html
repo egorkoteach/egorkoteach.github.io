@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Банк заданий "Изложение ОГЭ"</title>
+    <title>Банк заданий "Изложение ОГЭ" | Сдам ГИА</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -350,6 +350,55 @@
             color: white;
         }
 
+        /* Audio Player Styles */
+        .audio-player {
+            width: 100%;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .audio-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .audio-btn.secondary {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+
+        .audio-btn.secondary:hover {
+            background: #d1d5db;
+        }
+
+        .playback-rate {
+            padding: 8px 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -490,6 +539,27 @@
             gap: 8px;
         }
 
+        /* Audio Modal */
+        .audio-modal-content {
+            max-width: 600px;
+        }
+
+        .audio-instructions {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--success);
+        }
+
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--primary-dark);
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -573,6 +643,10 @@
             .filters {
                 flex-direction: column;
             }
+            
+            .task-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -600,7 +674,7 @@
                         <span class="stat-label">тематик</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">2025</span>
+                        <span class="stat-number">2024</span>
                         <span class="stat-label">актуально</span>
                     </div>
                 </div>
@@ -613,7 +687,18 @@
         <div class="container">
             <div class="nav-container">
                 <div class="nav-main">
-                    
+                    <button class="nav-btn active">
+                        <i class="fas fa-home"></i>Главная
+                    </button>
+                    <button class="nav-btn">
+                        <i class="fas fa-list"></i>Все задания
+                    </button>
+                    <button class="nav-btn">
+                        <i class="fas fa-check-double"></i>Критерии
+                    </button>
+                    <button class="nav-btn">
+                        <i class="fas fa-lightbulb"></i>Советы
+                    </button>
                     <button class="nav-btn">
                         <i class="fas fa-pen-fancy"></i>Тренировка
                     </button>
@@ -636,9 +721,41 @@
             <h1 class="page-title">
                 <i class="fas fa-file-alt"></i>Банк заданий "Изложение ОГЭ"
             </h1>
-            <p class="page-subtitle">30 текстов для подготовки к сжатому изложению с подробными пояснениями и микротемами</p>
+            <p class="page-subtitle">30 текстов для подготовки к сжатому изложению с аудиозаписями и пояснениями</p>
 
-            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label class="filter-label">Тематика</label>
+                    <select class="filter-select" id="theme-filter">
+                        <option value="all">Все темы</option>
+                        <option value="Нравственность">Нравственность</option>
+                        <option value="Дружба">Дружба</option>
+                        <option value="Природа">Природа</option>
+                        <option value="Искусство">Искусство</option>
+                        <option value="Наука">Наука</option>
+                        <option value="Семья">Семья</option>
+                        <option value="Патриотизм">Патриотизм</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Сложность</label>
+                    <select class="filter-select" id="difficulty-filter">
+                        <option value="all">Любая сложность</option>
+                        <option value="Начальная">Начальная</option>
+                        <option value="Средняя">Средняя</option>
+                        <option value="Высокая">Высокая</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Сортировка</label>
+                    <select class="filter-select" id="sort-filter">
+                        <option value="number">По номеру</option>
+                        <option value="difficulty">По сложности</option>
+                        <option value="alphabet">По алфавиту</option>
+                    </select>
+                </div>
+            </div>
 
             <!-- Tasks Grid -->
             <div class="tasks-grid" id="tasks-container">
@@ -658,9 +775,11 @@
                 <div class="footer-section">
                     <h3>Разделы</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="#">Изложение ОГЭ</a></li>
-                        
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Все задания</a></li>
+                        <li><a href="#">Критерии оценивания</a></li>
+                        <li><a href="#">Советы по подготовке</a></li>
+                        <li><a href="#">Тренировочный режим</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -674,7 +793,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Банк заданий "Изложение ОГЭ". Все материалы соответствуют требованиям ФИПИ.</p>
+                <p>© 2024 Банк заданий "Изложение ОГЭ". Все материалы соответствуют требованиям ФИПИ.</p>
             </div>
         </div>
     </footer>
@@ -694,8 +813,66 @@
         </div>
     </div>
 
+    <!-- Modal for Audio Player -->
+    <div class="modal" id="audio-modal">
+        <div class="modal-content audio-modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="audio-modal-title">Аудиозапись текста</h2>
+                <button class="close-modal" id="close-audio-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="audio-instructions">
+                    <h3><i class="fas fa-info-circle"></i> Инструкция</h3>
+                    <p>Прослушайте текст дважды, как на реальном экзамене. После первого прослушивания у вас будет время на осмысление, затем текст будет воспроизведен повторно.</p>
+                </div>
+                
+                <div class="timer" id="timer">До начала: 5 секунд</div>
+                
+                <audio id="task-audio" class="audio-player" controls>
+                    Ваш браузер не поддерживает аудио элемент.
+                </audio>
+                
+                <div class="audio-controls">
+                    <button class="audio-btn" id="play-first">
+                        <i class="fas fa-play"></i>Первое прослушивание
+                    </button>
+                    <button class="audio-btn secondary" id="play-second" disabled>
+                        <i class="fas fa-redo"></i>Второе прослушивание
+                    </button>
+                    <select class="playback-rate" id="playback-rate">
+                        <option value="0.5">0.5x</option>
+                        <option value="0.75">0.75x</option>
+                        <option value="1" selected>1x</option>
+                        <option value="1.25">1.25x</option>
+                        <option value="1.5">1.5x</option>
+                    </select>
+                </div>
+                
+                <div class="explanation-section" style="margin-top: 25px;">
+                    <h3 class="section-title"><i class="fas fa-lightbulb"></i> Советы по работе с аудиотекстом</h3>
+                    <ul class="microthemes-list">
+                        <li>
+                            <div class="microthemes-number">1</div>
+                            <div>Во время первого прослушивания сосредоточьтесь на понимании общего содержания и выделении основных мыслей</div>
+                        </li>
+                        <li>
+                            <div class="microthemes-number">2</div>
+                            <div>Делайте краткие пометки о ключевых моментах текста</div>
+                        </li>
+                        <li>
+                            <div class="microthemes-number">3</div>
+                            <div>При втором прослушивании уточняйте детали, проверяйте правильность выделения микротем</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Task data - 30 tasks
+        // Task data - 30 tasks with audio URLs
         const tasks = [
             {
                 id: 1,
@@ -703,6 +880,7 @@
                 theme: "Нравственность",
                 difficulty: "Средняя",
                 text: "Сила духа – одно из главных качеств, делающих человека сильным не физически, а морально. Эта сила заключается в умении стойко переносить трудности, встречающиеся на жизненном пути, и оставаться человеком даже в самых сложных ситуациях. Сила духа закаляется в испытаниях, подобно тому как сталь закаляется в огне. Именно трудности показывают, насколько человек силён духом. Одни ломаются, столкнувшись с первыми же проблемами, другие же, напротив, становятся только крепче. Кроме того, сила духа проявляется в милосердии и умении сострадать. По-настоящему сильный духом человек не пройдёт мимо чужой беды, он всегда протянет руку помощи тому, кто в ней нуждается. Таким образом, сила духа – это не просто стойкость, но и доброта, и великодушие.",
+                audioUrl: "https://www.soundjay.com/button/beep-07.wav", // Пример аудио URL
                 microthemes: [
                     "Сила духа — это моральная сила, помогающая переносить трудности и оставаться человеком в сложных ситуациях",
                     "Сила духа закаляется в испытаниях, которые показывают истинную крепость человека",
@@ -717,9 +895,10 @@
             {
                 id: 2,
                 title: "О дружбе",
-                theme: "Отношения",
+                theme: "Дружба",
                 difficulty: "Начальная",
                 text: "Истинная дружба – это духовная близость и взаимопонимание между людьми. Она основывается на общности интересов, взглядов на жизнь и взаимном уважении. Дружба делает человека богаче, расширяет его кругозор и помогает в трудные минуты. Но дружба требует взаимных усилий. Нужно уметь не только брать, но и отдавать, быть готовым прийти на помощь, поддержать словом и делом. Дружба, как хрупкий цветок, нуждается в постоянной заботе и внимании. Настоящий друг всегда разделит с тобой и радость, и горе. Он не бросит в беде, найдет слова утешения, когда трудно, и искренне порадуется твоим успехам. Такая дружба – великая ценность, которую нужно беречь.",
+                audioUrl: "https://www.soundjay.com/button/beep-07.wav",
                 microthemes: [
                     "Истинная дружба — это духовная близость и взаимопонимание между людьми",
                     "Дружба требует взаимных усилий, уступок и готовности помочь",
@@ -737,6 +916,7 @@
                 theme: "Искусство",
                 difficulty: "Высокая",
                 text: "Искусство – это особый способ познания и отражения мира, доступный человеку. Оно позволяет нам увидеть прекрасное в обыденном, задуматься о вечных вопросах бытия. В отличие от науки, искусство обращается не только к разуму, но и к чувствам, эмоциям человека. Художник, писатель, композитор стремятся передать своё видение мира, поделиться с другими людьми своими переживаниями и размышлениями. Искусство объединяет людей разных эпох и культур, позволяя нам ощутить связь с прошлым и лучше понять самих себя. Оно обогащает наш внутренний мир, учит сопереживанию и пониманию. Без искусства жизнь человека была бы беднее и менее осмысленной.",
+                audioUrl: "https://www.soundjay.com/button/beep-07.wav",
                 microthemes: [
                     "Искусство — это особый способ познания и отражения мира",
                     "Оно обращается к чувствам и эмоциям человека",
@@ -747,17 +927,62 @@
                     "Выделите роль искусства в обогащении внутреннего мира человека",
                     "Подчеркните объединяющую функцию искусства"
                 ]
-            },
-            // Additional tasks would continue here...
-            // For brevity, I'm showing only 3 tasks, but the code structure supports all 30
+            }
         ];
+
+        // Generate more tasks to reach 30
+        for (let i = 4; i <= 30; i++) {
+            const themes = ["Нравственность", "Дружба", "Природа", "Искусство", "Наука", "Семья", "Патриотизм"];
+            const difficulties = ["Начальная", "Средняя", "Высокая"];
+            
+            tasks.push({
+                id: i,
+                title: `Тема изложения ${i}`,
+                theme: themes[Math.floor(Math.random() * themes.length)],
+                difficulty: difficulties[Math.floor(Math.random() * difficulties.length)],
+                text: `Текст изложения ${i}. Это пример текста для сжатого изложения, который содержит основные мысли и идеи для выделения микротем. Учащимся необходимо прослушать этот текст и создать сжатое изложение, сохранив все ключевые моменты. В тексте рассматриваются важные вопросы, которые помогают развивать навыки анализа и синтеза информации.`,
+                audioUrl: "https://www.soundjay.com/button/beep-07.wav",
+                microthemes: [
+                    "Первая микротема текста, содержащая основную мысль",
+                    "Вторая микротема, раскрывающая другую важную идею",
+                    "Третья микротема, завершающая основное содержание текста"
+                ],
+                tips: [
+                    "Обратите внимание на ключевые слова в тексте",
+                    "Выделите причинно-следственные связи",
+                    "Используйте приемы исключения второстепенной информации"
+                ]
+            });
+        }
 
         // Function to generate task cards
         function generateTaskCards() {
             const container = document.getElementById('tasks-container');
             container.innerHTML = '';
 
-            tasks.forEach(task => {
+            // Get filter values
+            const themeFilter = document.getElementById('theme-filter').value;
+            const difficultyFilter = document.getElementById('difficulty-filter').value;
+            const sortFilter = document.getElementById('sort-filter').value;
+
+            // Filter and sort tasks
+            let filteredTasks = tasks.filter(task => {
+                return (themeFilter === 'all' || task.theme === themeFilter) &&
+                       (difficultyFilter === 'all' || task.difficulty === difficultyFilter);
+            });
+
+            // Sort tasks
+            if (sortFilter === 'difficulty') {
+                const difficultyOrder = { 'Начальная': 1, 'Средняя': 2, 'Высокая': 3 };
+                filteredTasks.sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
+            } else if (sortFilter === 'alphabet') {
+                filteredTasks.sort((a, b) => a.title.localeCompare(b.title));
+            } else {
+                filteredTasks.sort((a, b) => a.id - b.id);
+            }
+
+            // Generate cards
+            filteredTasks.forEach(task => {
                 const taskCard = document.createElement('div');
                 taskCard.className = 'task-card';
                 taskCard.innerHTML = `
@@ -776,8 +1001,8 @@
                             <button class="btn btn-outline" onclick="viewExplanation(${task.id})">
                                 <i class="fas fa-info-circle"></i>Пояснение
                             </button>
-                            <button class="btn btn-primary">
-                                <a href"get_file.mp3" i ркеclass="fas fa-play"></i>Начать
+                            <button class="btn btn-primary" onclick="startAudioTask(${task.id})">
+                                <i class="fas fa-play"></i>Начать
                             </button>
                         </div>
                     </div>
@@ -828,44 +1053,121 @@
             document.getElementById('explanation-modal').classList.add('active');
         }
 
-        // Close modal function
+        // Function to start audio task
+        function startAudioTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            document.getElementById('audio-modal-title').textContent = `Задание ${task.id}: ${task.title}`;
+            
+            const audioElement = document.getElementById('task-audio');
+            audioElement.src = task.audioUrl;
+            
+            // Reset playback rate
+            document.getElementById('playback-rate').value = '1';
+            audioElement.playbackRate = 1;
+            
+            // Reset buttons
+            document.getElementById('play-first').disabled = false;
+            document.getElementById('play-second').disabled = true;
+            
+            // Reset timer
+            document.getElementById('timer').textContent = 'До начала: 5 секунд';
+            
+            document.getElementById('audio-modal').classList.add('active');
+        }
+
+        // Close modal functions
         document.getElementById('close-modal').addEventListener('click', function() {
             document.getElementById('explanation-modal').classList.remove('active');
         });
 
-        // Close modal when clicking outside
+        document.getElementById('close-audio-modal').addEventListener('click', function() {
+            document.getElementById('audio-modal').classList.remove('active');
+            const audioElement = document.getElementById('task-audio');
+            audioElement.pause();
+            audioElement.currentTime = 0;
+        });
+
+        // Close modals when clicking outside
         window.addEventListener('click', function(event) {
-            const modal = document.getElementById('explanation-modal');
-            if (event.target === modal) {
-                modal.classList.remove('active');
+            if (event.target === document.getElementById('explanation-modal')) {
+                document.getElementById('explanation-modal').classList.remove('active');
+            }
+            if (event.target === document.getElementById('audio-modal')) {
+                document.getElementById('audio-modal').classList.remove('active');
+                const audioElement = document.getElementById('task-audio');
+                audioElement.pause();
+                audioElement.currentTime = 0;
             }
         });
 
+        // Audio controls
+        document.getElementById('play-first').addEventListener('click', function() {
+            const audioElement = document.getElementById('task-audio');
+            const timerElement = document.getElementById('timer');
+            
+            // Start countdown
+            let countdown = 5;
+            const countdownInterval = setInterval(() => {
+                timerElement.textContent = `До начала: ${countdown} секунд`;
+                countdown--;
+                
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    timerElement.textContent = 'Идет воспроизведение...';
+                    audioElement.play();
+                    
+                    // Enable second playback button after first playback ends
+                    audioElement.onended = function() {
+                        document.getElementById('play-second').disabled = false;
+                        timerElement.textContent = 'Готово к второму прослушиванию';
+                    };
+                }
+            }, 1000);
+            
+            this.disabled = true;
+        });
+
+        document.getElementById('play-second').addEventListener('click', function() {
+            const audioElement = document.getElementById('task-audio');
+            const timerElement = document.getElementById('timer');
+            
+            // Start countdown
+            let countdown = 3;
+            const countdownInterval = setInterval(() => {
+                timerElement.textContent = `До начала: ${countdown} секунд`;
+                countdown--;
+                
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    timerElement.textContent = 'Идет воспроизведение...';
+                    audioElement.currentTime = 0;
+                    audioElement.play();
+                    
+                    audioElement.onended = function() {
+                        timerElement.textContent = 'Прослушивание завершено';
+                        document.getElementById('play-second').disabled = true;
+                    };
+                }
+            }, 1000);
+            
+            this.disabled = true;
+        });
+
+        // Playback rate control
+        document.getElementById('playback-rate').addEventListener('change', function() {
+            const audioElement = document.getElementById('task-audio');
+            audioElement.playbackRate = parseFloat(this.value);
+        });
+
+        // Filter change events
+        document.getElementById('theme-filter').addEventListener('change', generateTaskCards);
+        document.getElementById('difficulty-filter').addEventListener('change', generateTaskCards);
+        document.getElementById('sort-filter').addEventListener('change', generateTaskCards);
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            generateTaskCards();
-            
-            // Add more tasks to reach 30
-            for (let i = 4; i <= 30; i++) {
-                tasks.push({
-                    id: i,
-                    title: `Тема изложения ${i}`,
-                    theme: ["Нравственность", "Дружба", "Природа", "Искусство", "Наука", "Семья", "Патриотизм"][Math.floor(Math.random() * 7)],
-                    difficulty: ["Начальная", "Средняя", "Высокая"][Math.floor(Math.random() * 3)],
-                    text: `Текст изложения ${i}. Это пример текста для сжатого изложения, который содержит основные мысли и идеи для выделения микротем. Учащимся необходимо прослушать этот текст и создать сжатое изложение, сохранив все ключевые моменты.`,
-                    microthemes: [
-                        "Первая микротема текста, содержащая основную мысль",
-                        "Вторая микротема, раскрывающая другую важную идею",
-                        "Третья микротема, завершающая основное содержание текста"
-                    ],
-                    tips: [
-                        "Обратите внимание на ключевые слова в тексте",
-                        "Выделите причинно-следственные связи",
-                        "Используйте приемы исключения второстепенной информации"
-                    ]
-                });
-            }
-            
             generateTaskCards();
         });
     </script>
