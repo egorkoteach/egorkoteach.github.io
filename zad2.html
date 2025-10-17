@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика: Задание 2 ОГЭ по русскому языку</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4a76a8;
+            padding-bottom: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .task {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .task-text {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #4a76a8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3a6590;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .progress {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Практика: Задание 2 ОГЭ по русскому языку</h1>
+            <p>Синтаксический анализ предложения</p>
+        </header>
+        
+        <div class="description">
+            <p><strong>Задание:</strong> В приведённых ниже предложениях из прочитанного текста пронумерованы все запятые. Выпишите цифры, обозначающие запятые при вводном слове.</p>
+        </div>
+        
+        <div id="task-container">
+            <!-- Задания будут добавляться динамически -->
+        </div>
+        
+        <div class="button-container">
+            <button id="check-btn">Проверить ответ</button>
+            <button id="next-btn">Следующее задание</button>
+        </div>
+        
+        <div id="result" class="result"></div>
+        
+        <div class="progress">
+            <span id="progress-text">Задание 1 из 5</span>
+        </div>
+        
+        <footer>
+            <p>Материалы подготовлены на основе открытого банка заданий ФИПИ</p>
+        </footer>
+    </div>
+
+    <script>
+        // База данных заданий
+        const tasks = [
+            {
+                text: "Укажите все цифры, на месте которых в предложении должны стоять запятые. \n\nК счастью,(1) погода,(2) вопреки прогнозам,(3) была отличная,(4) и мы,(5) конечно,(6) отлично провели время.",
+                options: [
+                    "1, 2, 3",
+                    "1, 3, 5, 6",
+                    "1, 5, 6",
+                    "2, 3, 5, 6"
+                ],
+                correct: 2, // индекс правильного ответа (0-based)
+                explanation: "Вводные слова: 'к счастью' (1), 'конечно' (5,6). 'Вопреки прогнозам' - это обстоятельство, выраженное существительным с предлогом."
+            },
+            {
+                text: "Укажите все цифры, на месте которых в предложении должны стоять запятые. \n\nПо-моему,(1) эта книга,(2) без сомнения,(3) заслуживает внимания,(4) и,(5) вероятно,(6) станет бестселлером.",
+                options: [
+                    "1, 2, 3, 5, 6",
+                    "1, 5, 6",
+                    "1, 2, 3",
+                    "2, 3, 5, 6"
+                ],
+                correct: 0,
+                explanation: "Вводные слова: 'по-моему' (1), 'без сомнения' (2,3), 'вероятно' (5,6)."
+            },
+            {
+                text: "Укажите все цифры, на месте которых в предложении должны стоять запятые. \n\nК несчастью,(1) наш поезд,(2) как всегда,(3) опоздал,(4) и нам,(5) к сожалению,(6) пришлось ждать следующего.",
+                options: [
+                    "1, 2, 3, 5, 6",
+                    "1, 5, 6",
+                    "1, 2, 3",
+                    "2, 3, 5, 6"
+                ],
+                correct: 0,
+                explanation: "Вводные слова: 'к несчастью' (1), 'как всегда' (2,3), 'к сожалению' (5,6)."
+            },
+            {
+                text: "Укажите все цифры, на месте которых в предложении должны стоять запятые. \n\nБезусловно,(1) этот фильм,(2) по мнению критиков,(3) является шедевром,(4) и,(5) возможно,(6) получит премию.",
+                options: [
+                    "1, 2, 3, 5, 6",
+                    "1, 5, 6",
+                    "1, 2, 3",
+                    "2, 3, 5, 6"
+                ],
+                correct: 0,
+                explanation: "Вводные слова: 'безусловно' (1), 'по мнению критиков' (2,3), 'возможно' (5,6)."
+            },
+            {
+                text: "Укажите все цифры, на месте которых в предложении должны стоять запятые. \n\nКстати,(1) эта идея,(2) наверное,(3) понравится всем,(4) и,(5) стало быть,(6) мы сможем её реализовать.",
+                options: [
+                    "1, 2, 3, 5, 6",
+                    "1, 5, 6",
+                    "1, 2, 3",
+                    "2, 3, 5, 6"
+                ],
+                correct: 0,
+                explanation: "Вводные слова: 'кстати' (1), 'наверное' (2,3), 'стало быть' (5,6)."
+            }
+        ];
+
+        let currentTaskIndex = 0;
+        let selectedOption = null;
+
+        // Инициализация страницы
+        function initPage() {
+            displayTask(currentTaskIndex);
+            updateProgress();
+            
+            // Обработчики событий для кнопок
+            document.getElementById('check-btn').addEventListener('click', checkAnswer);
+            document.getElementById('next-btn').addEventListener('click', nextTask);
+            
+            // Обработчики для выбора варианта ответа
+            const options = document.querySelectorAll('.option input');
+            options.forEach((option, index) => {
+                option.addEventListener('change', () => {
+                    selectedOption = index;
+                    // Снимаем выделение со всех вариантов
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.style.backgroundColor = '';
+                    });
+                    // Выделяем выбранный вариант
+                    document.querySelectorAll('.option')[index].style.backgroundColor = '#e6f7ff';
+                });
+            });
+        }
+
+        // Отображение задания
+        function displayTask(index) {
+            const task = tasks[index];
+            const taskContainer = document.getElementById('task-container');
+            
+            let optionsHTML = '';
+            task.options.forEach((option, i) => {
+                optionsHTML += `
+                    <div class="option">
+                        <input type="radio" id="option${i}" name="answer" value="${i}">
+                        <label for="option${i}">${option}</label>
+                    </div>
+                `;
+            });
+            
+            taskContainer.innerHTML = `
+                <div class="task">
+                    <div class="task-text">${task.text}</div>
+                    <div class="options">${optionsHTML}</div>
+                </div>
+            `;
+            
+            // Сбрасываем выбранный вариант
+            selectedOption = null;
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.style.backgroundColor = '';
+            });
+            
+            // Сбрасываем результат
+            document.getElementById('result').style.display = 'none';
+            
+            // Добавляем обработчики для новых вариантов ответа
+            const newOptions = document.querySelectorAll('.option input');
+            newOptions.forEach((option, index) => {
+                option.addEventListener('change', () => {
+                    selectedOption = index;
+                    // Снимаем выделение со всех вариантов
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.style.backgroundColor = '';
+                    });
+                    // Выделяем выбранный вариант
+                    document.querySelectorAll('.option')[index].style.backgroundColor = '#e6f7ff';
+                });
+            });
+        }
+
+        // Проверка ответа
+        function checkAnswer() {
+            const resultDiv = document.getElementById('result');
+            
+            if (selectedOption === null) {
+                resultDiv.textContent = "Пожалуйста, выберите вариант ответа!";
+                resultDiv.className = 'result incorrect';
+                resultDiv.style.display = 'block';
+                return;
+            }
+            
+            const task = tasks[currentTaskIndex];
+            
+            if (selectedOption === task.correct) {
+                resultDiv.textContent = "Правильно!";
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.textContent = "Неправильно. Попробуйте еще раз!";
+                resultDiv.className = 'result incorrect';
+            }
+            
+            // Добавляем объяснение
+            const explanation = document.createElement('div');
+            explanation.className = 'explanation';
+            explanation.textContent = task.explanation;
+            resultDiv.appendChild(explanation);
+            
+            resultDiv.style.display = 'block';
+        }
+
+        // Переход к следующему заданию
+        function nextTask() {
+            currentTaskIndex = (currentTaskIndex + 1) % tasks.length;
+            displayTask(currentTaskIndex);
+            updateProgress();
+        }
+
+        // Обновление прогресса
+        function updateProgress() {
+            document.getElementById('progress-text').textContent = 
+                `Задание ${currentTaskIndex + 1} из ${tasks.length}`;
+        }
+
+        // Запуск при загрузке страницы
+        window.onload = initPage;
+    </script>
+</body>
+</html>
